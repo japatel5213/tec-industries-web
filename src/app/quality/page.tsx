@@ -59,7 +59,7 @@ export default function QualityPage() {
         <div className="container-xl relative text-center">
           <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Our Commitment</span>
           <h1 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.1, marginBottom: '16px' }}>
-            Quality &amp; Standards
+            Quality & Standards
           </h1>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '560px', margin: '0 auto' }}>
             Every TEC INDUSTRIES product is manufactured to international PPR and HDPE specifications, with full in-house quality control across raw material, in-process, and finished-goods stages.
@@ -121,7 +121,7 @@ export default function QualityPage() {
         <div className="container-xl">
           <div className="text-center mb-12">
             <span className="section-eyebrow">Compliance</span>
-            <h2 className="section-heading" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>Standards &amp; Specifications</h2>
+            <h2 className="section-heading" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>Standards & Specifications</h2>
             <div className="teal-rule mx-auto mt-4 mb-6" />
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', maxWidth: '600px', margin: '0 auto' }}>
               TEC INDUSTRIES products are manufactured to the following national and international specifications. BIS certification for IS 15801 is currently under process.

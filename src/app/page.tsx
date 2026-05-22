@@ -158,7 +158,7 @@ export default function HomePage() {
                 <span style={{ background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   Manufactured
                 </span>{' '}
-                for Plants, Projects &amp; Procurement.
+                for Plants, Projects & Procurement.
               </h1>
               <p
                 style={{

@@ -66,7 +66,7 @@ export default function AboutPage() {
                 TEC INDUSTRIES is established in the GIDC Industrial Estate, Vapi, Gujarat — one of India's premier industrial hubs. From a single PPR pipe manufacturing line, we have grown into a comprehensive industrial piping solutions provider serving plant managers, contractors, procurement officers, and project engineers across India.
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '32px' }}>
-                Our product portfolio covers PPR Pipes &amp; Fittings (20–160 mm), HDPE Pipes &amp; Fittings (20–630 mm), Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — all manufactured in-house to IS 15801, ISO 15874, and DIN 8077 specifications.
+                Our product portfolio covers PPR Pipes & Fittings (20–160 mm), HDPE Pipes & Fittings (20–630 mm), Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — all manufactured in-house to IS 15801, ISO 15874, and DIN 8077 specifications.
               </p>
             </div>
             <div className="relative">
@@ -117,7 +117,7 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <span className="section-eyebrow">What We Stand For</span>
             <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.15 }}>
-              Three Values Guide Every Product, Quote &amp; Project
+              Three Values Guide Every Product, Quote & Project
             </h2>
             <div className="teal-rule mx-auto mt-5" />
           </div>
