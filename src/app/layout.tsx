@@ -83,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Header />
-        <main className="pt-[72px]">{children}</main>
+        <main className="pt-[80px]">{children}</main>
         <Footer />
         <WhatsAppFloat />
       </body>

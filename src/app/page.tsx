@@ -141,7 +141,7 @@ export default function HomePage() {
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/assets/factory-hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.12 }} />
         </div>
 
-        <div className="container-xl relative z-10 py-24">
+        <div className="container-xl relative z-10 pt-32 pb-24">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left — Text */}
             <div>
