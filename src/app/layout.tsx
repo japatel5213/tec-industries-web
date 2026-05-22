@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Open_Sans, JetBrains_Mono } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google';
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,6 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.tecindustries.in'),
   title: {
     default: "TEC INDUSTRIES — PPR Pipes, HDPE Fittings, Vapi Gujarat",
     template: "%s — TEC INDUSTRIES",
@@ -62,7 +64,7 @@ const orgSchema = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+91-260-123-4567",
+    telephone: "+91-94260-31064",
     contactType: "sales",
     availableLanguage: ["English", "Hindi", "Gujarati"],
   },
@@ -72,6 +74,7 @@ const orgSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>
+      <GoogleTagManager gtmId="GTM-TSM3TF6B" />
       <head>
         <script
           type="application/ld+json"
