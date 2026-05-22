@@ -94,39 +94,33 @@ const PRODUCTS = [
 ];
 
 const INDUSTRIES = [
-  { icon: <Building2 size={28} />, name: 'Construction', desc: 'Commercial & residential buildings' },
+  { icon: <Building2 size={28} />, name: 'Construction', desc: 'Commercial & high-rise projects' },
   { icon: <Wheat size={28} />, name: 'Agriculture', desc: 'Irrigation & water management' },
-  { icon: <Droplets size={28} />, name: 'Plumbing', desc: 'Hot & cold water systems' },
+  { icon: <Droplets size={28} />, name: 'Plumbing', desc: 'Commercial & industrial plumbing' },
   { icon: <Factory size={28} />, name: 'Infrastructure', desc: 'Municipal water networks' },
-  { icon: <Wrench size={28} />, name: 'Industrial', desc: 'Process piping systems' },
-  { icon: <Ship size={28} />, name: 'Marine', desc: 'Marine & offshore applications' },
+  { icon: <Wrench size={28} />, name: 'Industrial', desc: 'Chemical, fertilizer & process piping' },
+  { icon: <Ship size={28} />, name: 'Pharma & Food', desc: 'Utility water & CIP lines' },
 ];
 
 const STATS = [
-  { end: 100, suffix: '%', label: 'Quality Assured' },
-  { end: 500, suffix: '+', label: 'Product Variants' },
-  { end: 1200, suffix: '+', label: 'Happy Clients' },
-  { end: 15, suffix: '+', label: 'States Served' },
+  { end: 100, suffix: '%', label: 'Quality-Tested Output' },
+  { end: 6, suffix: '', label: 'Product Lines' },
+  { end: 0, suffix: '', label: 'IS 15801 Compliant', static: 'IS 15801' },
+  { end: 0, suffix: '', label: 'Project Reach', static: 'Pan-India' },
 ];
 
-const TESTIMONIALS = [
+const TRUST_CARDS = [
   {
-    text: "TEC INDUSTRIES has been our trusted PPR pipe supplier for 8 years. Their quality is consistently excellent and delivery is always on time.",
-    name: "Rajesh Patel",
-    role: "Procurement Head, Sunita Constructions, Surat",
-    initials: "RP",
+    heading: 'Specification-First',
+    body: 'Every pipe ships with batch traceability, dimensional verification per IS 15801, and hydrostatic test records on request.',
   },
   {
-    text: "The HDPE pipes from TEC have performed flawlessly in our irrigation network. Best price-to-quality ratio in the market.",
-    name: "Harish Mehta",
-    role: "Director, Agri Water Solutions, Anand",
-    initials: "HM",
+    heading: 'Industrial-Grade Range',
+    body: 'PPR coverage from 20 mm to 160 mm. HDPE from 20 mm to 630 mm. PN10 / PN16 / PN20 / PN25 pressure classes. Sizes most national competitors don\'t carry.',
   },
   {
-    text: "Their electrofusion fittings are top-grade. The technical support team is knowledgeable and always responsive.",
-    name: "Vikram Shah",
-    role: "Site Engineer, Metro Infrastructure Ltd.",
-    initials: "VS",
+    heading: 'Direct from Factory',
+    body: 'No distributor markup. Quote directly with the manufacturer. Bulk pricing, dealer terms, and project rates available.',
   },
 ];
 
@@ -192,7 +186,7 @@ export default function HomePage() {
               </div>
               {/* Trust badges */}
               <div className="flex flex-wrap gap-6">
-                {['ISO Certified', 'BIS Approved', 'ISI Marked', 'Quality Assured'].map((badge) => (
+                {['Manufactured to IS 15801', 'DIN 8077 / 8078 Compliant', 'ISO 15874 Specifications', '100% Batch-Tested'].map((badge) => (
                   <div key={badge} className="flex items-center gap-2">
                     <CheckCircle2 size={14} style={{ color: '#3DAA7A' }} />
                     <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>
@@ -267,10 +261,10 @@ export default function HomePage() {
               </h2>
               <div className="teal-rule mb-8" />
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '16px' }}>
-                TEC INDUSTRIES is a Vapi-based industrial manufacturer dedicated to delivering world-class piping solutions for construction, infrastructure, agriculture, and industrial applications.
+                TEC INDUSTRIES manufactures PPR pipes from 20 mm to 160 mm, HDPE pipes from 20 mm to 630 mm, and a complete bundling ecosystem — fittings, valves, electrofusion couplings, pipe supports, and fusion welding machines. Built to IS 15801, ISO 15874, and DIN 8077 specifications. Shipped pan-India directly from our GIDC Vapi factory.
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '32px' }}>
-                Our state-of-the-art facility in GIDC Vapi produces PPR, HDPE, and Electrofusion products to the highest international quality standards, backed by rigorous in-house testing and ISO certification.
+                Built for industrial procurement — plant managers, contractors, and project engineers across India.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/about" className="btn-ghost">
@@ -291,8 +285,8 @@ export default function HomePage() {
                   style={{ padding: '32px 24px', background: '#ffffff', position: 'relative', overflow: 'hidden' }}
                 >
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)' }} />
-                  <div style={{ fontFamily: 'var(--font-head)', fontSize: '48px', fontWeight: 800, color: '#2B3E50', lineHeight: 1 }}>
-                    <Counter end={stat.end} suffix={stat.suffix} />
+                  <div style={{ fontFamily: 'var(--font-head)', fontSize: stat.static ? '28px' : '48px', fontWeight: 800, color: '#2B3E50', lineHeight: 1 }}>
+                    {stat.static ? stat.static : <Counter end={stat.end} suffix={stat.suffix} />}
                   </div>
                   <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: '#6B7B8D', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '8px' }}>
                     {stat.label}
@@ -475,33 +469,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ TESTIMONIALS ═══ */}
+      {/* ═══ BUILT FOR INDUSTRIAL BUYERS ═══ */}
       <section style={{ background: '#ffffff', padding: '96px 0' }}>
         <div className="container-xl">
           <div className="text-center mb-16 reveal">
-            <span className="section-eyebrow">What Clients Say</span>
+            <span className="section-eyebrow">Why Industrial Buyers Choose TEC</span>
             <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>
-              Trusted by Industry Leaders
+              Built for Industrial Buyers
             </h2>
-            <div className="teal-rule mx-auto mt-4" />
+            <div className="teal-rule mx-auto mt-4 mb-6" />
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
+              TEC INDUSTRIES specifies, manufactures, and delivers piping systems for the projects that demand precision.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t, i) => (
-              <div key={t.name} className="card reveal" style={{ animationDelay: `${i * 0.15}s`, position: 'relative' }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', borderRadius: '16px 16px 0 0' }} />
-                <div style={{ fontSize: '40px', color: '#3DAA7A', fontFamily: 'var(--font-head)', fontWeight: 800, lineHeight: 1, marginBottom: '16px' }}>"</div>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '24px', fontStyle: 'italic' }}>
-                  {t.text}
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f0f0f0', paddingTop: '20px' }}>
-                  <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontFamily: 'var(--font-head)', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div style={{ fontFamily: 'var(--font-head)', fontSize: '14px', fontWeight: 700, color: '#2B3E50' }}>{t.name}</div>
-                    <div style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: '#6B7B8D' }}>{t.role}</div>
-                  </div>
-                </div>
+          <div className="grid sm:grid-cols-3 gap-8">
+            {TRUST_CARDS.map((card, i) => (
+              <div key={card.heading} className="card reveal" style={{ animationDelay: `${i * 0.15}s`, position: 'relative', borderTop: '4px solid #E85D26' }}>
+                <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '20px', fontWeight: 700, color: '#2B3E50', marginBottom: '16px' }}>{card.heading}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8 }}>{card.body}</p>
               </div>
             ))}
           </div>

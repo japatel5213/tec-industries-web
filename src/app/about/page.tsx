@@ -1,28 +1,38 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle2, Target, Eye, Heart, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Target, Eye, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about TEC INDUSTRIES — two decades of industrial excellence in PPR Pipes, HDPE Fittings, and industrial piping solutions from Vapi, Gujarat.',
+  description: 'TEC INDUSTRIES — industrial-grade PPR and HDPE pipe manufacturer in Vapi, Gujarat. Pan-India shipping. Built on Trust, Empowerment, and Commitment.',
 };
 
 const VALUES = [
-  { letter: 'Q', title: 'Quality First', desc: 'Every product undergoes rigorous QC testing. We never compromise on material grade, dimensional accuracy, or pressure ratings.' },
-  { letter: 'I', title: 'Innovation', desc: 'Continuous R&D drives product development. We adopt the latest manufacturing technologies to stay ahead of industry demands.' },
-  { letter: 'R', title: 'Reliability', desc: 'Consistent delivery, consistent quality — every time. Our clients depend on us because we never let them down.' },
-  { letter: 'S', title: 'Sustainability', desc: 'Eco-conscious manufacturing practices, energy-efficient processes, and recyclable materials at the core of our operations.' },
+  {
+    letter: 'T',
+    title: 'Trust',
+    desc: 'Specifications you can verify. Batch traceability on every order. Honest answers about what fits your application — and what doesn\'t. Trust is built through consistency, not slogans.',
+  },
+  {
+    letter: 'E',
+    title: 'Empowerment',
+    desc: 'We equip plant teams, contractors, and engineers with the technical depth to specify confidently. Catalogs, datasheets, fusion welding guidance, sizing calculators — open and free, because informed buyers make better partners.',
+  },
+  {
+    letter: 'C',
+    title: 'Commitment',
+    desc: 'A 50-year pipe deserves a 50-year supplier relationship. We commit to long-term inventory availability, technical support past installation, and standing behind every meter we ship.',
+  },
 ];
 
 const MILESTONES = [
   { year: 'Foundation', event: 'TEC INDUSTRIES founded in Vapi, Gujarat with PPR pipe manufacturing.' },
-  { year: 'Expansion', event: 'Expanded to HDPE pipe production. First 100 clients reached.' },
-  { year: 'Certification', event: 'ISO 9001 certification achieved. Electrofusion fittings launched.' },
-  { year: 'Innovation', event: 'New state-of-the-art GIDC facility opened. Capacity doubled.' },
+  { year: 'Expansion', event: 'Expanded to HDPE pipe production and electrofusion fittings.' },
+  { year: 'Innovation', event: 'New state-of-the-art GIDC facility opened. Manufacturing capacity doubled.' },
   { year: 'Growth', event: 'Industrial Valves and Pipe Support Systems added to product range.' },
-  { year: 'Network', event: 'PPR Fusion Machine range launched. Pan-India dealer network established.' },
-  { year: 'Today', event: '1200+ clients served. 15+ states covered. 500+ product variants.' },
+  { year: 'Network', event: 'PPR Fusion Machine range launched. Pan-India delivery network established.' },
+  { year: 'Today', event: 'Pan-India delivery network. Industrial-grade PPR (20–160 mm), HDPE (20–630 mm), and complete piping system bundling.' },
 ];
 
 export default function AboutPage() {
@@ -37,12 +47,12 @@ export default function AboutPage() {
             About TEC INDUSTRIES
           </h1>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '560px', margin: '0 auto' }}>
-            Two decades of manufacturing excellence, trusted by over 1,200 clients across India.
+            Industrial piping solutions manufactured in Gujarat, shipped pan-India.
           </p>
         </div>
       </section>
 
-      {/* Mission / Vision */}
+      {/* Who We Are */}
       <section style={{ background: '#ffffff', padding: '96px 0' }}>
         <div className="container-xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -53,10 +63,10 @@ export default function AboutPage() {
               </h2>
               <div className="teal-rule mb-8" />
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '16px' }}>
-                TEC INDUSTRIES is established in the GIDC Industrial Estate, Vapi, Gujarat — one of India's premier industrial hubs. From a single PPR pipe manufacturing line, we have grown into a comprehensive industrial piping solutions provider serving contractors, builders, and distributors across India.
+                TEC INDUSTRIES is established in the GIDC Industrial Estate, Vapi, Gujarat — one of India's premier industrial hubs. From a single PPR pipe manufacturing line, we have grown into a comprehensive industrial piping solutions provider serving plant managers, contractors, procurement officers, and project engineers across India.
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '32px' }}>
-                Our product portfolio covers PPR Pipes & Fittings, HDPE Pipes & Fittings, Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — all manufactured in-house with strict quality controls.
+                Our product portfolio covers PPR Pipes &amp; Fittings (20–160 mm), HDPE Pipes &amp; Fittings (20–630 mm), Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — all manufactured in-house to IS 15801, ISO 15874, and DIN 8077 specifications.
               </p>
             </div>
             <div className="relative">
@@ -72,7 +82,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision cards */}
+      {/* Mission & Vision */}
       <section style={{ background: '#F5F5F0', padding: '80px 0' }}>
         <div className="container-xl">
           <div className="grid md:grid-cols-2 gap-8">
@@ -83,7 +93,7 @@ export default function AboutPage() {
               </div>
               <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '22px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>Our Mission</h3>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8 }}>
-                To manufacture and deliver the highest quality piping solutions that empower India's construction, agriculture, and industrial sectors — making reliable infrastructure accessible to all.
+                To manufacture and deliver industrial-grade piping solutions built to international specifications — empowering India's construction, infrastructure, and industrial sectors with products that perform for 50 years.
               </p>
             </div>
             <div className="card" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -93,30 +103,30 @@ export default function AboutPage() {
               </div>
               <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '22px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>Our Vision</h3>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8 }}>
-                To be India's most trusted industrial piping manufacturer — recognised for innovation, quality, and our unwavering commitment to client success across every project we touch.
+                To be India's most trusted industrial PPR and HDPE manufacturer — the first name a plant manager, procurement officer, or project engineer calls when they need to specify a piping system they can rely on for decades.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
+      {/* Core Values — T · E · C */}
       <section style={{ background: '#1E2A3A', padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', bottom: '-80px', right: '-80px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(45,139,110,0.12) 0%, transparent 65%)' }} />
         <div className="container-xl relative">
           <div className="text-center mb-16">
-            <span className="section-eyebrow">What Drives Us</span>
+            <span className="section-eyebrow">What We Stand For</span>
             <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.15 }}>
-              Our Core Values
+              Three Values Guide Every Product, Quote &amp; Project
             </h2>
             <div className="teal-rule mx-auto mt-5" />
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-3 gap-6">
             {VALUES.map((val) => (
-              <div key={val.letter} style={{ background: 'rgba(255,255,255,0.05)', borderTop: '3px solid #2D8B6E', borderRadius: '12px', padding: '32px 28px' }}>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: '48px', fontWeight: 800, color: '#3DAA7A', lineHeight: 1, marginBottom: '12px' }}>{val.letter}</div>
-                <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '18px', fontWeight: 700, color: '#ffffff', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{val.title}</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>{val.desc}</p>
+              <div key={val.letter} style={{ background: 'rgba(255,255,255,0.05)', borderTop: '3px solid #E85D26', borderRadius: '12px', padding: '40px 32px' }}>
+                <div style={{ fontFamily: 'var(--font-head)', fontSize: '64px', fontWeight: 800, color: '#E85D26', lineHeight: 1, marginBottom: '16px' }}>{val.letter}</div>
+                <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '20px', fontWeight: 700, color: '#ffffff', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{val.title}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8 }}>{val.desc}</p>
               </div>
             ))}
           </div>
@@ -158,7 +168,10 @@ export default function AboutPage() {
             Ready to Partner with Us?
           </h2>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>
-            Join 1200+ clients who trust TEC INDUSTRIES for their piping needs.
+            Built for industrial procurement — plant managers, contractors, and project engineers across India.
+          </p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.4)', marginBottom: '32px', fontStyle: 'italic' }}>
+            "Your Partner in Industrial Progress"
           </p>
           <Link href="/contact" className="btn-primary" style={{ fontSize: '15px', padding: '16px 32px' }}>
             Contact Us Today <ArrowRight size={16} />
