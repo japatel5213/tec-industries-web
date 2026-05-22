@@ -145,20 +145,20 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left — Text */}
             <div>
-              <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>
-                Vapi, Gujarat, India
+              <span className="section-eyebrow" style={{ color: '#3DAA7A', letterSpacing: '0.12em' }}>
+                Made in Vapi, Gujarat · Shipped Pan-India
               </span>
               <h1
                 style={{
-                  fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: 'clamp(40px, 5vw, 72px)',
+                  fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 68px)',
                   color: '#ffffff', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '24px',
                 }}
               >
-                Industrial Piping<br />
+                Industrial-Grade PPR & HDPE.<br />
                 <span style={{ background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Solutions
+                  Manufactured
                 </span>{' '}
-                You Can Trust
+                for Plants, Projects &amp; Procurement.
               </h1>
               <p
                 style={{
@@ -174,7 +174,7 @@ export default function HomePage() {
                   lineHeight: 1.7, marginBottom: '36px',
                 }}
               >
-                Manufacturers of PPR Pipes & Fittings, HDPE Pipes, Electrofusion Fittings, Industrial Valves, and Pipe Support Systems — serving 1200+ clients across India.
+                TEC INDUSTRIES manufactures PPR pipes from 20 mm to 160 mm, HDPE pipes from 20 mm to 630 mm, and a complete bundling ecosystem — fittings, valves, electrofusion couplings, pipe supports, and fusion welding machines. Built to IS 15801, ISO 15874, and DIN 8077 specifications. Quoted directly from the factory.
               </p>
               <div className="flex flex-wrap gap-4 mb-12">
                 <Link href="/products" className="btn-primary">

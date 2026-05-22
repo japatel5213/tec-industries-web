@@ -1,47 +1,55 @@
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
-export const metadata: Metadata = { title: 'HDPE Pipe & Fittings', description: 'TEC INDUSTRIES HDPE Pipe & Fittings — high-density polyethylene pipes for underground, industrial, and water distribution. Available in PN6 to PN16. Made in Vapi, Gujarat.' };
+
+export const metadata: Metadata = {
+  title: 'HDPE Pipe & Fittings',
+  description: 'TEC INDUSTRIES HDPE Pipe & Fittings — PE 100, manufactured to IS 4984 / ISO 4427 / EN 12201. Size range 20–630 mm. PN6 to PN16. Pan-India. Made in Vapi, Gujarat.',
+  keywords: ['HDPE pipe PE100', 'HDPE pipe 630mm', 'water supply HDPE', 'irrigation HDPE pipe', 'IS 4984 HDPE'],
+};
+
 export default function HDPEPage() {
   return (
     <ProductPageTemplate
       name="HDPE Pipe & Fittings"
-      tagline="High-Density Polyethylene"
-      description="TEC INDUSTRIES HDPE Pipes are manufactured from high-quality PE 80 and PE 100 raw material, offering superior performance for underground water supply, irrigation, gas distribution, and industrial fluid transport. Their flexibility and impact resistance make them the preferred choice for challenging installation environments."
+      tagline="PE 100 · IS 4984 · ISO 4427 · EN 12201"
+      description="TEC INDUSTRIES HDPE Pipes are manufactured from PE 100 high-density polyethylene, offering superior performance for underground water supply, irrigation, sewage, industrial fluid transport, and municipal infrastructure. Their flexibility, impact resistance, and 50-year design life make them the preferred choice for demanding installation environments across India."
       image="/assets/hdpe-pipes.png"
       specs={[
-        { label: 'Material', value: 'PE 80 / PE 100' },
-        { label: 'Size Range', value: '20mm – 630mm' },
-        { label: 'Pressure Class', value: 'PN6 / PN8 / PN10 / PN12.5 / PN16' },
-        { label: 'SDR Range', value: 'SDR 11 to SDR 41' },
-        { label: 'Colour', value: 'Black / Black with blue stripes (water)' },
-        { label: 'Pipe Length', value: '6m / 12m standard coils available' },
-        { label: 'Standard', value: 'IS 4984 / ISO 4427 / EN 12201' },
-        { label: 'Certification', value: 'ISI Marked, ISO 9001:2015' },
-        { label: 'Temperature Rating', value: 'Up to 40°C continuous' },
-        { label: 'Joint Methods', value: 'Butt fusion, electrofusion, compression' },
+        { label: 'Material', value: 'PE 100 (standard) · PE 80 (legacy applications on request)' },
+        { label: 'Size Range', value: '20 mm – 630 mm' },
+        { label: 'Pressure Classes', value: 'PN6 / PN8 / PN10 / PN12.5 / PN16' },
+        { label: 'SDR Range', value: 'SDR 41 (PN6) to SDR 11 (PN16)' },
+        { label: 'Service Temperature', value: '-40°C to +40°C (pressure service); higher non-pressure' },
+        { label: 'Design Life', value: '50 years (PE 100 at 20°C, rated pressure)' },
+        { label: 'Standard Length', value: '6 m and 12 m bars; coils available 20–110 mm' },
+        { label: 'Colours', value: 'Black (standard) · Black with blue stripes (potable water) · Black with yellow stripes (gas)' },
+        { label: 'Standards Compliance', value: 'IS 4984 · ISO 4427 · EN 12201' },
+        { label: 'Joint Methods', value: 'Butt fusion · electrofusion · compression fittings · flanged' },
+        { label: 'Certification', value: 'Manufactured to IS 4984 / ISO 4427 / EN 12201 specifications. BIS certification under process.' },
       ]}
       features={[
-        'PE 100 material provides 50+ year design life underground',
-        'Excellent flexibility — bends without cracking, ideal for trenchless installation',
+        'PE 100 material provides 50+ year design life underground at rated pressure',
+        'Excellent flexibility — bends without cracking, ideal for trenchless and HDD installation',
         'Resistant to all soil conditions including acidic, saline, and rocky ground',
-        'Leak-free butt fusion joints — no gaskets or mechanical joints required',
-        'Low friction coefficient reduces pumping energy costs',
-        'UV stabilised black grade for surface and above-ground use',
-        'Impact resistant even at sub-zero temperatures',
-        'Suitable for non-potable, potable water, and industrial effluent',
+        'Leak-free butt fusion and electrofusion joints — no gaskets or mechanical joints required',
+        'Low friction coefficient (smooth bore) reduces pumping energy costs',
+        'UV stabilised black grade for surface and above-ground installations',
+        'Impact resistant even at sub-zero temperatures (-40°C)',
+        'Suitable for non-potable, potable water, industrial effluent, and low-pressure gas',
       ]}
       applications={[
         { name: 'Underground Water Supply', desc: 'Municipal water mains, distribution networks, and service connections.' },
-        { name: 'Drip Irrigation', desc: 'Main supply lines for large-scale agricultural drip and sprinkler irrigation.' },
+        { name: 'Drip & Sprinkler Irrigation', desc: 'Main supply lines for large-scale agricultural drip and sprinkler irrigation.' },
         { name: 'Sewage & Drainage', desc: 'Pressure sewer and gravity drainage in urban and rural infrastructure.' },
         { name: 'Mining & Industrial', desc: 'Slurry transport, mine dewatering, and process fluid piping.' },
-        { name: 'Gas Distribution', desc: 'Low-pressure gas networks with yellow stripe or yellow pipe.' },
+        { name: 'Gas Distribution', desc: 'Low-pressure gas networks with yellow-stripe specification.' },
         { name: 'Trenchless Installation', desc: 'Horizontal directional drilling (HDD) and pipe bursting applications.' },
       ]}
       relatedProducts={[
         { name: 'PPR Pipe & Fittings', href: '/products/ppr' },
         { name: 'Electrofusion Fittings', href: '/products/electrofusion' },
         { name: 'Industrial Valves', href: '/products/valves' },
+        { name: 'Pipe Support System', href: '/products/pipe-support' },
       ]}
     />
   );
