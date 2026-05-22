@@ -124,8 +124,34 @@ const TRUST_CARDS = [
   },
 ];
 
+const HERO_SLIDES = [
+  {
+    img: '/assets/hero_slide_ppr.png',
+    title: 'PPR Pipe & Fittings',
+    tag: 'Manufactured for Plants, Projects & Procurement.'
+  },
+  {
+    img: '/assets/hero_slide_hdpe.png',
+    title: 'HDPE Pipe & Fittings',
+    tag: 'Manufactured for Plants, Projects & Procurement.'
+  },
+  {
+    img: '/assets/hero_slide_industrial.png',
+    title: 'Industrial Process Piping',
+    tag: 'Manufactured for Plants, Projects & Procurement.'
+  }
+];
+
 export default function HomePage() {
   useReveal();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -154,11 +180,10 @@ export default function HomePage() {
                   color: '#ffffff', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '24px',
                 }}
               >
-                Industrial-Grade PPR & HDPE.<br />
+                Industrial-Grade<br />
                 <span style={{ background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  Manufactured
-                </span>{' '}
-                for Plants, Projects & Procurement.
+                  PPR & HDPE
+                </span>
               </h1>
               <p
                 style={{
@@ -197,7 +222,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right — Product image */}
+            {/* Right — Product image slider */}
             <div className="hidden lg:block relative">
               <div
                 style={{
@@ -211,31 +236,58 @@ export default function HomePage() {
                   position: 'relative', borderRadius: '20px', overflow: 'hidden',
                   border: '1px solid rgba(45,139,110,0.25)',
                   boxShadow: '0 32px 80px rgba(0,0,0,0.5)',
+                  aspectRatio: '4/3',
                 }}
               >
-                <Image
-                  src="/assets/ppr-pipes.png"
-                  alt="TEC INDUSTRIES PPR Pipe & Fittings"
-                  width={580}
-                  height={420}
-                  className="w-full h-auto"
-                  priority
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(20,28,40,0.6) 100%)' }} />
-                {/* Floating badge */}
-                <div
-                  style={{
-                    position: 'absolute', bottom: '24px', left: '24px',
-                    background: 'rgba(20,28,40,0.9)', backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(45,139,110,0.4)', borderRadius: '12px', padding: '12px 16px',
-                  }}
-                >
-                  <div style={{ fontFamily: 'var(--font-head)', fontSize: '13px', fontWeight: 700, color: '#3DAA7A', letterSpacing: '0.06em' }}>
-                    PRIMARY PRODUCT
+                {HERO_SLIDES.map((slide, i) => (
+                  <div
+                    key={slide.img}
+                    style={{
+                      position: 'absolute', inset: 0,
+                      opacity: i === currentSlide ? 1 : 0,
+                      transition: 'opacity 0.8s ease-in-out',
+                    }}
+                  >
+                    <Image
+                      src={slide.img}
+                      alt={slide.title}
+                      fill
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(20,28,40,0.8) 100%)' }} />
+                    {/* Floating badge */}
+                    <div
+                      style={{
+                        position: 'absolute', bottom: '24px', left: '24px', right: '24px',
+                        background: 'rgba(20,28,40,0.9)', backdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(45,139,110,0.4)', borderRadius: '12px', padding: '16px 20px',
+                      }}
+                    >
+                      <div style={{ fontFamily: 'var(--font-head)', fontSize: '13px', fontWeight: 700, color: '#3DAA7A', letterSpacing: '0.06em' }}>
+                        {slide.tag}
+                      </div>
+                      <div style={{ fontFamily: 'var(--font-head)', fontSize: '20px', fontWeight: 800, color: '#fff', marginTop: '4px' }}>
+                        {slide.title}
+                      </div>
+                    </div>
                   </div>
-                  <div style={{ fontFamily: 'var(--font-head)', fontSize: '16px', fontWeight: 800, color: '#fff', marginTop: '2px' }}>
-                    PPR Pipe & Fittings
-                  </div>
+                ))}
+                
+                {/* Slider Indicators */}
+                <div style={{ position: 'absolute', top: '16px', right: '16px', display: 'flex', gap: '8px' }}>
+                  {HERO_SLIDES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      style={{
+                        width: '8px', height: '8px', borderRadius: '50%',
+                        background: i === currentSlide ? '#3DAA7A' : 'rgba(255,255,255,0.3)',
+                        transition: 'background 0.3s',
+                      }}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
