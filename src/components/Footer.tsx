@@ -21,7 +21,7 @@ const COMPANY = [
 ];
 
 const RESOURCES = [
-  { label: 'PPR Catalog Download', href: '/resources/ppr-catalog' },
+  { label: 'PPR Catalog Download', href: '/resources/catalog' },
   { label: 'HDPE Catalog Download', href: '/resources', coming: true },
   { label: 'Fusion Welding Guide', href: '/resources', coming: true },
   { label: 'Chemical Resistance Chart', href: '/resources', coming: true },
