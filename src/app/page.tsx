@@ -91,6 +91,13 @@ const PRODUCTS = [
     href: '/products/fusion-machine',
     badge: null,
   },
+  {
+    name: 'Cooling Towers',
+    desc: 'High-capacity FRP round and square cooling towers (10 TR to 1000 TR). Engineered for maximum heat transfer efficiency and industrial durability.',
+    img: '/assets/cooling-tower.png',
+    href: '/products/cooling-tower',
+    badge: null,
+  },
 ];
 
 const INDUSTRIES = [
@@ -360,7 +367,7 @@ export default function HomePage() {
             </h2>
             <div className="teal-rule mx-auto mb-6" />
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
-              Six product lines engineered to the highest standards, covering all your industrial piping requirements.
+              Seven product lines engineered to the highest standards, covering all your industrial piping and cooling requirements.
             </p>
           </div>
 

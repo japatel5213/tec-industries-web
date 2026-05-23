@@ -9,6 +9,7 @@ const PRODUCTS = [
   { label: 'Industrial Valves', href: '/products/valves' },
   { label: 'Pipe Support System', href: '/products/pipe-support' },
   { label: 'PPR Fusion Machine', href: '/products/fusion-machine' },
+  { label: 'Cooling Towers', href: '/products/cooling-tower' },
 ];
 
 const COMPANY = [

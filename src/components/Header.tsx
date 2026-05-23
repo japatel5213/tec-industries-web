@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Droplets, Database, Zap, Settings, Wrench, Flame } from 'lucide-react';
+import { Menu, X, ChevronDown, Droplets, Database, Zap, Settings, Wrench, Flame, Wind } from 'lucide-react';
 
 const PRODUCTS_MENU = [
   { label: 'PPR Pipe & Fittings', href: '/products/ppr', desc: 'Hot & cold water systems', icon: Droplets },
@@ -11,6 +11,7 @@ const PRODUCTS_MENU = [
   { label: 'Industrial Valves', href: '/products/valves', desc: 'Flow control solutions', icon: Settings },
   { label: 'Pipe Support System', href: '/products/pipe-support', desc: 'Hangers & brackets', icon: Wrench },
   { label: 'PPR Fusion Machine', href: '/products/fusion-machine', desc: 'Professional welding tools', icon: Flame },
+  { label: 'Cooling Towers', href: '/products/cooling-tower', desc: '10 TR to 1000 TR capacity', icon: Wind },
 ];
 
 const NAV_LINKS = [

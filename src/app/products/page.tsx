@@ -57,6 +57,14 @@ const PRODUCTS = [
     href: '/products/fusion-machine',
     highlights: ['20mm to 110mm capacity', 'Digital temperature control', 'Portable & lightweight', 'Professional-grade build'],
   },
+  {
+    name: 'Cooling Towers',
+    badge: null,
+    desc: 'High-capacity FRP round and square cooling towers (10 TR to 1000 TR). Engineered for maximum heat transfer efficiency and industrial durability.',
+    img: '/assets/cooling-tower.png',
+    href: '/products/cooling-tower',
+    highlights: ['10 TR to 1000 TR capacity', 'FRP corrosion-proof casing', 'High-efficiency PVC fills', 'Round & Square designs'],
+  },
 ];
 
 export default function ProductsPage() {
@@ -71,7 +79,7 @@ export default function ProductsPage() {
             Our Product Range
           </h1>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '520px', margin: '0 auto' }}>
-            Six comprehensive product lines covering all your industrial piping requirements — manufactured with precision in Vapi, Gujarat.
+            Seven comprehensive product lines covering all your industrial piping and cooling requirements — manufactured with precision in Vapi, Gujarat.
           </p>
         </div>
       </section>
