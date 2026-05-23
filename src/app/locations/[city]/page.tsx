@@ -15,7 +15,10 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
+type Props = { params: Promise<{ city: string }> };
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const city = params.city.toLowerCase();
   if (!CITIES.includes(city)) return { title: 'Not Found' };
   
@@ -26,7 +29,8 @@ export async function generateMetadata({ params }: { params: { city: string } })
   };
 }
 
-export default function CityLandingPage({ params }: { params: { city: string } }) {
+export default async function CityLandingPage(props: Props) {
+  const params = await props.params;
   const city = params.city.toLowerCase();
   
   if (!CITIES.includes(city)) {

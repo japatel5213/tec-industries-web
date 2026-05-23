@@ -5,7 +5,10 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, User, Tag } from 'lucide-react';
 import { BLOG_POSTS } from '@/data/blog';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   if (!post) return { title: 'Post Not Found' };
   return {
@@ -14,7 +17,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage(props: Props) {
+  const params = await props.params;
   const post = BLOG_POSTS.find(p => p.slug === params.slug);
   
   if (!post) {

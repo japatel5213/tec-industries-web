@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Building2, Factory, Droplets } from 'lucide-react';
+import { ArrowRight, Building2, Factory, Droplets, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Case Studies',
