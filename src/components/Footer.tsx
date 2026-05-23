@@ -52,8 +52,8 @@ export default function Footer() {
             <div className="flex flex-col gap-3 mb-6">
               <div className="flex items-start gap-3">
                 <MapPin size={14} className="mt-1 flex-shrink-0" style={{ color: '#3DAA7A' }} />
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
-                  A-12, GIDC Industrial Estate,<br />Vapi, Gujarat 396195, India
+                <span className="text-[13px] text-white/50 leading-relaxed font-sans">
+                  TEC INDUSTRIES PLOT NO. 700/1, 40 SHADE AREA,<br />GIDC, VAPI, GUJARAT 396195 (IN)
                 </span>
               </div>
               <a href="tel:+919426031064" className="flex items-center gap-3 hover:opacity-80 transition-opacity">

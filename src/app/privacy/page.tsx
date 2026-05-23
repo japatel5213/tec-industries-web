@@ -34,7 +34,7 @@ export default function PrivacyPage() {
             {[
               {
                 title: '1. Who We Are',
-                content: 'TEC INDUSTRIES is an industrial piping manufacturer based at A-12, GIDC Industrial Estate, Vapi, Gujarat 396195, India (GSTIN: 24ACBFM4650R1ZU). We operate the website tecindustries.in. For privacy-related queries, contact us at info@tecindustries.in or +91 94260 31064.',
+                content: 'TEC INDUSTRIES is an industrial piping manufacturer based at Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195, India (GSTIN: 24ACBFM4650R1ZU). We operate the website tecindustries.in. For privacy-related queries, contact us at info@tecindustries.in or +91 94260 31064.',
               },
               {
                 title: '2. Information We Collect',
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
               },
               {
                 title: '8. Contact & Grievance Officer',
-                content: 'For any privacy-related concerns, contact: TEC INDUSTRIES | info@tecindustries.in | +91 94260 31064 | A-12, GIDC Industrial Estate, Vapi, Gujarat 396195.',
+                content: 'For any privacy-related concerns, contact: TEC INDUSTRIES | info@tecindustries.in | +91 94260 31064 | Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195.',
               },
             ].map((section) => (
               <div key={section.title} style={{ marginBottom: '32px' }}>

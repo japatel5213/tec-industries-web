@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
             <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">For urgent queries, please WhatsApp us at <a href="https://wa.me/919426031064" style="color: #2D8B6E;">+91 94260 31064</a>.</p>
             <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
             <p style="color: #6B7B8D; font-size: 13px; margin: 0;"><em>"Your Partner in Industrial Progress"</em></p>
-            <p style="color: #6B7B8D; font-size: 13px; margin: 8px 0 0;">TEC INDUSTRIES · A-12, GIDC Vapi, Gujarat · +91 94260 31064</p>
+            <p style="color: #6B7B8D; font-size: 13px; margin: 8px 0 0;">TEC INDUSTRIES &copy; Plot 700/1, 40 Shade Area, GIDC Vapi, Gujarat &bull; +91 94260 31064</p>
           </div>
         </div>
       `,

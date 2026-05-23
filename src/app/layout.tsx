@@ -57,7 +57,7 @@ const orgSchema = {
   logo: "https://www.tecindustries.in/assets/tec-logo.png",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "A-12, GIDC Industrial Estate",
+    streetAddress: "Plot No. 700/1, 40 Shade Area, GIDC",
     addressLocality: "Vapi",
     addressRegion: "Gujarat",
     postalCode: "396195",

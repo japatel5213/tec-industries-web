@@ -34,7 +34,7 @@ export default function TermsPage() {
             {[
               {
                 title: '1. General',
-                content: 'These Terms of Service govern the use of tecindustries.in and any business conducted with TEC INDUSTRIES, A-12, GIDC Industrial Estate, Vapi, Gujarat 396195, India. By using this website or placing an order, you agree to these terms.',
+                content: 'These Terms of Service govern the use of tecindustries.in and any business conducted with TEC INDUSTRIES, Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195, India. By using this website or placing an order, you agree to these terms.',
               },
               {
                 title: '2. Quotations',

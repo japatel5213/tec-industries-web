@@ -52,7 +52,7 @@ export default function ResourcesPage() {
             <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">
               Step-by-step instructions for performing perfect heat fusion joints using TEC PPR and HDPE welding machines. (PDF, 2MB)
             </p>
-            <a href="#" onClick={(e) => { e.preventDefault(); alert('Document coming soon.'); }} className="btn-secondary mt-auto self-start inline-flex items-center gap-2">
+            <a href="#" onClick={(e) => { e.preventDefault(); alert('Document coming soon.'); }} className="btn-ghost mt-auto self-start inline-flex items-center gap-2">
               <Download size={16} /> Download PDF
             </a>
           </div>
@@ -68,7 +68,7 @@ export default function ResourcesPage() {
             <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">
               Detailed compatibility data for PPR and HDPE pipes against 300+ industrial chemicals, acids, and solvents.
             </p>
-            <a href="#" onClick={(e) => { e.preventDefault(); alert('Document coming soon.'); }} className="btn-secondary mt-auto self-start inline-flex items-center gap-2">
+            <a href="#" onClick={(e) => { e.preventDefault(); alert('Document coming soon.'); }} className="btn-ghost mt-auto self-start inline-flex items-center gap-2">
               <Download size={16} /> Download PDF
             </a>
           </div>
