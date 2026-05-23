@@ -43,7 +43,7 @@ export default function DealerApplicationPage() {
   };
 
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-12 pb-24">
+    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       {/* Header Banner */}
       <div className="container-xl max-w-6xl mb-12">
         <div className="bg-gradient-to-r from-[#141C28] to-[#2B3E50] rounded-2xl p-10 md:p-16 text-white text-center shadow-lg relative overflow-hidden">
@@ -185,7 +185,7 @@ export default function DealerApplicationPage() {
                 <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 max-w-md mx-auto leading-relaxed">
                   Thank you for your interest in partnering with TEC INDUSTRIES. Our channel sales team will review your application and contact you within 24-48 hours.
                 </p>
-                <Link href="/" className="btn-secondary">
+                <Link href="/" className="btn-primary">
                   Return to Homepage
                 </Link>
               </div>

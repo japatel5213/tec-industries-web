@@ -49,7 +49,7 @@ const CASE_STUDIES = [
 
 export default function CaseStudiesPage() {
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-12 pb-24">
+    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       {/* Header */}
       <div className="container-xl mb-16 text-center">
         <span className="section-eyebrow">Proven Results</span>

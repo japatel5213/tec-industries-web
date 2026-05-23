@@ -54,7 +54,7 @@ export default function QualityPage() {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.15) 0%, transparent 65%)' }} />
         <div className="container-xl relative text-center">
           <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Our Commitment</span>
@@ -176,7 +176,7 @@ export default function QualityPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn-primary">Request Documents <ArrowRight size={15} /></Link>
-            <a href="https://wa.me/919426031064?text=Hello%20TEC%20INDUSTRIES%2C%20I%20need%20quality%20and%20test%20documentation%20for%20your%20products." target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ textDecoration: 'none' }}>WhatsApp Us</a>
+            <a href="https://wa.me/919426031064?text=Hello%20TEC%20INDUSTRIES%2C%20I%20need%20quality%20and%20test%20documentation%20for%20your%20products." target="_blank" rel="noopener noreferrer" className="btn-outline-white" style={{ textDecoration: 'none' }}>WhatsApp Us</a>
           </div>
         </div>
       </section>

@@ -85,7 +85,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '80px 0 64px' }}>
+      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px' }}>
         <div className="container-xl text-center">
           <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Get in Touch</span>
           <h1 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.1, marginBottom: '16px' }}>

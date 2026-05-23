@@ -41,7 +41,7 @@ export default function CatalogDownloadPage() {
   };
 
   return (
-    <main className="bg-[#F5F5F0] min-h-[calc(100vh-80px)] pt-12 pb-24">
+    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       <div className="container-xl max-w-4xl">
         <div className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(43,62,80,0.08)] overflow-hidden border border-[#f0f0f0]">
           <div className="grid md:grid-cols-2">

@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.15) 0%, transparent 65%)' }} />
         <div className="container-xl relative text-center">
           <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Our Story</span>
@@ -162,7 +162,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: 'linear-gradient(135deg, #1E2A3A, #2B3E50)', padding: '80px 0' }}>
+      <section style={{ background: 'linear-gradient(135deg, #1E2A3A, #2B3E50)', padding: '96px 0' }}>
         <div className="container-xl text-center">
           <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 800, color: '#ffffff', marginBottom: '16px' }}>
             Ready to Partner with Us?

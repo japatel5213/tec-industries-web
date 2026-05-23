@@ -62,7 +62,7 @@ const INDUSTRIES = [
 export default function IndustriesPage() {
   return (
     <div>
-      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '80px 0 64px', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.12) 0%, transparent 65%)' }} />
         <div className="container-xl text-center relative">
           <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Where We Serve</span>
@@ -115,7 +115,7 @@ export default function IndustriesPage() {
             <Link href="/contact" className="btn-primary" style={{ fontSize: '15px', padding: '16px 32px' }}>
               Contact Our Team <ArrowRight size={16} />
             </Link>
-            <a href="https://wa.me/919426031064?text=Hello%20TEC%20INDUSTRIES%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ fontSize: '15px', padding: '16px 32px', textDecoration: 'none' }}>
+            <a href="https://wa.me/919426031064?text=Hello%20TEC%20INDUSTRIES%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="btn-outline-white" style={{ fontSize: '15px', padding: '16px 32px', textDecoration: 'none' }}>
               WhatsApp Us
             </a>
           </div>
