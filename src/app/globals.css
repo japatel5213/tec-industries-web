@@ -181,6 +181,23 @@ body {
   box-shadow: 0 20px 64px rgba(43,62,80,0.22);
 }
 
+/* ─── Global minimum text padding inside all boxes ─── */
+/* Ensures text inside ANY rounded box/card never touches its edge.  */
+/* Mobile: tighten card padding so content doesn't overflow          */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px 16px;
+  }
+}
+
+/* Ensure every rounded block has ≥ 10px internal padding  */
+[class*="rounded-xl"],
+[class*="rounded-2xl"],
+[class*="rounded-3xl"],
+.card {
+  --_min-pad: 10px;
+}
+
 /* ─── Fade-in on scroll ─── */
 .reveal {
   opacity: 0;
@@ -202,6 +219,30 @@ body {
 @media (min-width: 768px) {
   .container-xl {
     padding: 0 48px;
+  }
+}
+
+/* ─── Global: Text never touches box edge (minimum 10px guarantee) ─── */
+/* Applied to any div that acts as a visual block/card.               */
+/* This ensures ALL boxes across ALL pages have minimum breathing room  */
+section > .container-xl > *,
+.container-xl > div > div[class*="rounded"],
+.container-xl > div[class*="rounded"] {
+  /* At minimum, preserve 10px on all sides */
+  padding-inline: max(10px, var(--box-px, 0px));
+}
+
+/* On mobile, give all banner/hero inner cards proper inner spacing */
+@media (max-width: 640px) {
+  .card {
+    padding: 20px 16px;
+  }
+  /* Any rounded box on mobile keeps ≥10px side padding */
+  div[class*="rounded-2xl"],
+  div[class*="rounded-3xl"],
+  div[class*="rounded-xl"] {
+    padding-left: max(10px, var(--box-pad-l, inherit));
+    padding-right: max(10px, var(--box-pad-r, inherit));
   }
 }
 
