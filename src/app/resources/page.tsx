@@ -7,7 +7,7 @@ import { FileText, FileDown, ShieldCheck, Download, ArrowRight } from 'lucide-re
 
 export default function ResourcesPage() {
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-12 pb-24">
+    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       {/* Header Banner */}
       <div className="container-xl mb-16">
         <div className="bg-gradient-to-r from-[#141C28] to-[#2B3E50] rounded-3xl p-10 md:p-16 text-white text-center shadow-lg relative overflow-hidden">
@@ -74,7 +74,7 @@ export default function ResourcesPage() {
           </div>
           
           {/* Engineering Support */}
-          <div className="bg-gradient-to-br from-[#3DAA7A] to-[#2D8B6E] p-8 md:p-10 rounded-2xl shadow-sm text-white flex flex-col">
+          <div className="bg-gradient-to-br from-[#3DAA7A] to-[#2D8B6E] p-8 sm:p-10 rounded-2xl shadow-sm text-white flex flex-col justify-center">
             <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold mb-3">
               Need CAD Files?
             </h2>
