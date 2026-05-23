@@ -16,12 +16,14 @@ const COMPANY = [
   { label: 'About Us', href: '/about' },
   { label: 'Industries Served', href: '/industries' },
   { label: 'Quality & Standards', href: '/quality' },
+  { label: 'Case Studies', href: '/case-studies' },
   { label: 'Become a Dealer', href: '/dealer' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
 const RESOURCES = [
   { label: 'PPR Catalog Download', href: '/resources/catalog' },
+  { label: 'Blog & Insights', href: '/blog' },
   { label: 'HDPE Catalog Download', href: '/resources', coming: true },
   { label: 'Fusion Welding Guide', href: '/resources', coming: true },
   { label: 'Chemical Resistance Chart', href: '/resources', coming: true },
