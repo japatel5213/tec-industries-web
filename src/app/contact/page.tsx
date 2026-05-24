@@ -69,7 +69,7 @@ export default function ContactPage() {
         const data = await res.json();
         throw new Error(data.error || 'Failed to send.');
       }
-      setStatus('success');
+      window.location.href = '/thank-you';
     } catch (err: unknown) {
       setStatus('error');
       setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');

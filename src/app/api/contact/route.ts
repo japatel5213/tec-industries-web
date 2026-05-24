@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { supabase } from '@/lib/supabase';
 
 const transporter = nodemailer.createTransport({
   host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.in',
@@ -19,6 +20,29 @@ export async function POST(request: NextRequest) {
     // Basic validation
     if (!name || !email || !phone || !message) {
       return NextResponse.json({ error: 'Required fields missing.' }, { status: 400 });
+    }
+
+    // 1. SAVE LEAD TO SUPABASE (SO WE NEVER LOSE DATA!)
+    // Format company name to include serialized role, product, and message since those columns don't exist in standard leads table
+    const serializedInfo = `[Role: ${role || 'General'}] [Product: ${productInterest || 'General'}] [Msg: ${message}]`;
+    const dbCompany = company ? `${company} ${serializedInfo}` : serializedInfo;
+
+    let dbSaved = false;
+    try {
+      const { error: dbError } = await supabase
+        .from('leads')
+        .insert([{
+          full_name: name,
+          email: email,
+          phone: phone,
+          company_name: dbCompany,
+          source: 'contact_form'
+        }]);
+
+      if (dbError) throw dbError;
+      dbSaved = true;
+    } catch (dbErr) {
+      console.error('Database save failed:', dbErr);
     }
 
     const roleLabel: Record<string, string> = {
@@ -56,37 +80,53 @@ export async function POST(request: NextRequest) {
       </div>
     `;
 
-    await transporter.sendMail({
-      from: `"TEC INDUSTRIES Website" <${process.env.ZOHO_SMTP_USER}>`,
-      to: 'info@tecindustries.in',
-      replyTo: email,
-      subject: `[New Inquiry] ${roleLabel[role] || 'Inquiry'} — ${name} (${productInterest || 'General'})`,
-      html: htmlBody,
-    });
+    // 2. ATTEMPT TO SEND EMAIL (TOLERATE FAILURES IF SMTP NOT FULLY CONFIGURED)
+    try {
+      if (process.env.ZOHO_SMTP_USER && process.env.ZOHO_SMTP_PASS) {
+        await transporter.sendMail({
+          from: `"TEC INDUSTRIES Website" <${process.env.ZOHO_SMTP_USER}>`,
+          to: 'info@tecindustries.in',
+          replyTo: email,
+          subject: `[New Inquiry] ${roleLabel[role] || 'Inquiry'} — ${name} (${productInterest || 'General'})`,
+          html: htmlBody,
+        });
 
-    // Auto-reply to sender
-    await transporter.sendMail({
-      from: `"TEC INDUSTRIES" <${process.env.ZOHO_SMTP_USER}>`,      to: email,
-      subject: 'Thank you for contacting TEC INDUSTRIES — We\'ll be in touch shortly',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: linear-gradient(135deg, #1E2A3A, #2B3E50); padding: 32px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #ffffff; font-size: 20px; font-weight: 800; margin: 0;">Thank You, ${name}!</h1>
-          </div>
-          <div style="background: #f8f9fa; padding: 32px; border: 1px solid #e0e3e8; border-top: none;">
-            <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">We have received your inquiry and our team will get back to you within <strong>1 business day</strong>.</p>
-            <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">For urgent queries, please WhatsApp us at <a href="https://wa.me/919426031064" style="color: #2D8B6E;">+91 94260 31064</a>.</p>
-            <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
-            <p style="color: #6B7B8D; font-size: 13px; margin: 0;"><em>"Your Partner in Industrial Progress"</em></p>
-            <p style="color: #6B7B8D; font-size: 13px; margin: 8px 0 0;">TEC INDUSTRIES &copy; Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195 (IN) &bull; +91 94260 31064</p>
-          </div>
-        </div>
-      `,
-    });
+        // Auto-reply to sender
+        await transporter.sendMail({
+          from: `"TEC INDUSTRIES" <${process.env.ZOHO_SMTP_USER}>`,
+          to: email,
+          subject: 'Thank you for contacting TEC INDUSTRIES — We\'ll be in touch shortly',
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <div style="background: linear-gradient(135deg, #1E2A3A, #2B3E50); padding: 32px; border-radius: 12px 12px 0 0;">
+                <h1 style="color: #ffffff; font-size: 20px; font-weight: 800; margin: 0;">Thank You, ${name}!</h1>
+              </div>
+              <div style="background: #f8f9fa; padding: 32px; border: 1px solid #e0e3e8; border-top: none;">
+                <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">We have received your inquiry and our team will get back to you within <strong>1 business day</strong>.</p>
+                <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">For urgent queries, please WhatsApp us at <a href="https://wa.me/919426031064" style="color: #2D8B6E;">+91 94260 31064</a>.</p>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
+                <p style="color: #6B7B8D; font-size: 13px; margin: 0;"><em>"Your Partner in Industrial Progress"</em></p>
+                <p style="color: #6B7B8D; font-size: 13px; margin: 8px 0 0;">TEC INDUSTRIES &copy; Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195 (IN) &bull; +91 94260 31064</p>
+              </div>
+            </div>
+          `,
+        });
+      } else {
+        console.warn('SMTP Credentials missing, skipped sending emails. Lead was successfully saved to Supabase.');
+      }
+    } catch (emailErr) {
+      console.error('Nodemailer failed but database save succeeded:', emailErr);
+    }
 
-    return NextResponse.json({ success: true });
+    // Always return success if saved to database
+    if (dbSaved) {
+      return NextResponse.json({ success: true, saved: true });
+    } else {
+      // If even database insert failed, throw error
+      throw new Error('Database save and SMTP failed.');
+    }
   } catch (err) {
-    console.error('Email send error:', err);
-    return NextResponse.json({ error: 'Failed to send email. Please try WhatsApp.' }, { status: 500 });
+    console.error('Contact API error:', err);
+    return NextResponse.json({ error: 'Failed to process request. Please try WhatsApp.' }, { status: 500 });
   }
 }
