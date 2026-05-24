@@ -255,7 +255,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <div style={{ fontFamily: 'var(--font-head)', fontSize: '13px', fontWeight: 700, color: '#2B3E50', letterSpacing: '0.04em', marginBottom: '4px' }}>Factory Address</div>
-                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: '#6B7B8D', lineHeight: 1.6 }}>TEC INDUSTRIES PLOT NO. 700/1, 40 SHADE AREA<br />GIDC, VAPI, GUJARAT 396195 (IN)</div>
+                      <div style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: '#6B7B8D', lineHeight: 1.6 }}>TEC INDUSTRIES PLOT NO. 700/1, 40 SHADE AREA,<br />GIDC, VAPI, GUJARAT 396195 (IN)</div>
                     </div>
                   </div>
                   <div className="flex gap-4">

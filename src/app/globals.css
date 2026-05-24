@@ -222,29 +222,8 @@ body {
   }
 }
 
-/* ─── Global: Text never touches box edge (minimum 10px guarantee) ─── */
-/* Applied to any div that acts as a visual block/card.               */
-/* This ensures ALL boxes across ALL pages have minimum breathing room  */
-section > .container-xl > *,
-.container-xl > div > div[class*="rounded"],
-.container-xl > div[class*="rounded"] {
-  /* At minimum, preserve 10px on all sides */
-  padding-inline: max(10px, var(--box-px, 0px));
-}
 
-/* On mobile, give all banner/hero inner cards proper inner spacing */
-@media (max-width: 640px) {
-  .card {
-    padding: 20px 16px;
-  }
-  /* Any rounded box on mobile keeps ≥10px side padding */
-  div[class*="rounded-2xl"],
-  div[class*="rounded-3xl"],
-  div[class*="rounded-xl"] {
-    padding-left: max(10px, var(--box-pad-l, inherit));
-    padding-right: max(10px, var(--box-pad-r, inherit));
-  }
-}
+
 
 /* ─── Nav underline animation ─── */
 .nav-link {

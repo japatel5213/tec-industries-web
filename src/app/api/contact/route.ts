@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
         <div style="background: #1E2A3A; padding: 20px 32px; border-radius: 0 0 12px 12px; text-align: center;">
-          <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 0; letter-spacing: 0.04em;">TEC INDUSTRIES · GIDC Vapi, Gujarat 396195 · GSTIN: 24ACBFM4650R1ZU</p>
+          <p style="color: rgba(255,255,255,0.4); font-size: 11px; margin: 0; letter-spacing: 0.04em;">TEC INDUSTRIES · Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195 (IN) · GSTIN: 24ACBFM4650R1ZU</p>
         </div>
       </div>
     `;
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
             <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">For urgent queries, please WhatsApp us at <a href="https://wa.me/919426031064" style="color: #2D8B6E;">+91 94260 31064</a>.</p>
             <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
             <p style="color: #6B7B8D; font-size: 13px; margin: 0;"><em>"Your Partner in Industrial Progress"</em></p>
-            <p style="color: #6B7B8D; font-size: 13px; margin: 8px 0 0;">TEC INDUSTRIES &copy; Plot 700/1, 40 Shade Area, GIDC Vapi, Gujarat &bull; +91 94260 31064</p>
+            <p style="color: #6B7B8D; font-size: 13px; margin: 8px 0 0;">TEC INDUSTRIES &copy; Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195 (IN) &bull; +91 94260 31064</p>
           </div>
         </div>
       `,
