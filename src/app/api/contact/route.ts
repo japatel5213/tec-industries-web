@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       if (process.env.ZOHO_SMTP_USER && process.env.ZOHO_SMTP_PASS) {
         await transporter.sendMail({
           from: `"TEC INDUSTRIES Website" <${process.env.ZOHO_SMTP_USER}>`,
-          to: 'info@tecindustries.in',
+          to: process.env.ZOHO_SMTP_USER || 'info@tecindustries.in',
           replyTo: email,
           subject: `[New Inquiry] ${roleLabel[role] || 'Inquiry'} — ${name} (${productInterest || 'General'})`,
           html: htmlBody,
