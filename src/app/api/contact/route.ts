@@ -81,6 +81,7 @@ export async function POST(request: NextRequest) {
     `;
 
     // 2. ATTEMPT TO SEND EMAIL (TOLERATE FAILURES IF SMTP NOT FULLY CONFIGURED)
+    let emailSent = false;
     try {
       if (process.env.ZOHO_SMTP_USER && process.env.ZOHO_SMTP_PASS) {
         await transporter.sendMail({
@@ -111,6 +112,7 @@ export async function POST(request: NextRequest) {
             </div>
           `,
         });
+        emailSent = true;
       } else {
         console.warn('SMTP Credentials missing, skipped sending emails. Lead was successfully saved to Supabase.');
       }
@@ -118,12 +120,12 @@ export async function POST(request: NextRequest) {
       console.error('Nodemailer failed but database save succeeded:', emailErr);
     }
 
-    // Always return success if saved to database
-    if (dbSaved) {
-      return NextResponse.json({ success: true, saved: true });
+    // Always return success if EITHER database or SMTP succeeded!
+    if (dbSaved || emailSent) {
+      return NextResponse.json({ success: true, saved: dbSaved, emailed: emailSent });
     } else {
-      // If even database insert failed, throw error
-      throw new Error('Database save and SMTP failed.');
+      // If absolutely everything failed, throw error
+      throw new Error('Both Database save and SMTP email send failed.');
     }
   } catch (err) {
     console.error('Contact API error:', err);
