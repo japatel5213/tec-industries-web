@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, company, email, phone, role, productInterest, message } = body;
+    const { name, company, email, phone, role, productInterest, message, LDTuvid } = body;
 
     // Basic validation
     if (!name || !email || !phone || !message) {
@@ -23,7 +23,6 @@ export async function POST(request: NextRequest) {
     }
 
     // 1. SAVE LEAD TO SUPABASE (SO WE NEVER LOSE DATA!)
-    // Format company name to include serialized role, product, and message since those columns don't exist in standard leads table
     const serializedInfo = `[Role: ${role || 'General'}] [Product: ${productInterest || 'General'}] [Msg: ${message}]`;
     const dbCompany = company ? `${company} ${serializedInfo}` : serializedInfo;
 
@@ -43,6 +42,62 @@ export async function POST(request: NextRequest) {
       dbSaved = true;
     } catch (dbErr) {
       console.error('Database save failed:', dbErr);
+    }
+
+    // 1.5. SILENT ZOHO CRM WEBFORM INTEGRATION
+    try {
+      const nameParts = name.trim().split(/\s+/);
+      const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : '';
+      const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0] || 'Unknown';
+
+      // Map role to Zoho CRM Industry (Mandatory field)
+      let crmIndustry = 'Other';
+      if (role === 'installer') {
+        crmIndustry = 'PPR Installtion Service Provider';
+      } else if (role === 'dealer' || role === 'distributor') {
+        crmIndustry = 'Other Brand Dealer/Distributor';
+      }
+
+      // Map product to Industry if applicable
+      if (productInterest && productInterest.toLowerCase().includes('cooling')) {
+        crmIndustry = 'Cooling Tower Manufacturer/Dealer';
+      }
+
+      const crmCompany = company && company.trim() ? company.trim() : 'Individual / Web Lead';
+      const crmDescription = `Product of Interest: ${productInterest || 'Not Specified'}\n\nMessage:\n${message}`;
+
+      const crmFormData = new URLSearchParams();
+      crmFormData.append('xnQsjsdp', '8996f7e0cceb00c9a3946223a7e578537bf2af193ad74c8283350840e698149a');
+      crmFormData.append('xmIwtLD', '0e3e941d571469315a5f4529585043f1fed06d97c2d88ff60762a44c3001d3b4a14ad558bc83f1504051ed0506584a22');
+      crmFormData.append('actionType', 'TGVhZHM=');
+      crmFormData.append('returnURL', 'null');
+      crmFormData.append('Company', crmCompany);
+      crmFormData.append('First Name', firstName);
+      crmFormData.append('Last Name', lastName);
+      crmFormData.append('Mobile', phone);
+      crmFormData.append('Email', email);
+      crmFormData.append('Industry', crmIndustry);
+      crmFormData.append('Description', crmDescription);
+
+      if (LDTuvid) {
+        crmFormData.append('LDTuvid', LDTuvid);
+      }
+
+      const crmRes = await fetch('https://crm.zoho.in/crm/WebToLeadForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: crmFormData.toString(),
+      });
+
+      if (!crmRes.ok) {
+        console.error('Zoho CRM response error status:', crmRes.status);
+      } else {
+        console.log('Successfully pushed lead to Zoho CRM!');
+      }
+    } catch (crmErr) {
+      console.error('Failed silently to push lead to Zoho CRM:', crmErr);
     }
 
     const roleLabel: Record<string, string> = {

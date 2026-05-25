@@ -59,11 +59,22 @@ export default function ContactPage() {
       return;
     }
     setStatus('sending');
+
+    // Retrieve Zoho SalesIQ unique visitor ID (if loaded) to link visitor activity in CRM
+    let LDTuvid = '';
+    try {
+      if (typeof window !== 'undefined' && (window as any).$zoho && (window as any).$zoho.salesiq) {
+        LDTuvid = (window as any).$zoho.salesiq.visitor.uniqueid() || '';
+      }
+    } catch (zErr) {
+      console.warn('Could not read Zoho SalesIQ visitor ID:', zErr);
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, LDTuvid }),
       });
       if (!res.ok) {
         const data = await res.json();
