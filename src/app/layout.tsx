@@ -116,6 +116,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
+        {/* Zoho SalesIQ (Visitor Tracking & Live Chat Widget) */}
+        <Script
+          id="zsiqchat"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"siq5b743a62df5f9d02804076778bf32e4a3170b38a8284acbbaa065758249dd597", values:{},ready:function(){}};
+              var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.in/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
+            `
+          }}
+        />
         {/* Crisp Live Chat (P2-05) */}
         {/*
         <script
