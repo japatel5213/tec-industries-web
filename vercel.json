@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/cron/b2b-sync",
-      "schedule": "*/10 * * * *"
+      "schedule": "30 4 * * *"
     }
   ],
   "headers": [

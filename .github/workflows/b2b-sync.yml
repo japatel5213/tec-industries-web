@@ -1,0 +1,30 @@
+name: B2B Lead Sync — Every 10 Minutes
+
+on:
+  schedule:
+    # Runs every 10 minutes during business hours IST (3:30 AM - 2:30 PM UTC = 9 AM - 8 PM IST)
+    - cron: '*/10 3-14 * * 1-6'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  sync-leads:
+    name: Sync B2B Portal Leads
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Trigger B2B Sync Cron
+        run: |
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X GET \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.PRODUCTION_URL }}/api/cron/b2b-sync")
+          
+          echo "HTTP Status: $RESPONSE"
+          
+          if [ "$RESPONSE" -ne 200 ]; then
+            echo "❌ Sync failed with HTTP $RESPONSE"
+            exit 1
+          else
+            echo "✅ B2B sync triggered successfully"
+          fi
