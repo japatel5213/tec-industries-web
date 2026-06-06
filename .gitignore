@@ -51,3 +51,5 @@ recovery_code.txt
 __pycache__/
 *.pyc
 *.pyo
+
+.vercel
