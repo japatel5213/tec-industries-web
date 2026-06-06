@@ -90,11 +90,13 @@ export default function ProductsPage() {
           {PRODUCTS.map((product, i) => (
             <div
               key={product.name}
-              className="card"
-              style={{ padding: 0, overflow: 'hidden', display: 'grid', gridTemplateColumns: i % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr' }}
+              className="card grid grid-cols-1 md:grid-cols-2"
+              style={{ padding: 0, overflow: 'hidden' }}
             >
-              {/* Image — alternate sides */}
-              <div style={{ order: i % 2 === 0 ? 0 : 1, position: 'relative', minHeight: '280px' }}>
+              {/* Image — alternate sides on desktop, always first on mobile */}
+              <div 
+                className={`relative min-h-[300px] w-full order-first ${i % 2 === 0 ? 'md:order-first' : 'md:order-last'}`}
+              >
                 <Image src={product.img} alt={product.name} fill className="object-cover" />
                 <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,28,40,0.2)' }} />
                 {product.badge && (
@@ -104,10 +106,12 @@ export default function ProductsPage() {
                 )}
               </div>
               {/* Content */}
-              <div style={{ padding: '40px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center', order: i % 2 === 0 ? 1 : 0 }}>
+              <div 
+                className={`p-8 md:p-12 flex flex-col justify-center order-last ${i % 2 === 0 ? 'md:order-last' : 'md:order-first'}`}
+              >
                 <h2 style={{ fontFamily: 'var(--font-head)', fontSize: '26px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>{product.name}</h2>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '20px' }}>{product.desc}</p>
-                <ul className="flex flex-col gap-2 mb-24">
+                <ul className="flex flex-col gap-2 mb-8">
                   {product.highlights.map((h) => (
                     <li key={h} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontFamily: 'var(--font-body)', fontSize: '14px', color: '#2B3E50' }}>
                       <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2D8B6E', flexShrink: 0 }} />

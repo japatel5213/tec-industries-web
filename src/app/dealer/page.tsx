@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function DealerApplicationPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [formData, setFormData] = useState({
     firm_name: '',
     contact_person: '',
@@ -22,6 +23,7 @@ export default function DealerApplicationPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg('');
 
     try {
       const { error } = await supabase
@@ -32,7 +34,7 @@ export default function DealerApplicationPage() {
       setSuccess(true);
     } catch (error) {
       console.error('Error submitting application:', error);
-      alert('There was an error processing your application. Please try again or contact us directly.');
+      setErrorMsg('There was an error processing your application. Please try again or contact us directly via WhatsApp.');
     } finally {
       setLoading(false);
     }
@@ -40,6 +42,7 @@ export default function DealerApplicationPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    if (errorMsg) setErrorMsg('');
   };
 
   return (
@@ -168,6 +171,13 @@ export default function DealerApplicationPage() {
                     <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Current Brands You Deal In</label>
                     <textarea name="current_brands" value={formData.current_brands} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors resize-none" placeholder="E.g., Supreme, Finolex, Ashirvad (Optional)" />
                   </div>
+
+                  {errorMsg && (
+                    <div style={{ background: '#FFF5F4', border: '1px solid #D14B3A', borderRadius: '8px', padding: '12px 16px', color: '#D14B3A', fontSize: '14px', fontFamily: 'var(--font-body)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span>⚠️</span>
+                      <span>{errorMsg}</span>
+                    </div>
+                  )}
 
                   <button disabled={loading} type="submit" className="w-full btn-primary py-4 mt-4 justify-center text-[16px]">
                     {loading ? 'Submitting Application...' : 'Submit Application'}

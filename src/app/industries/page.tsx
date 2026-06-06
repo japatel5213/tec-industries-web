@@ -78,15 +78,22 @@ export default function IndustriesPage() {
       <section style={{ background: '#F5F5F0', padding: '80px 0' }}>
         <div className="container-xl flex flex-col gap-10">
           {INDUSTRIES.map((ind, i) => (
-            <div key={ind.name} className="card" style={{ padding: '40px', display: 'grid', gridTemplateColumns: '80px 1fr', gap: '32px', alignItems: 'flex-start', borderLeft: `4px solid ${i % 2 === 0 ? '#2D8B6E' : '#E85D26'}` }}>
-              <div style={{ width: '80px', height: '80px', background: i % 2 === 0 ? 'linear-gradient(135deg, #2D8B6E, #3DAA7A)' : 'linear-gradient(135deg, #E85D26, #f07040)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+            <div 
+              key={ind.name} 
+              className="card grid grid-cols-1 sm:grid-cols-[80px_1fr] gap-6 sm:gap-8 items-start" 
+              style={{ padding: '40px', borderLeft: `4px solid ${i % 2 === 0 ? '#2D8B6E' : '#E85D26'}` }}
+            >
+              <div 
+                className="mx-auto sm:mx-0 w-20 h-20 rounded-2xl flex items-center justify-center text-white flex-shrink-0"
+                style={{ background: i % 2 === 0 ? 'linear-gradient(135deg, #2D8B6E, #3DAA7A)' : 'linear-gradient(135deg, #E85D26, #f07040)' }}
+              >
                 {ind.icon}
               </div>
-              <div>
+              <div className="text-center sm:text-left">
                 <span style={{ fontFamily: 'var(--font-body)', fontSize: '11px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#3DAA7A', display: 'block', marginBottom: '4px' }}>{ind.tagline}</span>
                 <h2 style={{ fontFamily: 'var(--font-head)', fontSize: '24px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>{ind.name}</h2>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '20px' }}>{ind.desc}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
+                <div className="flex flex-wrap gap-2 justify-center sm:justify-start mb-5">
                   {ind.products.map((p) => (
                     <span key={p} style={{ background: '#E6F5F0', color: '#2D8B6E', fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 600, padding: '4px 12px', borderRadius: '999px', letterSpacing: '0.04em' }}>{p}</span>
                   ))}

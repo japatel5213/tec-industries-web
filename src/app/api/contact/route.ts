@@ -76,6 +76,7 @@ export async function POST(request: NextRequest) {
       crmFormData.append('Last Name', lastName);
       crmFormData.append('Mobile', phone);
       crmFormData.append('Email', email);
+      crmFormData.append('WhatsApp Number', phone);
       crmFormData.append('Industry', crmIndustry);
       crmFormData.append('Description', crmDescription);
 
@@ -98,6 +99,37 @@ export async function POST(request: NextRequest) {
       }
     } catch (crmErr) {
       console.error('Failed silently to push lead to Zoho CRM:', crmErr);
+    }
+
+    // 1.8. FORWARD TO PAPERCLIP AI AGENTS (OPTION 2)
+    if (process.env.PAPERCLIP_API_URL) {
+      try {
+        const paperclipRes = await fetch(process.env.PAPERCLIP_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            company,
+            email,
+            phone,
+            role,
+            productInterest,
+            message,
+            LDTuvid,
+            source: 'contact_form'
+          }),
+        });
+
+        if (!paperclipRes.ok) {
+          console.error('Paperclip AI response error status:', paperclipRes.status);
+        } else {
+          console.log('Successfully forwarded lead to Paperclip AI!');
+        }
+      } catch (paperclipErr) {
+        console.error('Failed silently to forward lead to Paperclip AI:', paperclipErr);
+      }
     }
 
     const roleLabel: Record<string, string> = {

@@ -30,7 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — never commit secrets
 .env*
 
 # vercel
@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# recovery keys
+recovery_code.txt
+
+# dev scratch scripts — internal agent work, not for production
+/scratch/
+/.agent/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo

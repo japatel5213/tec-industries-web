@@ -3,9 +3,7 @@ import { Poppins, Open_Sans, JetBrains_Mono } from "next/font/google";
 import { GoogleTagManager } from '@next/third-parties/google';
 import Script from 'next/script';
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import PublicShell from "@/components/PublicShell";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -150,10 +148,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             alt=""
           />
         </noscript>
-        <Header />
-        <main className="pt-[80px]">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+        <PublicShell>{children}</PublicShell>
       </body>
     </html>
   );
