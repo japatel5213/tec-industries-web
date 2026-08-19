@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
-export const metadata: Metadata = { title: 'Pipe Support System', description: 'TEC INDUSTRIES Pipe Support Systems — hangers, brackets, clamps, and channel supports for secure pipe installation. Hot-dip galvanised and stainless options.' };
+export const metadata: Metadata = { title: 'Pipe Support System — Hangers, Clamps & Channel Supports | TEC INDUSTRIES', description: 'TEC INDUSTRIES Pipe Support Systems — hangers, brackets, clamps, and channel supports for secure pipe installation. Hot-dip galvanised and stainless options.', alternates: { canonical: '/products/pipe-support' } };
 export default function PipeSupportPage() {
   return (
     <ProductPageTemplate

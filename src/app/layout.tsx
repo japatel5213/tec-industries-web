@@ -45,6 +45,10 @@ export const metadata: Metadata = {
     siteName: "TEC INDUSTRIES",
     images: [{ url: "/assets/tec-logo.png", width: 1200, height: 630 }],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: '/',
   },

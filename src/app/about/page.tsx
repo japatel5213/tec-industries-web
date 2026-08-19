@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { CheckCircle2, Target, Eye, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'TEC INDUSTRIES — industrial-grade PPR and HDPE pipe manufacturer in Vapi, Gujarat. Pan-India shipping. Built on Trust, Empowerment, and Commitment.',
+  title: 'About TEC INDUSTRIES — PPR & HDPE Pipe Manufacturer in Vapi, Gujarat',
+  description: 'TEC INDUSTRIES is an industrial-grade PPR and HDPE pipe manufacturer based in Vapi, Gujarat, with pan-India shipping. Built on Trust, Empowerment, and Commitment — and a 50-year design-life philosophy for every meter we ship.',
+  alternates: { canonical: '/about' },
 };
 
 const VALUES = [

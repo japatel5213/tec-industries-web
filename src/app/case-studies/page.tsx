@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { ArrowRight, Building2, Factory, Droplets, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Case Studies',
-  description: 'Real-world industrial installations using TEC INDUSTRIES PPR, HDPE, and Cooling Tower systems.',
+  title: 'Case Studies — Industrial PPR, HDPE & Cooling Tower Installations | TEC INDUSTRIES',
+  description: 'Real-world industrial installations using TEC INDUSTRIES PPR, HDPE, and Cooling Tower systems — from chemical plants and municipal water networks to pharmaceutical facilities across India.',
+  alternates: { canonical: '/case-studies' },
 };
 
 const CASE_STUDIES = [

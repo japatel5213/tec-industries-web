@@ -192,24 +192,24 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-5 mb-5">
                       <div>
                         <label className="form-label" htmlFor="name">Full Name *</label>
-                        <input id="name" name="name" type="text" className={`form-input ${errors.name ? 'error' : ''}`} placeholder="Your full name" value={formData.name} onChange={handleChange} />
+                        <input id="name" name="name" type="text" autoComplete="name" enterKeyHint="next" className={`form-input ${errors.name ? 'error' : ''}`} placeholder="Your full name" value={formData.name} onChange={handleChange} />
                         {errors.name && <p className="form-error">{errors.name}</p>}
                       </div>
                       <div>
                         <label className="form-label" htmlFor="company">Company / Organisation</label>
-                        <input id="company" name="company" type="text" className="form-input" placeholder="Company name" value={formData.company} onChange={handleChange} />
+                        <input id="company" name="company" type="text" autoComplete="organization" enterKeyHint="next" className="form-input" placeholder="Company name" value={formData.company} onChange={handleChange} />
                       </div>
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-5 mb-5">
                       <div>
                         <label className="form-label" htmlFor="email">Email Address *</label>
-                        <input id="email" name="email" type="email" className={`form-input ${errors.email ? 'error' : ''}`} placeholder="you@company.com" value={formData.email} onChange={handleChange} />
+                        <input id="email" name="email" type="email" autoComplete="email" enterKeyHint="next" className={`form-input ${errors.email ? 'error' : ''}`} placeholder="you@company.com" value={formData.email} onChange={handleChange} />
                         {errors.email && <p className="form-error">{errors.email}</p>}
                       </div>
                       <div>
                         <label className="form-label" htmlFor="phone">Phone Number *</label>
-                        <input id="phone" name="phone" type="tel" className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 98765 43210" value={formData.phone} onChange={handleChange} />
+                        <input id="phone" name="phone" type="tel" autoComplete="tel" enterKeyHint="next" className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 98765 43210" value={formData.phone} onChange={handleChange} />
                         {errors.phone && <p className="form-error">{errors.phone}</p>}
                       </div>
                     </div>
@@ -226,6 +226,7 @@ export default function ContactPage() {
                       <label className="form-label" htmlFor="message">Message *</label>
                       <textarea
                         id="message" name="message" rows={5}
+                        autoComplete="off" enterKeyHint="done"
                         className={`form-input ${errors.message ? 'error' : ''}`}
                         placeholder="Tell us about your project requirements, quantities needed, delivery location, etc."
                         value={formData.message} onChange={handleChange}
@@ -312,6 +313,7 @@ export default function ContactPage() {
               <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
                 <iframe
                   src="https://maps.google.com/maps?q=20.352928477419432,72.93881118904324&output=embed"
+                  title="Map showing TEC INDUSTRIES factory location in Vapi, Gujarat"
                   width="100%"
                   height="240"
                   style={{ border: 0, display: 'block' }}

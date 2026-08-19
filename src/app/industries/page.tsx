@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { Building2, Wheat, Droplets, Factory, Wrench, FlaskConical, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Industries Served',
+  title: 'Industries Served — PPR & HDPE Piping Applications | TEC INDUSTRIES',
   description: 'TEC INDUSTRIES supplies industrial-grade PPR and HDPE piping to construction, agriculture, infrastructure, industrial, pharmaceutical and food processing sectors across India.',
   keywords: ['PPR pipe industries', 'industrial piping applications', 'PPR for plants and projects', 'HDPE industrial use', 'pharma piping', 'chemical plant piping'],
+  alternates: { canonical: '/industries' },
 };
 
 const INDUSTRIES = [

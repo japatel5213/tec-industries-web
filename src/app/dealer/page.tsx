@@ -115,49 +115,49 @@ export default function DealerApplicationPage() {
                   {/* Row 1 */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Firm / Company Name *</label>
-                      <input required type="text" name="firm_name" value={formData.firm_name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
+                      <label htmlFor="firm_name" className="block text-sm font-semibold text-[#2B3E50] mb-2">Firm / Company Name *</label>
+                      <input required type="text" id="firm_name" name="firm_name" value={formData.firm_name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">GST Number *</label>
-                      <input required type="text" name="gst_number" value={formData.gst_number} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors uppercase" placeholder="22AAAAA0000A1Z5" />
+                      <label htmlFor="gst_number" className="block text-sm font-semibold text-[#2B3E50] mb-2">GST Number *</label>
+                      <input required type="text" id="gst_number" name="gst_number" value={formData.gst_number} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors uppercase" placeholder="22AAAAA0000A1Z5" />
                     </div>
                   </div>
 
                   {/* Row 2 */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Contact Person *</label>
-                      <input required type="text" name="contact_person" value={formData.contact_person} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
+                      <label htmlFor="contact_person" className="block text-sm font-semibold text-[#2B3E50] mb-2">Contact Person *</label>
+                      <input required type="text" id="contact_person" name="contact_person" value={formData.contact_person} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Phone Number *</label>
-                      <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
+                      <label htmlFor="phone" className="block text-sm font-semibold text-[#2B3E50] mb-2">Phone Number *</label>
+                      <input required type="tel" id="phone" name="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
                     </div>
                   </div>
 
                   {/* Row 3 */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Email Address *</label>
-                      <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
+                      <label htmlFor="email" className="block text-sm font-semibold text-[#2B3E50] mb-2">Email Address *</label>
+                      <input required type="email" id="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-[#2B3E50] mb-2">City *</label>
-                        <input required type="text" name="city" value={formData.city} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
+                        <label htmlFor="city" className="block text-sm font-semibold text-[#2B3E50] mb-2">City *</label>
+                        <input required type="text" id="city" name="city" autoComplete="address-level2" value={formData.city} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-[#2B3E50] mb-2">State *</label>
-                        <input required type="text" name="state" value={formData.state} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
+                        <label htmlFor="state" className="block text-sm font-semibold text-[#2B3E50] mb-2">State *</label>
+                        <input required type="text" id="state" name="state" autoComplete="address-level1" value={formData.state} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" />
                       </div>
                     </div>
                   </div>
 
                   {/* Row 4 */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Expected Monthly Volume (INR) *</label>
-                    <select required name="expected_volume" value={formData.expected_volume} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors">
+                    <label htmlFor="expected_volume" className="block text-sm font-semibold text-[#2B3E50] mb-2">Expected Monthly Volume (INR) *</label>
+                    <select required id="expected_volume" name="expected_volume" value={formData.expected_volume} onChange={handleChange} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors">
                       <option value="">Select Volume Range...</option>
                       <option value="Below 5 Lakhs">Below ₹5 Lakhs</option>
                       <option value="5-10 Lakhs">₹5 Lakhs - ₹10 Lakhs</option>
@@ -168,8 +168,8 @@ export default function DealerApplicationPage() {
 
                   {/* Row 5 */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Current Brands You Deal In</label>
-                    <textarea name="current_brands" value={formData.current_brands} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors resize-none" placeholder="E.g., Supreme, Finolex, Ashirvad (Optional)" />
+                    <label htmlFor="current_brands" className="block text-sm font-semibold text-[#2B3E50] mb-2">Current Brands You Deal In</label>
+                    <textarea id="current_brands" name="current_brands" value={formData.current_brands} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-lg bg-[#F5F5F0] border border-transparent focus:bg-white focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors resize-none" placeholder="E.g., Supreme, Finolex, Ashirvad (Optional)" />
                   </div>
 
                   {errorMsg && (
