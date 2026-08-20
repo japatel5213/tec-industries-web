@@ -42,7 +42,7 @@ export default async function BlogPostPage(props: Props) {
   };
 
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
+    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       <div className="container-xl max-w-4xl">
         <Link href="/blog" className="inline-flex items-center gap-2 text-[#6B7B8D] hover:text-[#3DAA7A] transition-colors font-medium mb-8 font-[family-name:var(--font-body)]">
           <ArrowLeft size={16} /> Back to Blog
@@ -96,6 +96,6 @@ export default async function BlogPostPage(props: Props) {
           </div>
         </article>
       </div>
-    </main>
+    </div>
   );
 }

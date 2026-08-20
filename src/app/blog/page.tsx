@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
+    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       {/* Header Banner */}
       <div className="container-xl mb-16">
         <div className="bg-gradient-to-r from-[#141C28] to-[#2B3E50] rounded-3xl p-10 md:p-16 text-white text-center shadow-lg relative overflow-hidden">
@@ -64,6 +64,6 @@ export default function BlogIndexPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }
