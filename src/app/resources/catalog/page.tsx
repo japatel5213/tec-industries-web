@@ -41,7 +41,7 @@ export default function CatalogDownloadPage() {
   };
 
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
+    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       <div className="container-xl max-w-4xl">
         <div className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(43,62,80,0.08)] overflow-hidden border border-[#f0f0f0]">
           <div className="grid md:grid-cols-2">
@@ -81,24 +81,24 @@ export default function CatalogDownloadPage() {
 
                   <form onSubmit={handleSubmit} className="space-y-5 font-[family-name:var(--font-body)]">
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Full Name *</label>
-                      <input required type="text" name="full_name" value={formData.full_name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="John Doe" />
+                      <label htmlFor="full_name" className="block text-sm font-semibold text-[#2B3E50] mb-2">Full Name *</label>
+                      <input id="full_name" required type="text" name="full_name" autoComplete="name" value={formData.full_name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="John Doe" />
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Phone *</label>
-                        <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="+91 98765 43210" />
+                        <label htmlFor="phone" className="block text-sm font-semibold text-[#2B3E50] mb-2">Phone *</label>
+                        <input id="phone" required type="tel" name="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="+91 98765 43210" />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Company</label>
-                        <input type="text" name="company_name" value={formData.company_name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="ABC Corp" />
+                        <label htmlFor="company_name" className="block text-sm font-semibold text-[#2B3E50] mb-2">Company</label>
+                        <input id="company_name" type="text" name="company_name" autoComplete="organization" value={formData.company_name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="ABC Corp" />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-[#2B3E50] mb-2">Email Address *</label>
-                      <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="john@example.com" />
+                      <label htmlFor="email" className="block text-sm font-semibold text-[#2B3E50] mb-2">Email Address *</label>
+                      <input id="email" required type="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-[#e2e8f0] focus:outline-none focus:border-[#3DAA7A] focus:ring-1 focus:ring-[#3DAA7A] transition-colors" placeholder="john@example.com" />
                     </div>
 
                     <button disabled={loading} type="submit" className="w-full btn-primary py-4 mt-2 justify-center text-[16px]">
@@ -134,6 +134,6 @@ export default function CatalogDownloadPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

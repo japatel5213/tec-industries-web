@@ -46,7 +46,7 @@ export default function DealerApplicationPage() {
   };
 
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
+    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
       {/* Header Banner */}
       <div className="container-xl max-w-6xl mb-12">
         <div className="bg-gradient-to-r from-[#141C28] to-[#2B3E50] rounded-2xl p-10 md:p-16 text-white text-center shadow-lg relative overflow-hidden">
@@ -204,6 +204,6 @@ export default function DealerApplicationPage() {
 
         </div>
       </div>
-    </main>
+    </div>
   );
 }

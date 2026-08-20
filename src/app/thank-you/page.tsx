@@ -5,7 +5,7 @@ import { CheckCircle2, MessageSquare, ArrowLeft, Download, ShieldCheck } from 'l
 
 export default function ThankYouPage() {
   return (
-    <main className="bg-[#F5F5F0] min-h-screen pt-32 pb-24 flex items-center justify-center">
+    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24 flex items-center justify-center">
       <div className="container-xl max-w-2xl text-center">
         {/* Main Glassmorphic Card */}
         <div className="bg-white rounded-3xl p-10 md:p-16 shadow-[0_24px_72px_rgba(43,62,80,0.12)] border border-[#e2e8f0] relative overflow-hidden flex flex-col items-center">
@@ -69,6 +69,6 @@ export default function ThankYouPage() {
 
         </div>
       </div>
-    </main>
+    </div>
   );
 }

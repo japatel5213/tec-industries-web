@@ -41,7 +41,7 @@ export default async function CityLandingPage(props: Props) {
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
 
   return (
-    <main className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* City Hero */}
       <section className="relative pt-24 pb-32 bg-gradient-to-br from-[#141C28] to-[#2B3E50] overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#3DAA7A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -124,6 +124,6 @@ export default async function CityLandingPage(props: Props) {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
