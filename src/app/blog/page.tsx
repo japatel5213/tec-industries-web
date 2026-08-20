@@ -5,8 +5,9 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 import { BLOG_POSTS } from '@/data/blog';
 
 export const metadata: Metadata = {
-  title: 'Blog & Industry Insights',
+  title: 'Blog & Industry Insights — PPR, HDPE & Piping Technical Guides | TEC INDUSTRIES',
   description: 'Technical articles, guides, and industry insights on industrial piping, HDPE, PPR, and cooling towers from the experts at TEC INDUSTRIES.',
+  alternates: { canonical: '/blog' },
 };
 
 export default function BlogIndexPage() {

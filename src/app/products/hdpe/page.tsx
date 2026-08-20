@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
 
 export const metadata: Metadata = {
-  title: 'HDPE Pipe & Fittings',
+  title: 'HDPE Pipe & Fittings — PE 100, 20–630 mm | TEC INDUSTRIES',
   description: 'TEC INDUSTRIES HDPE Pipe & Fittings — PE 100, manufactured to IS 4984 / ISO 4427 / EN 12201. Size range 20–630 mm. PN6 to PN16. Pan-India. Made in Vapi, Gujarat.',
   keywords: ['HDPE pipe PE100', 'HDPE pipe 630mm', 'water supply HDPE', 'irrigation HDPE pipe', 'IS 4984 HDPE'],
+  alternates: { canonical: '/products/hdpe' },
 };
 
 export default function HDPEPage() {

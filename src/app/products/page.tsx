@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Products',
-  description: 'TEC INDUSTRIES manufactures PPR Pipe & Fittings, HDPE Pipe & Fittings, Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines.',
+  title: 'Products — PPR, HDPE, Electrofusion, Valves & Pipe Support Systems | TEC INDUSTRIES',
+  description: 'Explore TEC INDUSTRIES products: PPR Pipe & Fittings, HDPE Pipe & Fittings, Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — industrial-grade piping manufactured in Vapi, Gujarat.',
+  alternates: { canonical: '/products' },
 };
 
 const PRODUCTS = [

@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { Shield, CheckCircle2, FlaskConical, Microscope, ArrowRight, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Quality & Standards',
+  title: 'Quality & Standards — TEC INDUSTRIES Piping Certifications & Testing',
   description: 'TEC INDUSTRIES quality standards — manufactured to IS 15801, ISO 15874, DIN 8077. In-house testing lab, rigorous QC processes, and 100% batch-tested output.',
+  alternates: { canonical: '/quality' },
 };
 
 // Single source of truth for certification status — update here once certificates are obtained

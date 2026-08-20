@@ -26,6 +26,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `PPR & HDPE Pipe Manufacturer in ${cityName}`,
     description: `TEC INDUSTRIES supplies industrial-grade PPR pipes, HDPE fittings, and cooling towers directly to plants and contractors in ${cityName}.`,
+    alternates: { canonical: `/locations/${city}` },
   };
 }
 
