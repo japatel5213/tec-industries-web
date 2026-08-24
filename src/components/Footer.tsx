@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 
 const PRODUCTS = [
   { label: 'PPR Pipe & Fittings', href: '/products/ppr' },
@@ -24,9 +24,9 @@ const COMPANY = [
 const RESOURCES = [
   { label: 'PPR Catalog Download', href: '/resources/catalog' },
   { label: 'Blog & Insights', href: '/blog' },
-  { label: 'HDPE Catalog Download', href: '/resources', coming: true },
-  { label: 'Fusion Welding Guide', href: '/resources', coming: true },
-  { label: 'Chemical Resistance Chart', href: '/resources', coming: true },
+  { label: 'HDPE Catalog Request', href: '/resources' },
+  { label: 'Fusion Welding Guide', href: '/resources' },
+  { label: 'Chemical Compatibility Review', href: '/resources' },
 ];
 
 export default function Footer() {

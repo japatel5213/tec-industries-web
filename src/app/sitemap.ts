@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
+import { BLOG_POSTS } from '@/data/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.tecindustries.in';
   const now = new Date();
 
-  return [
+  const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/products`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
@@ -24,4 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/resources/catalog`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/products/cooling-tower`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
   ];
+
+  const articleRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...articleRoutes];
 }

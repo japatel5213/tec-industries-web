@@ -26,6 +26,19 @@ export default async function BlogPostPage(props: Props) {
     notFound();
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    mainEntityOfPage: `https://www.tecindustries.in/blog/${post.slug}`,
+    image: `https://www.tecindustries.in${post.image}`,
+    author: { '@type': 'Organization', name: post.author },
+    publisher: { '@type': 'Organization', name: 'TEC INDUSTRIES', url: 'https://www.tecindustries.in' },
+  };
+
   // Simple Markdown to HTML parser for basic formatting (h3, p, strong)
   const formatContent = (content: string) => {
     return content
@@ -35,7 +48,7 @@ export default async function BlogPostPage(props: Props) {
           return `<h3 class="text-2xl font-bold text-[#2B3E50] mt-8 mb-4 font-[family-name:var(--font-head)]">${paragraph.replace('### ', '')}</h3>`;
         }
         // Bold text
-        let formatted = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        const formatted = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         return `<p class="mb-5 text-[#4A5568] leading-relaxed font-[family-name:var(--font-body)] text-[17px]">${formatted}</p>`;
       })
       .join('');
@@ -43,6 +56,7 @@ export default async function BlogPostPage(props: Props) {
 
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <div className="container-xl max-w-4xl">
         <Link href="/blog" className="inline-flex items-center gap-2 text-[#6B7B8D] hover:text-[#3DAA7A] transition-colors font-medium mb-8 font-[family-name:var(--font-body)]">
           <ArrowLeft size={16} /> Back to Blog
@@ -87,7 +101,7 @@ export default async function BlogPostPage(props: Props) {
                 Need more technical advice?
               </h4>
               <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-6">
-                Our engineering team is ready to help you specify the right products for your industrial project.
+                Share the service, operating conditions, size and project context so TEC can direct your enquiry to the relevant system discussion.
               </p>
               <Link href="/contact" className="btn-primary inline-block">
                 Contact Our Engineers

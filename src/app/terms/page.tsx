@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms of Service for TEC INDUSTRIES — ordering, quotation, payment, delivery, and warranty terms.',
+  alternates: { canonical: '/terms' },
   robots: { index: false, follow: false },
 };
 

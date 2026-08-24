@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for TEC INDUSTRIES — how we collect, use, and protect your personal data.',
+  alternates: { canonical: '/privacy' },
   robots: { index: false, follow: false },
 };
 

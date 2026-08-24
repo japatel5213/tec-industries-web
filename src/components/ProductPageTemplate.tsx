@@ -20,8 +20,18 @@ type ProductPageProps = {
 export default function ProductPageTemplate({
   badge, name, tagline, description, image, specs, features, applications, relatedProducts,
 }: ProductPageProps) {
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    description,
+    image: `https://www.tecindustries.in${image}`,
+    brand: { '@type': 'Brand', name: 'TEC INDUSTRIES' },
+    manufacturer: { '@type': 'Organization', name: 'TEC INDUSTRIES', url: 'https://www.tecindustries.in' },
+  };
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       {/* Hero */}
       <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.15) 0%, transparent 65%)' }} />
@@ -41,7 +51,7 @@ export default function ProductPageTemplate({
                 {description}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="btn-primary">Get a Quote <ArrowRight size={15} /></Link>
+                <Link href="/contact" className="btn-primary">Request Documents <ArrowRight size={15} /></Link>
                 <a href="https://wa.me/919426031064" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none' }}>WhatsApp Us</a>
               </div>
             </div>
@@ -85,8 +95,8 @@ export default function ProductPageTemplate({
 
             {/* Key Features */}
             <div>
-              <span className="section-eyebrow">Why Choose This Product</span>
-              <h2 className="section-heading" style={{ fontSize: '32px', marginBottom: '8px' }}>Key Features</h2>
+              <span className="section-eyebrow">System Considerations</span>
+              <h2 className="section-heading" style={{ fontSize: '32px', marginBottom: '8px' }}>Key Considerations</h2>
               <div className="teal-rule mb-8" />
               <ul className="flex flex-col gap-4">
                 {features.map((f) => (
@@ -105,7 +115,7 @@ export default function ProductPageTemplate({
       <section style={{ background: '#F5F5F0', padding: '80px 0' }}>
         <div className="container-xl">
           <div className="text-center mb-12">
-            <span className="section-eyebrow">Where It's Used</span>
+            <span className="section-eyebrow">Where It&apos;s Used</span>
             <h2 className="section-heading" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>Application Areas</h2>
             <div className="teal-rule mx-auto mt-4" />
           </div>
@@ -127,7 +137,7 @@ export default function ProductPageTemplate({
             Interested in {name}?
           </h2>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'rgba(255,255,255,0.6)', marginBottom: '28px' }}>
-            Get pricing, datasheets, and availability. Our team responds within 1 business day.
+            Request relevant system documents, availability and a technical conversation matched to your project requirements.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href={`/contact?product=${encodeURIComponent(name)}`} className="btn-primary">

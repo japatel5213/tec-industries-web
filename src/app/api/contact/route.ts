@@ -15,15 +15,15 @@ const transporter = nodemailer.createTransport({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, company, email, phone, role, productInterest, message, LDTuvid } = body;
+    const { name, company, email, phone, role, productInterest, application, projectLocation, sizeRange, pressureClass, estimatedQuantity, requiredDelivery, message, LDTuvid } = body;
 
     // Basic validation
-    if (!name || !email || !phone || !message) {
+    if (!name || !email || !phone || !application || !projectLocation || !message) {
       return NextResponse.json({ error: 'Required fields missing.' }, { status: 400 });
     }
 
     // 1. SAVE LEAD TO SUPABASE (SO WE NEVER LOSE DATA!)
-    const serializedInfo = `[Role: ${role || 'General'}] [Product: ${productInterest || 'General'}] [Msg: ${message}]`;
+    const serializedInfo = `[Role: ${role || 'General'}] [Product: ${productInterest || 'General'}] [Application: ${application || '—'}] [Location: ${projectLocation || '—'}] [Size: ${sizeRange || '—'}] [Pressure: ${pressureClass || '—'}] [Quantity: ${estimatedQuantity || '—'}] [Delivery: ${requiredDelivery || '—'}] [Msg: ${message}]`;
     const dbCompany = company ? `${company} ${serializedInfo}` : serializedInfo;
 
     let dbSaved = false;
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       }
 
       const crmCompany = company && company.trim() ? company.trim() : 'Individual / Web Lead';
-      const crmDescription = `Product of Interest: ${productInterest || 'Not Specified'}\n\nMessage:\n${message}`;
+      const crmDescription = `Product of Interest: ${productInterest || 'Not Specified'}\nApplication / Service: ${application || 'Not Specified'}\nProject Location: ${projectLocation || 'Not Specified'}\nSize / DN Range: ${sizeRange || 'Not Specified'}\nPressure Class: ${pressureClass || 'Not Specified'}\nEstimated Quantity: ${estimatedQuantity || 'Not Specified'}\nRequired Delivery: ${requiredDelivery || 'Not Specified'}\n\nMessage:\n${message}`;
 
       const crmFormData = new URLSearchParams();
       crmFormData.append('xnQsjsdp', '8996f7e0cceb00c9a3946223a7e578537bf2af193ad74c8283350840e698149a');
@@ -116,6 +116,12 @@ export async function POST(request: NextRequest) {
             phone,
             role,
             productInterest,
+            application,
+            projectLocation,
+            sizeRange,
+            pressureClass,
+            estimatedQuantity,
+            requiredDelivery,
             message,
             LDTuvid,
             source: 'contact_form'
@@ -133,9 +139,12 @@ export async function POST(request: NextRequest) {
     }
 
     const roleLabel: Record<string, string> = {
-      installer: 'PPR Pipe Installer',
-      dealer: 'Dealer',
-      distributor: 'Distributor',
+      procurement: 'Procurement / Purchase',
+      maintenance: 'Plant Maintenance',
+      consultant: 'Project Consultant',
+      contractor: 'MEP / Plumbing Contractor',
+      dealer: 'Dealer / Distributor',
+      installer: 'Installer',
       general: 'General Inquiry',
     };
 
@@ -153,6 +162,12 @@ export async function POST(request: NextRequest) {
             <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Phone</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;"><a href="tel:${phone}" style="color: #2D8B6E;">${phone}</a></td></tr>
             <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Role / Type</td><td style="padding: 12px 0; border-bottom: 1px solid #eee;"><span style="background: #E6F5F0; color: #2D8B6E; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; letter-spacing: 0.06em;">${roleLabel[role] || role}</span></td></tr>
             <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Product</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${productInterest || '—'}</td></tr>
+            <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Application</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${application || '—'}</td></tr>
+            <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Project Location</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${projectLocation || '—'}</td></tr>
+            <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Size / DN Range</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${sizeRange || '—'}</td></tr>
+            <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Pressure Class</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${pressureClass || '—'}</td></tr>
+            <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Estimated Quantity</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${estimatedQuantity || '—'}</td></tr>
+            <tr><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em;">Required Delivery</td><td style="padding: 12px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #2B3E50;">${requiredDelivery || '—'}</td></tr>
           </table>
           <div style="margin-top: 24px;">
             <p style="font-size: 13px; font-weight: 700; color: #6B7B8D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">Message</p>

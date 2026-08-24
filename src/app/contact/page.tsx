@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from 'lucide-react';
-import type { Metadata } from 'next';
 
 const PRODUCTS = [
   'PPR Pipe & Fittings',
@@ -20,10 +19,20 @@ type FormData = {
   phone: string;
   role: string;
   productInterest: string;
+  application: string;
+  projectLocation: string;
+  sizeRange: string;
+  pressureClass: string;
+  estimatedQuantity: string;
+  requiredDelivery: string;
   message: string;
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
+
+type ZohoWindow = Window & typeof globalThis & {
+  $zoho?: { salesiq?: { visitor?: { uniqueid?: () => string } } };
+};
 
 function validate(data: FormData): FormErrors {
   const errors: FormErrors = {};
@@ -33,13 +42,15 @@ function validate(data: FormData): FormErrors {
   if (!data.phone.trim()) errors.phone = 'Phone number is required.';
   else if (!/^[\d\s\-+()]{8,15}$/.test(data.phone)) errors.phone = 'Enter a valid phone number.';
   if (!data.role) errors.role = 'Please select your role.';
+  if (!data.application.trim()) errors.application = 'Application or service is required.';
+  if (!data.projectLocation.trim()) errors.projectLocation = 'Project location is required.';
   if (!data.message.trim()) errors.message = 'Message is required.';
   return errors;
 }
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
-    name: '', company: '', email: '', phone: '', role: '', productInterest: '', message: '',
+    name: '', company: '', email: '', phone: '', role: '', productInterest: '', application: '', projectLocation: '', sizeRange: '', pressureClass: '', estimatedQuantity: '', requiredDelivery: '', message: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -63,9 +74,8 @@ export default function ContactPage() {
     // Retrieve Zoho SalesIQ unique visitor ID (if loaded) to link visitor activity in CRM
     let LDTuvid = '';
     try {
-      if (typeof window !== 'undefined' && (window as any).$zoho && (window as any).$zoho.salesiq) {
-        LDTuvid = (window as any).$zoho.salesiq.visitor.uniqueid() || '';
-      }
+      const salesiq = (window as ZohoWindow).$zoho?.salesiq;
+      LDTuvid = salesiq?.visitor?.uniqueid?.() || '';
     } catch (zErr) {
       console.warn('Could not read Zoho SalesIQ visitor ID:', zErr);
     }
@@ -88,8 +98,8 @@ export default function ContactPage() {
   };
 
   const buildWhatsAppMsg = () => {
-    const roleLabels: Record<string, string> = { installer: 'PPR Pipe Installer', dealer: 'Dealer', distributor: 'Distributor', general: 'General Inquiry' };
-    const msg = `Hello TEC INDUSTRIES!\n\nName: ${formData.name}\nCompany: ${formData.company || '—'}\nPhone: ${formData.phone}\nRole: ${roleLabels[formData.role] || formData.role}\nProduct Interest: ${formData.productInterest || '—'}\n\nMessage:\n${formData.message}`;
+    const roleLabels: Record<string, string> = { procurement: 'Procurement / Purchase', maintenance: 'Plant Maintenance', consultant: 'Project Consultant', contractor: 'MEP / Plumbing Contractor', dealer: 'Dealer / Distributor', installer: 'Installer', general: 'General Inquiry' };
+    const msg = `Hello TEC INDUSTRIES!\n\nName: ${formData.name}\nCompany: ${formData.company || '—'}\nPhone: ${formData.phone}\nRole: ${roleLabels[formData.role] || formData.role}\nApplication / Service: ${formData.application || '—'}\nProduct Interest: ${formData.productInterest || '—'}\nProject Location: ${formData.projectLocation || '—'}\nSize / DN Range: ${formData.sizeRange || '—'}\nPressure Class: ${formData.pressureClass || '—'}\nEstimated Quantity: ${formData.estimatedQuantity || '—'}\nRequired Delivery: ${formData.requiredDelivery || '—'}\n\nMessage:\n${formData.message}`;
     return `https://wa.me/919426031064?text=${encodeURIComponent(msg)}`;
   };
 
@@ -103,7 +113,7 @@ export default function ContactPage() {
             Contact TEC INDUSTRIES
           </h1>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '480px', margin: '0 auto' }}>
-            Request a quote, inquire about products, or become a dealer/distributor. We respond within 1 business day.
+            Request a quote, inquire about products, or become a dealer/distributor. Share the application, operating condition and project context for a more useful discussion.
           </p>
         </div>
       </section>
@@ -139,7 +149,7 @@ export default function ContactPage() {
                     </div>
                     <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '22px', fontWeight: 800, color: '#2B3E50', marginBottom: '8px' }}>Message Sent!</h3>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.7, maxWidth: '360px', margin: '0 auto 24px' }}>
-                      Thank you for reaching out. Our team will respond within 1 business day. Check your inbox for a confirmation email.
+                      Thank you for reaching out. TEC will review the enquiry details and follow up through the most relevant project discussion. Check your inbox for a confirmation email.
                     </p>
                     <a
                       href={buildWhatsAppMsg()}
@@ -153,17 +163,21 @@ export default function ContactPage() {
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
                     {/* Role selector — highlighted */}
-                    <div style={{ marginBottom: '24px' }}>
-                      <label className="form-label">I am a *</label>
+                    <fieldset style={{ margin: '0 0 24px', padding: 0, border: 0 }} aria-describedby={errors.role ? 'role-error' : undefined}>
+                      <legend className="form-label">I am contacting TEC as *</legend>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {[
-                          { value: 'installer', label: '🔧 PPR Installer' },
-                          { value: 'dealer', label: '🏪 Dealer' },
-                          { value: 'distributor', label: '🚚 Distributor' },
-                          { value: 'general', label: '💼 General' },
+                          { value: 'procurement', label: 'Procurement / Purchase' },
+                          { value: 'maintenance', label: 'Plant Maintenance' },
+                          { value: 'consultant', label: 'Project Consultant' },
+                          { value: 'contractor', label: 'MEP / Plumbing Contractor' },
+                          { value: 'dealer', label: 'Dealer / Distributor' },
+                          { value: 'installer', label: 'Installer' },
+                          { value: 'general', label: 'General Inquiry' },
                         ].map((opt) => (
                           <label
                             key={opt.value}
+                            htmlFor={`role-${opt.value}`}
                             style={{
                               display: 'flex', alignItems: 'center', justifyContent: 'center',
                               padding: '10px 8px', borderRadius: '8px', cursor: 'pointer',
@@ -175,24 +189,26 @@ export default function ContactPage() {
                             }}
                           >
                             <input
+                              id={`role-${opt.value}`}
                               type="radio"
                               name="role"
                               value={opt.value}
                               checked={formData.role === opt.value}
                               onChange={handleChange}
+                              required
                               style={{ display: 'none' }}
                             />
                             {opt.label}
                           </label>
                         ))}
                       </div>
-                      {errors.role && <p className="form-error">{errors.role}</p>}
-                    </div>
+                      {errors.role && <p id="role-error" className="form-error">{errors.role}</p>}
+                    </fieldset>
 
                     <div className="grid sm:grid-cols-2 gap-5 mb-5">
                       <div>
                         <label className="form-label" htmlFor="name">Full Name *</label>
-                        <input id="name" name="name" type="text" autoComplete="name" enterKeyHint="next" className={`form-input ${errors.name ? 'error' : ''}`} placeholder="Your full name" value={formData.name} onChange={handleChange} />
+                        <input id="name" name="name" type="text" autoComplete="name" enterKeyHint="next" required className={`form-input ${errors.name ? 'error' : ''}`} placeholder="Your full name" value={formData.name} onChange={handleChange} />
                         {errors.name && <p className="form-error">{errors.name}</p>}
                       </div>
                       <div>
@@ -204,12 +220,12 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-5 mb-5">
                       <div>
                         <label className="form-label" htmlFor="email">Email Address *</label>
-                        <input id="email" name="email" type="email" autoComplete="email" enterKeyHint="next" className={`form-input ${errors.email ? 'error' : ''}`} placeholder="you@company.com" value={formData.email} onChange={handleChange} />
+                        <input id="email" name="email" type="email" autoComplete="email" enterKeyHint="next" required className={`form-input ${errors.email ? 'error' : ''}`} placeholder="you@company.com" value={formData.email} onChange={handleChange} />
                         {errors.email && <p className="form-error">{errors.email}</p>}
                       </div>
                       <div>
                         <label className="form-label" htmlFor="phone">Phone Number *</label>
-                        <input id="phone" name="phone" type="tel" autoComplete="tel" enterKeyHint="next" className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 98765 43210" value={formData.phone} onChange={handleChange} />
+                        <input id="phone" name="phone" type="tel" autoComplete="tel" enterKeyHint="next" required className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 98765 43210" value={formData.phone} onChange={handleChange} />
                         {errors.phone && <p className="form-error">{errors.phone}</p>}
                       </div>
                     </div>
@@ -222,11 +238,47 @@ export default function ContactPage() {
                       </select>
                     </div>
 
+                    <div className="grid sm:grid-cols-2 gap-5 mb-5">
+                      <div>
+                        <label className="form-label" htmlFor="application">Application / Service *</label>
+                        <input id="application" name="application" type="text" required className={`form-input ${errors.application ? 'error' : ''}`} placeholder="e.g. RO/DM water line" value={formData.application} onChange={handleChange} />
+                        {errors.application && <p className="form-error">{errors.application}</p>}
+                      </div>
+                      <div>
+                        <label className="form-label" htmlFor="projectLocation">Plant / Project Location *</label>
+                        <input id="projectLocation" name="projectLocation" type="text" required className={`form-input ${errors.projectLocation ? 'error' : ''}`} placeholder="City and state" value={formData.projectLocation} onChange={handleChange} />
+                        {errors.projectLocation && <p className="form-error">{errors.projectLocation}</p>}
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-5 mb-5">
+                      <div>
+                        <label className="form-label" htmlFor="sizeRange">Size / DN Range</label>
+                        <input id="sizeRange" name="sizeRange" type="text" className="form-input" placeholder="e.g. 63 mm / 110 mm" value={formData.sizeRange} onChange={handleChange} />
+                      </div>
+                      <div>
+                        <label className="form-label" htmlFor="pressureClass">Pressure Class / Operating Pressure</label>
+                        <input id="pressureClass" name="pressureClass" type="text" className="form-input" placeholder="e.g. PN16 / 8 bar" value={formData.pressureClass} onChange={handleChange} />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-5 mb-5">
+                      <div>
+                        <label className="form-label" htmlFor="estimatedQuantity">Estimated Quantity</label>
+                        <input id="estimatedQuantity" name="estimatedQuantity" type="text" className="form-input" placeholder="e.g. 450 m + fittings" value={formData.estimatedQuantity} onChange={handleChange} />
+                      </div>
+                      <div>
+                        <label className="form-label" htmlFor="requiredDelivery">Required Delivery Date</label>
+                        <input id="requiredDelivery" name="requiredDelivery" type="date" className="form-input" value={formData.requiredDelivery} onChange={handleChange} />
+                      </div>
+                    </div>
+
                     <div className="mb-6">
                       <label className="form-label" htmlFor="message">Message *</label>
                       <textarea
                         id="message" name="message" rows={5}
                         autoComplete="off" enterKeyHint="done"
+                        required
                         className={`form-input ${errors.message ? 'error' : ''}`}
                         placeholder="Tell us about your project requirements, quantities needed, delivery location, etc."
                         value={formData.message} onChange={handleChange}
