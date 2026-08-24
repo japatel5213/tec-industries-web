@@ -21,7 +21,7 @@ const COMPANY = [
   { label: 'Contact Us', href: '/contact' },
 ];
 
-const RESOURCES = [
+const RESOURCES: Array<{ label: string; href: string; coming?: boolean }> = [
   { label: 'PPR Catalog Download', href: '/resources/catalog' },
   { label: 'Blog & Insights', href: '/blog' },
   { label: 'HDPE Catalog Request', href: '/resources' },
