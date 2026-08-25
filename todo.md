@@ -52,3 +52,13 @@
 - [x] Check mobile navigation, hero legibility, card stacking, filter controls, and fixed contact actions.
 - [x] Verify the RFQ form remains readable and usable without horizontal overflow.
 - [x] Record the responsive findings and apply only necessary corrections.
+
+## Bold Industrial Redesign and AEO
+
+- [x] Establish the shared dark industrial design system: responsive gutters, header height, sections, buttons, cards, forms, focus treatment, and motion tokens.
+- [x] Generate and place a purpose-built visual suite, including verified green and blue triple-layer PPR pipe cues.
+- [x] Rebuild the shared navigation, footer, and homepage with the approved asymmetric international industrial composition.
+- [x] Apply the redesign system to product, PPR catalogue, resources, industries, quality, and RFQ/contact routes without changing verified product facts or conversion handling.
+- [x] Add answer-first page modules, semantic heading structures, contextual internal links, and visible-content-backed structured data for AEO.
+- [x] Verify 390 px, 768 px, 1024 px, and 1440 px route behavior, reduced-motion support, accessibility, build output, AEO metadata, and performance safeguards.
+- [ ] Commit, push, and confirm the production release from the existing repository.

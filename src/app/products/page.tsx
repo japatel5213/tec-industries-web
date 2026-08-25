@@ -1,153 +1,26 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Products — PPR, HDPE, Electrofusion, Valves & Pipe Support Systems',
-  description: 'Explore TEC INDUSTRIES products: PPR Pipe & Fittings, HDPE Pipe & Fittings, Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — industrial-grade piping manufactured in Vapi, Gujarat.',
-  alternates: { canonical: '/products' },
-};
+/* TEC PRODUCT INDEX — Bold Industrial / International-grade. */
+
+export const metadata: Metadata = { title: 'Products — PPR, HDPE, Electrofusion, Valves & Pipe Support Systems', description: 'Explore TEC INDUSTRIES product systems for industrial piping projects, including PPR, HDPE, electrofusion fittings, industrial valves, supports and fusion machinery.', alternates: { canonical: '/products' } };
 
 const PRODUCTS = [
-  {
-    name: 'PPR Pipe & Fittings',
-    badge: 'Primary Product',
-    desc: 'Premium polypropylene random copolymer pipes for hot & cold water systems. Temperature-resistant up to 95°C, corrosion-proof, and certified to international standards.',
-    img: '/assets/ppr-pipes.png',
-    href: '/products/ppr',
-    highlights: ['Temp resistance up to 95°C', 'Pressure ratings PN10/PN16/PN20', 'ISI & ISO certified', 'Hot & cold water systems'],
-  },
-  {
-    name: 'HDPE Pipe & Fittings',
-    badge: null,
-    desc: 'High-density polyethylene pipes for underground and demanding industrial applications. Superior flexibility, chemical resistance, and long service life.',
-    img: '/assets/hdpe-pipes.png',
-    href: '/products/hdpe',
-    highlights: ['Pressure class PN6 to PN16', 'Chemical resistant', 'Long service life (50+ years)', 'Underground applications'],
-  },
-  {
-    name: 'Electrofusion Fittings',
-    badge: null,
-    desc: 'Precision electrofusion couplings and saddles for leak-proof, high-integrity pipe joints in gas and water distribution networks.',
-    img: '/assets/electrofusion.png',
-    href: '/products/electrofusion',
-    highlights: ['Leak-proof joints', 'Gas & water distribution', 'Automatic welding process', 'Sizes 20mm to 400mm'],
-  },
-  {
-    name: 'Industrial Valves',
-    badge: null,
-    desc: 'Ball valves, gate valves, and butterfly valves in PP, PVC, and metal for reliable flow control in industrial piping systems.',
-    img: '/assets/valves.png',
-    href: '/products/valves',
-    highlights: ['Ball, gate & butterfly types', 'PP, PVC & metal options', 'Industrial grade', 'Full bore & reduced bore'],
-  },
-  {
-    name: 'Pipe Support System',
-    badge: null,
-    desc: 'Comprehensive range of hangers, brackets, clamps, and channel supports for secure pipe installation across all environments.',
-    img: '/assets/pipe-support.png',
-    href: '/products/pipe-support',
-    highlights: ['Hangers & brackets', 'Pipe clamps & anchors', 'Channel supports', 'Hot-dip galvanised options'],
-  },
-  {
-    name: 'PPR Fusion Machine',
-    badge: null,
-    desc: 'Professional-grade PPR pipe fusion welding machines for precise, reliable heat fusion joints. Built for contractors and installers.',
-    img: '/assets/fusion-machine.png',
-    href: '/products/fusion-machine',
-    highlights: ['20mm to 110mm capacity', 'Digital temperature control', 'Portable & lightweight', 'Professional-grade build'],
-  },
-  {
-    name: 'Cooling Towers',
-    badge: null,
-    desc: 'High-capacity FRP round and square cooling towers (10 TR to 1000 TR). Engineered for maximum heat transfer efficiency and industrial durability.',
-    img: '/assets/cooling-tower.png',
-    href: '/products/cooling-tower',
-    highlights: ['10 TR to 1000 TR capacity', 'FRP corrosion-proof casing', 'High-efficiency PVC fills', 'Round & Square designs'],
-  },
+  { name: 'PPR Pipe & Fittings', label: 'Pipe + fitting system', desc: 'Green and blue triple-layer PPR pipe systems with coordinated fitting-family and project-document conversations.', img: '/assets/ppr-pipes.png', href: '/products/ppr' },
+  { name: 'HDPE Pipe & Fittings', label: 'Industrial pipe system', desc: 'HDPE pipe and fitting families for industrial and project-routing discussions.', img: '/assets/hdpe-pipes.png', href: '/products/hdpe' },
+  { name: 'Electrofusion Fittings', label: 'Connection system', desc: 'Electrofusion fitting families for project teams planning pipe connections and branch interfaces.', img: '/assets/electrofusion.png', href: '/products/electrofusion' },
+  { name: 'Industrial Valves', label: 'Flow-control components', desc: 'Valve families for industrial piping system and flow-control discussions.', img: '/assets/valves.png', href: '/products/valves' },
+  { name: 'Pipe Support Systems', label: 'Installation support', desc: 'Hangers, brackets, clamps and support families for routing and installation planning.', img: '/assets/pipe-support.png', href: '/products/pipe-support' },
+  { name: 'Fusion Machinery', label: 'Joining equipment', desc: 'PPR fusion welding machinery for coordinated system and installation conversations.', img: '/assets/fusion-machine.png', href: '/products/fusion-machine' },
+  { name: 'Cooling Towers', label: 'Industrial cooling', desc: 'Cooling-tower options for industrial project discussions and utility planning.', img: '/assets/cooling-tower.png', href: '/products/cooling-tower' },
 ];
 
 export default function ProductsPage() {
-  return (
-    <div>
-      {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.15) 0%, transparent 65%)' }} />
-        <div className="container-xl relative text-center">
-          <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>What We Manufacture</span>
-          <h1 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.1, marginBottom: '16px' }}>
-            Our Product Range
-          </h1>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '520px', margin: '0 auto' }}>
-            Seven comprehensive product lines covering all your industrial piping and cooling requirements — manufactured with precision in Vapi, Gujarat.
-          </p>
-        </div>
-      </section>
-
-      {/* Products */}
-      <section style={{ background: '#F5F5F0', padding: '80px 0' }}>
-        <div className="container-xl flex flex-col gap-12">
-          {PRODUCTS.map((product, i) => (
-            <div
-              key={product.name}
-              className="card grid grid-cols-1 md:grid-cols-2"
-              style={{ padding: 0, overflow: 'hidden' }}
-            >
-              {/* Image — alternate sides on desktop, always first on mobile */}
-              <div 
-                className={`relative min-h-[300px] w-full order-first ${i % 2 === 0 ? 'md:order-first' : 'md:order-last'}`}
-              >
-                <Image src={product.img} alt={product.name} fill className="object-cover" />
-                <div style={{ position: 'absolute', inset: 0, background: 'rgba(20,28,40,0.2)' }} />
-                {product.badge && (
-                  <div style={{ position: 'absolute', top: '16px', left: '16px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', color: '#fff', fontSize: '11px', fontFamily: 'var(--font-head)', fontWeight: 700, letterSpacing: '0.1em', padding: '5px 12px', borderRadius: '999px' }}>
-                    {product.badge}
-                  </div>
-                )}
-              </div>
-              {/* Content */}
-              <div 
-                className={`p-8 md:p-12 flex flex-col justify-center order-last ${i % 2 === 0 ? 'md:order-last' : 'md:order-first'}`}
-              >
-                <h2 style={{ fontFamily: 'var(--font-head)', fontSize: '26px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>{product.name}</h2>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '20px' }}>{product.desc}</p>
-                <ul className="flex flex-col gap-2 mb-8">
-                  {product.highlights.map((h) => (
-                    <li key={h} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontFamily: 'var(--font-body)', fontSize: '14px', color: '#2B3E50' }}>
-                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2D8B6E', flexShrink: 0 }} />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-                <Link href={product.href} className="btn-primary" style={{ alignSelf: 'flex-start' }}>
-                  View Details <ArrowRight size={15} />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{ background: 'linear-gradient(135deg, #1E2A3A, #2B3E50)', padding: '80px 0' }}>
-        <div className="container-xl text-center">
-          <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 800, color: '#ffffff', marginBottom: '16px' }}>
-            Need Product Specifications or Pricing?
-          </h2>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>
-            Our sales team is ready to help with custom requirements and bulk orders.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="btn-primary" style={{ fontSize: '15px', padding: '16px 32px' }}>
-              Request a Quote <ArrowRight size={16} />
-            </Link>
-            <a href="https://wa.me/919426031064?text=Hello%20TEC%20Industries%2C%20please%20share%20product%20catalogue%20and%20pricing." target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ fontSize: '15px', padding: '16px 32px', textDecoration: 'none' }}>
-              WhatsApp for Catalogue
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <div className="min-h-screen bg-[#f3f5f2]">
+    <section className="relative overflow-hidden bg-[#090f14] text-white"><div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(85,202,146,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(85,202,146,0.1)_1px,transparent_1px)] [background-size:56px_56px]" /><div className="container-xl relative z-10 grid gap-10 py-[clamp(5rem,10vw,9rem)] lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><p className="section-eyebrow text-[#55ca92]">Product system index</p><h1 className="mt-5 max-w-[10ch] font-[var(--font-display)] text-[clamp(4rem,8vw,8rem)] font-extrabold uppercase leading-[0.79] tracking-[-0.055em]">Designed for the full industrial conversation.</h1></div><p className="max-w-lg text-[1rem] leading-7 text-white/67">What does TEC INDUSTRIES supply? Explore the product families used in industrial piping, utility and project discussions. Select a system, then request the current details that relate to your application.</p></div></section>
+    <section className="section-space"><div className="container-xl"><div className="grid gap-px border border-[#c7d1d6] bg-[#c7d1d6]">{PRODUCTS.map((product, index) => <Link href={product.href} key={product.href} className="group grid min-h-[22rem] bg-white md:grid-cols-[0.85fr_1.15fr] even:md:[&>div:first-child]:order-2 hover:bg-[#0f171f]"><div className="relative min-h-[16rem] overflow-hidden bg-[#0f171f]"><Image src={product.img} alt={product.name} fill sizes="(min-width: 768px) 36vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,15,20,0.1),rgba(9,15,20,0.55))]" /></div><div className="flex flex-col p-[clamp(1.6rem,4vw,4rem)]"><span className="font-[var(--font-mono)] text-[0.62rem] uppercase tracking-[0.12em] text-[#2fae78]">{String(index + 1).padStart(2, '0')} · {product.label}</span><div className="mt-auto"><h2 className="mt-12 font-[var(--font-display)] text-[clamp(2.8rem,5vw,5rem)] font-bold uppercase leading-[0.8] tracking-[-0.04em] text-[#1a2834] transition-colors group-hover:text-white">{product.name}</h2><p className="mt-5 max-w-xl text-sm leading-6 text-[#607384] transition-colors group-hover:text-white/65">{product.desc}</p><span className="mt-7 inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.65rem] font-medium uppercase tracking-[0.1em] text-[#1a2834] transition-colors group-hover:text-[#55ca92]">Open system detail <ArrowUpRight size={15} /></span></div></div></Link>)}</div></div></section>
+    <section className="bg-[#173c36] py-8 text-white"><div className="container-xl flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><p className="font-[var(--font-mono)] text-[0.62rem] uppercase tracking-[0.13em] text-[#55ca92]">Project requirement</p><h2 className="mt-2 font-[var(--font-display)] text-[2rem] font-bold uppercase leading-[0.9]">Need help selecting the right product conversation?</h2></div><Link href="/contact" className="btn-secondary shrink-0">Start a project enquiry <ArrowUpRight size={16} /></Link></div></section>
+  </div>;
 }

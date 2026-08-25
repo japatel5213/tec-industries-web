@@ -1,582 +1,168 @@
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, CheckCircle2, Phone, Shield, Award, Users, Factory, Wheat, Droplets, Building2, Wrench, Ship } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Check, FileText, Layers3, MoveRight } from 'lucide-react';
+import { useEffect } from 'react';
 
-// ─── Animated Counter ───
-function Counter({ end, suffix = '', duration = 2000 }: { end: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+/*
+ * TEC INDUSTRIES HOMEPAGE — Bold Industrial / International-grade.
+ * The layout is deliberately asymmetric: editorial text block at left, product
+ * evidence at right, then a technical dossier rhythm of dark and light surfaces.
+ */
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [started]);
-
-  useEffect(() => {
-    if (!started) return;
-    let startTime: number;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * end));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [started, end, duration]);
-
-  return <div ref={ref}>{count}{suffix}</div>;
-}
-
-// ─── Reveal on scroll ───
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1 }
-    );
-    els.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-}
-
-const PRODUCTS = [
+const SYSTEMS = [
   {
-    name: 'PPR Pipe & Fittings',
-    desc: 'Premium polypropylene random copolymer pipes for hot & cold water systems. Temperature-resistant, corrosion-proof, and certified to international standards.',
-    img: '/assets/ppr-pipes.png',
+    number: '01',
+    title: 'PPR Pipe Systems',
+    body: 'Green and blue triple-layer PPR pipes, coordinated fittings and project-led document support for industrial utility discussions.',
     href: '/products/ppr',
-    badge: 'Primary',
+    label: 'Pipe + fitting systems',
   },
   {
-    name: 'HDPE Pipe & Fittings',
-    desc: 'High-density polyethylene pipes built for demanding underground and industrial applications. Superior flexibility, chemical resistance, and long service life.',
-    img: '/assets/hdpe-pipes.png',
-    href: '/products/hdpe',
-    badge: null,
+    number: '02',
+    title: 'Industrial Piping',
+    body: 'HDPE, electrofusion, valves and support-system families for project teams planning dependable routing and interfaces.',
+    href: '/products',
+    label: 'Plant utility routing',
   },
   {
-    name: 'Electrofusion Fittings',
-    desc: 'Precision electrofusion couplings and saddles engineered for leak-proof, high-integrity pipe joints in gas and water distribution networks.',
-    img: '/assets/electrofusion.png',
-    href: '/products/electrofusion',
-    badge: null,
-  },
-  {
-    name: 'Industrial Valves',
-    desc: 'Ball valves, gate valves, and butterfly valves in PP, PVC, and metal. Designed for reliable flow control in industrial piping systems.',
-    img: '/assets/valves.png',
-    href: '/products/valves',
-    badge: null,
-  },
-  {
-    name: 'Pipe Support System',
-    desc: 'Comprehensive range of hangers, brackets, clamps, and channel supports engineered for secure pipe installation across all environments.',
-    img: '/assets/pipe-support.png',
-    href: '/products/pipe-support',
-    badge: null,
-  },
-  {
-    name: 'PPR Fusion Machine',
-    desc: 'Professional-grade PPR pipe fusion welding machines for precise, reliable heat fusion joints. Built for contractors and installers.',
-    img: '/assets/fusion-machine.png',
+    number: '03',
+    title: 'Fusion Equipment',
+    body: 'PPR fusion welding machinery and installation support for a more coordinated product-and-process conversation.',
     href: '/products/fusion-machine',
-    badge: null,
-  },
-  {
-    name: 'Cooling Towers',
-    desc: 'High-capacity FRP round and square cooling towers (10 TR to 1000 TR). Engineered for maximum heat transfer efficiency and industrial durability.',
-    img: '/assets/cooling-tower.png',
-    href: '/products/cooling-tower',
-    badge: null,
+    label: 'Joining + installation',
   },
 ];
 
-const INDUSTRIES = [
-  { icon: <Building2 size={28} />, name: 'Construction', desc: 'Commercial & high-rise projects' },
-  { icon: <Wheat size={28} />, name: 'Agriculture', desc: 'Irrigation & water management' },
-  { icon: <Droplets size={28} />, name: 'Plumbing', desc: 'Commercial & industrial plumbing' },
-  { icon: <Factory size={28} />, name: 'Infrastructure', desc: 'Municipal water networks' },
-  { icon: <Wrench size={28} />, name: 'Industrial', desc: 'Chemical, fertilizer & process piping' },
-  { icon: <Ship size={28} />, name: 'Pharma & Food', desc: 'Utility water & CIP lines' },
-];
+const PROJECT_INPUTS = ['Application or service medium', 'Nominal size / DN range', 'Operating pressure or class', 'Project location and quantity'];
 
-const STATS = [
-  { end: 100, suffix: '%', label: 'Quality-Tested Output' },
-  { end: 6, suffix: '', label: 'Product Lines' },
-  { end: 0, suffix: '', label: 'IS 15801 Compliant', static: 'IS 15801' },
-  { end: 0, suffix: '', label: 'Project Reach', static: 'Pan-India' },
-];
-
-const TRUST_CARDS = [
-  {
-    heading: 'Specification-First',
-    body: 'Every pipe ships with batch traceability, dimensional verification per IS 15801, and hydrostatic test records on request.',
-  },
-  {
-    heading: 'Industrial-Grade Range',
-    body: 'PPR coverage from 20 mm to 160 mm. HDPE from 20 mm to 630 mm. PN10 / PN16 / PN20 / PN25 pressure classes. Sizes most national competitors don\'t carry.',
-  },
-  {
-    heading: 'Direct from Factory',
-    body: 'No distributor markup. Quote directly with the manufacturer. Bulk pricing, dealer terms, and project rates available.',
-  },
-];
-
-const HERO_SLIDES = [
-  {
-    img: '/assets/hero_slide_ppr.png',
-    title: 'PPR Pipe & Fittings',
-    tag: 'Manufactured for Plants, Projects & Procurement.'
-  },
-  {
-    img: '/assets/hero_slide_hdpe.png',
-    title: 'HDPE Pipe & Fittings',
-    tag: 'Manufactured for Plants, Projects & Procurement.'
-  },
-  {
-    img: '/assets/hero_slide_industrial.png',
-    title: 'Industrial Process Piping',
-    tag: 'Manufactured for Plants, Projects & Procurement.'
-  }
-];
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What should an industrial piping RFQ include?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A useful industrial piping RFQ identifies the application, nominal size, operating requirement, project location and approximate quantity. This helps TEC route the request to the right product and document conversation.',
+      },
+    },
+  ],
+};
 
 export default function HomePage() {
-  useReveal();
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 4000);
-    return () => clearInterval(timer);
+    const items = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
+    if (!items.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-revealed')),
+      { threshold: 0.12 },
+    );
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
   }, []);
 
   return (
     <>
-      {/* ═══ HERO ═══ */}
-      <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #141C28 0%, #1E2A3A 60%, #1a3040 100%)' }}
-      >
-        {/* Radial glows */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(45,139,110,0.18) 0%, transparent 65%)' }} />
-            <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.10) 0%, transparent 65%)' }} />
-            <div className="hidden lg:block" style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/assets/factory-hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.12 }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+      <section className="relative overflow-hidden bg-[#090f14] text-white">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,15,20,0.98)_0%,rgba(9,15,20,0.94)_39%,rgba(9,15,20,0.50)_72%,rgba(9,15,20,0.60)_100%)]" />
+        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(85,202,146,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(85,202,146,0.09)_1px,transparent_1px)] [background-size:56px_56px]" />
+        <div className="absolute inset-y-0 right-0 hidden w-[62%] lg:block">
+          <Image
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663160765145/CfNlpxGQJYrbQZIj.jpg"
+            alt="Green and blue triple-layer PPR pipe production environment"
+            fill
+            priority
+            sizes="(min-width: 1024px) 62vw, 100vw"
+            className="object-cover object-center opacity-75"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#090f14_0%,rgba(9,15,20,0.65)_25%,rgba(9,15,20,0.12)_75%,rgba(9,15,20,0.28)_100%)]" />
         </div>
 
-        <div className="container-xl relative z-10 pt-32 pb-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left — Text */}
-            <div>
-              <span className="section-eyebrow" style={{ color: '#3DAA7A', letterSpacing: '0.12em' }}>
-                Made in Vapi, Gujarat · Shipped Pan-India
-              </span>
-              <h1
-                style={{
-                  fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: 'clamp(36px, 5vw, 68px)',
-                  color: '#ffffff', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '24px',
-                }}
-              >
-                Industrial-Grade<br />
-                <span style={{ background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  PPR & HDPE
-                </span>
-              </h1>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)', fontSize: '18px', color: 'rgba(255,255,255,0.65)',
-                  lineHeight: 1.7, marginBottom: '16px', fontStyle: 'italic',
-                }}
-              >
-                &ldquo;Your Partner in Industrial Progress&rdquo;
-              </p>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.55)',
-                  lineHeight: 1.7, marginBottom: '36px',
-                }}
-              >
-                TEC INDUSTRIES manufactures PPR pipes from 20 mm to 160 mm, HDPE pipes from 20 mm to 630 mm, and a complete bundling ecosystem — fittings, valves, electrofusion couplings, pipe supports, and fusion welding machines. Built to IS 15801, ISO 15874, and DIN 8077 specifications. Quoted directly from the factory.
-              </p>
-              <div className="flex flex-wrap gap-4 mb-12">
-                <Link href="/products" className="btn-primary">
-                  Explore Products <ArrowRight size={16} />
-                </Link>
-                <Link href="/contact" className="btn-secondary">
-                  Get a Quote
-                </Link>
-              </div>
-              {/* Trust badges */}
-              <div className="flex flex-wrap gap-6">
-                {['Manufactured to IS 15801', 'DIN 8077 / 8078 Compliant', 'ISO 15874 Specifications', '100% Batch-Tested'].map((badge) => (
-                  <div key={badge} className="flex items-center gap-2">
-                    <CheckCircle2 size={14} style={{ color: '#3DAA7A' }} />
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>
-                      {badge}
-                    </span>
-                  </div>
-                ))}
-              </div>
+        <div className="container-xl relative z-10 flex min-h-[calc(100svh-var(--header-height))] items-center py-18 lg:py-24">
+          <div className="max-w-3xl pb-12 pt-8 lg:w-[57%] lg:pb-0">
+            <p className="section-eyebrow text-[#55ca92]">TEC INDUSTRIES · VAPI, GUJARAT</p>
+            <h1 className="max-w-[9ch] font-[var(--font-display)] text-[clamp(3.2rem,13.4vw,9.2rem)] font-extrabold uppercase leading-[0.79] tracking-[-0.055em] text-white">
+              Built on<br />
+              <span className="text-[#55ca92]">Trust.</span><br />
+              Driven by<br />
+              <span className="text-white/90">Commitment.</span>
+            </h1>
+            <p className="mt-7 max-w-xl text-[1.02rem] leading-8 text-white/70 sm:text-[1.12rem]">
+              Industrial piping solutions for manufacturing plants and industrial projects—built around product families, technical review and an enquiry path that respects your project context.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact" className="btn-primary">Request a project quote <ArrowUpRight size={16} /></Link>
+              <Link href="/resources/ppr-catalog" className="btn-secondary">Explore PPR catalogue <ArrowUpRight size={16} /></Link>
             </div>
-
-            {/* Right — Product image slider */}
-            <div className="hidden lg:block relative">
-              <div
-                style={{
-                  position: 'absolute', inset: '-24px',
-                  background: 'radial-gradient(circle at 50% 50%, rgba(45,139,110,0.15) 0%, transparent 70%)',
-                  borderRadius: '24px',
-                }}
-              />
-              <div
-                style={{
-                  position: 'relative', borderRadius: '20px', overflow: 'hidden',
-                  border: '1px solid rgba(45,139,110,0.25)',
-                  boxShadow: '0 32px 80px rgba(0,0,0,0.5)',
-                  aspectRatio: '4/3',
-                }}
-              >
-                {(() => {
-                  const slide = HERO_SLIDES[currentSlide];
-                  return (
-                  <div key={slide.img} style={{ position: 'absolute', inset: 0 }}>
-                    <Image
-                      src={slide.img}
-                      alt={slide.title}
-                      fill
-                      className="object-cover"
-                      priority={currentSlide === 0}
-                      sizes="(min-width: 1024px) 50vw, 1px"
-                    />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(20,28,40,0.8) 100%)' }} />
-                    {/* Floating badge */}
-                    <div
-                      style={{
-                        position: 'absolute', bottom: '24px', left: '24px', right: '24px',
-                        background: 'rgba(20,28,40,0.9)', backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(45,139,110,0.4)', borderRadius: '12px', padding: '16px 20px',
-                      }}
-                    >
-                      <div style={{ fontFamily: 'var(--font-head)', fontSize: '13px', fontWeight: 700, color: '#3DAA7A', letterSpacing: '0.06em' }}>
-                        {slide.tag}
-                      </div>
-                      <div style={{ fontFamily: 'var(--font-head)', fontSize: '20px', fontWeight: 800, color: '#fff', marginTop: '4px' }}>
-                        {slide.title}
-                      </div>
-                    </div>
-                  </div>
-                  );
-                })()}
-                
-                {/* Slider Indicators */}
-                <div style={{ position: 'absolute', top: '16px', right: '16px', display: 'flex', gap: '8px' }}>
-                  {HERO_SLIDES.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentSlide(i)}
-                      style={{
-                        width: '8px', height: '8px', borderRadius: '50%',
-                        background: i === currentSlide ? '#3DAA7A' : 'rgba(255,255,255,0.3)',
-                        transition: 'background 0.3s',
-                      }}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 60L1440 60L1440 20C1200 60 720 0 0 40L0 60Z" fill="#F5F5F0" />
-          </svg>
-        </div>
-      </section>
-
-      {/* ═══ ABOUT STRIP + STATS ═══ */}
-      <section style={{ background: '#F5F5F0', padding: '80px 0' }}>
-        <div className="container-xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal">
-              <span className="section-eyebrow">Who We Are</span>
-              <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 44px)', marginBottom: '20px', textTransform: 'capitalize' }}>
-                Uncompromising Industrial Excellence
-              </h2>
-              <div className="teal-rule mb-8" />
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '16px' }}>
-                TEC INDUSTRIES manufactures PPR pipes from 20 mm to 160 mm, HDPE pipes from 20 mm to 630 mm, and a complete bundling ecosystem — fittings, valves, electrofusion couplings, pipe supports, and fusion welding machines. Built to IS 15801, ISO 15874, and DIN 8077 specifications. Shipped pan-India directly from our GIDC Vapi factory.
-              </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '32px' }}>
-                Built for industrial procurement — plant managers, contractors, and project engineers across India.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/about" className="btn-ghost">
-                  Our Story <ArrowRight size={16} />
-                </Link>
-                <Link href="/quality" className="btn-primary">
-                  Quality & Certifications
-                </Link>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 reveal">
-              {STATS.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="card text-center"
-                  style={{ padding: '32px 24px', background: '#ffffff', position: 'relative', overflow: 'hidden' }}
-                >
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)' }} />
-                  <div style={{ fontFamily: 'var(--font-head)', fontSize: stat.static ? '28px' : '48px', fontWeight: 800, color: '#2B3E50', lineHeight: 1 }}>
-                    {stat.static ? stat.static : <Counter end={stat.end} suffix={stat.suffix} />}
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: '#6B7B8D', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '8px' }}>
-                    {stat.label}
-                  </div>
-                </div>
+            <div className="mt-10 grid max-w-2xl gap-3 border-t border-white/15 pt-5 sm:grid-cols-3">
+              {['Green + blue triple-layer PPR', 'Pipes, fittings + machinery', 'Project-led technical discussion'].map((item) => (
+                <div key={item} className="flex items-start gap-2 text-[0.68rem] font-bold uppercase tracking-[0.08em] text-white/62"><Check size={14} className="mt-0.5 shrink-0 text-[#55ca92]" />{item}</div>
               ))}
             </div>
           </div>
         </div>
+        <div className="absolute bottom-4 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-2 font-[var(--font-mono)] text-[0.58rem] uppercase tracking-[0.18em] text-white/45 lg:flex"><ArrowDown size={13} className="text-[#55ca92]" /> Scroll to review systems</div>
       </section>
 
-      {/* ═══ PRODUCTS GRID ═══ */}
-      <section style={{ background: '#ffffff', padding: '96px 0' }}>
-        <div className="container-xl">
-          <div className="text-center mb-16 reveal">
-            <span className="section-eyebrow">What We Manufacture</span>
-            <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 44px)', marginBottom: '8px' }}>
-              Our Product Range
-            </h2>
-            <div className="teal-rule mx-auto mb-6" />
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
-              Seven product lines engineered to the highest standards, covering all your industrial piping and cooling requirements.
-            </p>
-          </div>
+      <section className="border-y border-[#dde4e5] bg-[#f3f5f2] py-5">
+        <div className="container-xl grid gap-3 sm:grid-cols-3 sm:gap-6">
+          {[['01', 'SYSTEM REVIEW', 'Choose a product family and application context.'], ['02', 'TECHNICAL INPUT', 'Share line size, service and project requirement.'], ['03', 'PROJECT RESPONSE', 'Request applicable documents and a quote discussion.']].map(([number, title, body]) => (
+            <div key={number} className="flex items-start gap-3"><span className="font-[var(--font-mono)] text-[0.65rem] text-[#2fae78]">{number}</span><p className="m-0 text-xs leading-5 text-[#607384]"><strong className="mr-1 text-[0.67rem] tracking-[0.09em] text-[#1a2834]">{title}</strong>{body}</p></div>
+          ))}
+        </div>
+      </section>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PRODUCTS.map((product, i) => (
-              <Link
-                key={product.name}
-                href={product.href}
-                className="group reveal"
-                style={{ textDecoration: 'none', animationDelay: `${i * 0.1}s` }}
-              >
-                <div
-                  style={{
-                    background: '#ffffff', borderRadius: '16px',
-                    boxShadow: '0 12px 48px rgba(43,62,80,0.10)',
-                    overflow: 'hidden', border: '1px solid #f0f0f0',
-                    transition: 'transform 300ms ease, box-shadow 300ms ease',
-                  }}
-                  className="group-hover:-translate-y-1 group-hover:shadow-card-hover"
-                >
-                  {/* Image */}
-                  <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
-                    <Image
-                      src={product.img}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(27,42,58,0.7) 100%)' }} />
-                    {product.badge && (
-                      <div
-                        style={{
-                          position: 'absolute', top: '12px', left: '12px',
-                          background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)',
-                          color: '#fff', fontSize: '10px', fontFamily: 'var(--font-head)',
-                          fontWeight: 700, letterSpacing: '0.1em', padding: '4px 10px', borderRadius: '999px',
-                        }}
-                      >
-                        {product.badge}
-                      </div>
-                    )}
-                    {/* Teal hover bar */}
-                    <div
-                      style={{
-                        position: 'absolute', bottom: 0, left: 0, right: 0, height: '3px',
-                        background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)',
-                        transform: 'scaleX(0)', transformOrigin: 'left',
-                        transition: 'transform 300ms ease',
-                      }}
-                      className="group-hover:scale-x-100"
-                    />
-                  </div>
-                  {/* Content */}
-                  <div style={{ padding: '24px 24px 28px' }}>
-                    <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '18px', fontWeight: 700, color: '#2B3E50', marginBottom: '10px', lineHeight: 1.3 }}>
-                      {product.name}
-                    </h3>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: '#6B7B8D', lineHeight: 1.7, marginBottom: '16px' }}>
-                      {product.desc}
-                    </p>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#2D8B6E', fontFamily: 'var(--font-head)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.06em' }}
-                      className="group-hover:gap-2 transition-all"
-                    >
-                      Learn More <ArrowRight size={14} />
-                    </div>
-                  </div>
-                </div>
+      <section className="section-space bg-white">
+        <div className="container-xl grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+          <div data-reveal className="reveal">
+            <p className="section-eyebrow">System selection</p>
+            <h2 className="section-heading">One industrial partner. Clearer system choices.</h2>
+            <p className="mt-7 max-w-md text-[0.98rem] leading-7 text-[#607384]">TEC INDUSTRIES supports industrial project conversations with an organised range of piping systems, fittings, valves, supports and fusion machinery.</p>
+            <Link href="/products" className="btn-ghost mt-8">View product systems <ArrowUpRight size={16} /></Link>
+          </div>
+          <div className="grid gap-px border border-[#dde4e5] bg-[#dde4e5] sm:grid-cols-3" data-reveal>
+            {SYSTEMS.map((system) => (
+              <Link key={system.title} href={system.href} className="group bg-white p-6 transition-colors hover:bg-[#0f171f] sm:min-h-[25rem] sm:p-7">
+                <span className="font-[var(--font-mono)] text-[0.64rem] tracking-[0.12em] text-[#2fae78]">{system.number}</span>
+                <div className="mt-16 sm:mt-24"><p className="font-[var(--font-mono)] text-[0.59rem] uppercase tracking-[0.12em] text-[#607384] transition-colors group-hover:text-[#55ca92]">{system.label}</p><h3 className="mt-3 font-[var(--font-display)] text-[2.15rem] font-bold uppercase leading-[0.88] tracking-[-0.025em] text-[#1a2834] transition-colors group-hover:text-white">{system.title}</h3><p className="mt-4 text-sm leading-6 text-[#607384] transition-colors group-hover:text-white/65">{system.body}</p><span className="mt-7 inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.65rem] font-medium uppercase tracking-[0.11em] text-[#1a2834] transition-colors group-hover:text-[#55ca92]">Explore <MoveRight size={15} /></span></div>
               </Link>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-12 reveal">
-            <Link href="/products" className="btn-primary">
-              View All Products <ArrowRight size={16} />
-            </Link>
+      <section className="relative overflow-hidden bg-[#0f171f] py-[clamp(4.5rem,8vw,8rem)] text-white">
+        <div className="container-xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div data-reveal className="reveal">
+            <p className="section-eyebrow text-[#55ca92]">PPR system focus</p>
+            <h2 className="max-w-[11ch] font-[var(--font-display)] text-[clamp(3.2rem,6vw,6.6rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.045em]">Green and blue PPR. One coordinated project conversation.</h2>
+            <p className="mt-7 max-w-xl text-[1rem] leading-7 text-white/66">TEC’s green and blue triple-layer PPR pipe range can be reviewed alongside fitting families and project requirements. For exact sizes, pressure classes and current literature, use the documentation route.</p>
+            <div className="mt-8 flex flex-wrap gap-3"><Link href="/resources/ppr-catalog" className="btn-primary">Browse fitting families <ArrowUpRight size={16} /></Link><Link href="/contact?resource=ppr-catalogue" className="btn-secondary">Request documents <FileText size={15} /></Link></div>
+          </div>
+          <div data-reveal className="reveal relative border border-white/12 bg-[#14202a] p-3 shadow-[0_30px_70px_rgba(0,0,0,0.28)]">
+            <div className="relative aspect-[3/2] overflow-hidden"><Image src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663160765145/QbOvddWIZIVIuIGv.jpg" alt="Green and blue triple-layer PPR pipe system with fittings" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" /><div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(0deg,rgba(9,15,20,0.9),transparent)] p-5"><p className="font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.14em] text-[#55ca92]">PPR system cue</p><p className="mt-1 font-[var(--font-display)] text-2xl font-bold uppercase">Pipe lengths + fitting families</p></div></div>
+            <div className="absolute -bottom-3 -left-3 hidden border border-[#55ca92]/35 bg-[#173c36] px-5 py-4 md:block"><p className="font-[var(--font-mono)] text-[0.57rem] uppercase tracking-[0.13em] text-[#55ca92]">Document-first selection</p><p className="mt-1 text-sm text-white/78">No unverified SKU data published.</p></div>
           </div>
         </div>
       </section>
 
-      {/* ═══ INDUSTRIES SERVED ═══ */}
-      <section style={{ background: '#1E2A3A', padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.12) 0%, transparent 65%)' }} />
-        <div className="container-xl relative">
-          <div className="text-center mb-16 reveal">
-            <span className="section-eyebrow">Where We Serve</span>
-            <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.15, letterSpacing: '-0.01em' }}>
-              Industries We Power
-            </h2>
-            <div className="teal-rule mx-auto mt-5" />
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {INDUSTRIES.map((industry, i) => (
-              <div
-                key={industry.name}
-                className="reveal text-center group"
-                style={{
-                  background: 'rgba(255,255,255,0.05)', borderRadius: '12px', padding: '28px 16px',
-                  border: '1px solid rgba(45,139,110,0.15)', cursor: 'default',
-                  transition: 'background 200ms ease, border-color 200ms ease',
-                  animationDelay: `${i * 0.08}s`,
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(45,139,110,0.15)';
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(45,139,110,0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(45,139,110,0.15)';
-                }}
-              >
-                <div style={{ color: '#3DAA7A', marginBottom: '12px', display: 'flex', justifyContent: 'center' }}>
-                  {industry.icon}
-                </div>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: '14px', fontWeight: 700, color: '#ffffff', marginBottom: '4px' }}>
-                  {industry.name}
-                </div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'rgba(255,255,255,0.45)', letterSpacing: '0.02em' }}>
-                  {industry.desc}
-                </div>
-              </div>
-            ))}
+      <section className="section-space bg-[#f3f5f2]">
+        <div className="container-xl grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div data-reveal className="reveal"><p className="section-eyebrow">Answer-first project support</p><h2 className="section-heading">What should an industrial piping RFQ include?</h2><p className="mt-7 max-w-md text-[0.98rem] leading-7 text-[#607384]">A useful starting enquiry identifies the application, nominal size, operating requirement, project location and approximate quantity. This helps TEC route the request to the right product and document conversation.</p></div>
+          <div className="grid gap-px border border-[#dde4e5] bg-[#dde4e5] sm:grid-cols-2" data-reveal>
+            {PROJECT_INPUTS.map((input, index) => <div key={input} className="bg-white p-6"><span className="font-[var(--font-mono)] text-[0.62rem] text-[#2fae78]">0{index + 1}</span><p className="mt-10 font-[var(--font-display)] text-[1.8rem] font-bold uppercase leading-[0.95] text-[#1a2834]">{input}</p></div>)}
           </div>
         </div>
       </section>
 
-      {/* ═══ WHY CHOOSE TEC ═══ */}
-      <section style={{ background: '#F5F5F0', padding: '96px 0' }}>
-        <div className="container-xl">
-          <div className="text-center mb-16 reveal">
-            <span className="section-eyebrow">Why TEC INDUSTRIES</span>
-            <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>
-              The TEC Advantage
-            </h2>
-            <div className="teal-rule mx-auto mt-4" />
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { icon: <Shield size={28} />, title: 'Certified Quality', desc: 'Every product meets ISO, BIS, and ISI standards. Rigorous in-house testing ensures zero-defect delivery.' },
-              { icon: <Award size={28} />, title: 'Industry Experience', desc: 'Extensive manufacturing expertise. Trusted by 1200+ clients across residential, commercial, and infrastructure sectors.' },
-              { icon: <Users size={28} />, title: 'Dealer Network', desc: 'Pan-India distributor and dealer network ensuring fast delivery to your project site anywhere in India.' },
-              { icon: <Factory size={28} />, title: 'Modern Facility', desc: 'State-of-the-art GIDC Vapi manufacturing plant with advanced machinery and strict process controls.' },
-              { icon: <Phone size={28} />, title: 'Technical Support', desc: 'Expert installation guidance, on-site support, and PPR pipe installer training programs.' },
-              { icon: <CheckCircle2 size={28} />, title: 'Competitive Pricing', desc: 'Direct manufacturer pricing with no middleman costs. Bulk discounts and flexible payment terms for dealers.' },
-            ].map((item, i) => (
-              <div key={item.title} className="card reveal" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', marginBottom: '20px' }}>
-                  {item.icon}
-                </div>
-                <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '18px', fontWeight: 700, color: '#2B3E50', marginBottom: '10px' }}>
-                  {item.title}
-                </h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: '#6B7B8D', lineHeight: 1.7 }}>
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ BUILT FOR INDUSTRIAL BUYERS ═══ */}
-      <section style={{ background: '#ffffff', padding: '96px 0' }}>
-        <div className="container-xl">
-          <div className="text-center mb-16 reveal">
-            <span className="section-eyebrow">Why Industrial Buyers Choose TEC</span>
-            <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>
-              Built for Industrial Buyers
-            </h2>
-            <div className="teal-rule mx-auto mt-4 mb-6" />
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
-              TEC INDUSTRIES specifies, manufactures, and delivers piping systems for the projects that demand precision.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-8">
-            {TRUST_CARDS.map((card, i) => (
-              <div key={card.heading} className="card reveal" style={{ animationDelay: `${i * 0.15}s`, position: 'relative', borderTop: '4px solid #E85D26' }}>
-                <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '20px', fontWeight: 700, color: '#2B3E50', marginBottom: '16px' }}>{card.heading}</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8 }}>{card.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CTA BANNER ═══ */}
-      <section style={{ background: 'linear-gradient(135deg, #1E2A3A 0%, #2B3E50 60%, #2D8B6E 100%)', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-50%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%)', borderRadius: '50%' }} />
-        <div className="container-xl relative text-center">
-          <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Get Started Today</span>
-          <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.2, marginBottom: '16px', letterSpacing: '-0.01em' }}>
-            Need a Quote for Your Project?
-          </h2>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.65)', maxWidth: '480px', margin: '0 auto 36px', lineHeight: 1.7 }}>
-            Contact our sales team for competitive pricing, technical specifications, and fast delivery across India.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="btn-primary" style={{ fontSize: '15px', padding: '16px 32px' }}>
-              Request a Quote <ArrowRight size={16} />
-            </Link>
-            <a
-              href="https://wa.me/919426031064?text=Hello%20TEC%20Industries%2C%20I%20need%20a%20quote%20for%20my%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary"
-              style={{ fontSize: '15px', padding: '16px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              WhatsApp Us
-            </a>
-          </div>
+      <section className="bg-white py-5">
+        <div className="container-xl flex flex-col gap-6 border-y border-[#dde4e5] py-8 lg:flex-row lg:items-center lg:justify-between">
+          <div><p className="section-eyebrow">Technical request</p><h2 className="font-[var(--font-display)] text-[clamp(2.3rem,4vw,4.25rem)] font-extrabold uppercase leading-[0.84] tracking-[-0.035em] text-[#1a2834]">Let’s make the first project conversation useful.</h2></div>
+          <div className="flex flex-wrap gap-3"><Link href="/contact" className="btn-primary">Start an RFQ <ArrowUpRight size={16} /></Link><Link href="/resources" className="btn-ghost">View resources <Layers3 size={16} /></Link></div>
         </div>
       </section>
     </>

@@ -21,7 +21,7 @@ export default function PublicShell({ children }: { children: React.ReactNode })
   return (
     <>
       <Header />
-      <main className="pt-[80px]">{children}</main>
+      <main style={{ paddingTop: 'var(--header-height)' }}>{children}</main>
       <Footer />
       {!isContactRoute && <WhatsAppFloat />}
     </>

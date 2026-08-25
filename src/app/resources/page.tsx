@@ -1,55 +1,22 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FileText, FileDown, ShieldCheck, Download, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, FileText, FolderOpen, Wrench } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Technical Resources, Catalogs & Project Documents',
-  description: 'Request technical catalogs, product specifications, installation discussions, and engineering documents for TEC INDUSTRIES piping systems.',
-  alternates: { canonical: '/resources' },
-};
+/* TEC RESOURCES — Bold Industrial / International-grade. */
+
+export const metadata: Metadata = { title: 'Technical Resources, Catalogs & Project Documents', description: 'Request technical catalogs, product specifications, installation discussions, and engineering documents for TEC INDUSTRIES piping systems.', alternates: { canonical: '/resources' } };
+
+const RESOURCES = [
+  { number: '01', title: 'PPR Catalogue', body: 'Browse TEC’s PPR pipe and fitting-family index, then request current project-specific literature.', href: '/resources/ppr-catalog', action: 'Browse PPR catalogue', icon: FolderOpen },
+  { number: '02', title: 'Fusion Guidance', body: 'Request the applicable heat-fusion discussion for pipe system, size range, equipment and installation scope.', href: '/contact?resource=fusion-welding-guide', action: 'Request fusion guidance', icon: Wrench },
+  { number: '03', title: 'Compatibility Review', body: 'Share the process medium, concentration, temperature and operating context for a suitable document request.', href: '/contact?resource=chemical-compatibility-review', action: 'Request a review', icon: FileText },
+  { number: '04', title: 'Engineering Documents', body: 'Request drawings or engineering support with the product family, nominal size, application and project stage.', href: '/contact?resource=engineering-documents', action: 'Contact engineering', icon: FileText },
+];
 
 export default function ResourcesPage() {
-  return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24">
-      <div className="container-xl mb-16">
-        <div className="bg-gradient-to-r from-[#141C28] to-[#2B3E50] rounded-3xl p-10 md:p-16 text-white text-center shadow-lg relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#3DAA7A] rounded-full blur-[120px] opacity-20 pointer-events-none" />
-          <span className="section-eyebrow text-[#3DAA7A] mb-4 block">Downloads & Docs</span>
-          <h1 className="font-[family-name:var(--font-head)] text-4xl md:text-5xl font-extrabold mb-4 relative z-10">Technical Resources Hub</h1>
-          <p className="font-[family-name:var(--font-body)] text-lg text-white/80 max-w-2xl mx-auto relative z-10">Access our master product catalogs, technical specifications, document-request routes, and engineering support.</p>
-        </div>
-      </div>
-
-      <div className="container-xl max-w-5xl">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-[#e2e8f0] flex flex-col hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 bg-[#e6f4ef] text-[#3DAA7A] rounded-xl flex items-center justify-center mb-6"><FileDown size={28} /></div>
-            <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold text-[#2B3E50] mb-3">PPR Pipes &amp; Fittings Catalogue</h2>
-            <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">Browse the PPR pipe and fitting families, then request size-specific documents for the applicable project system.</p>
-            <Link href="/resources/ppr-catalog" className="btn-primary mt-auto self-start inline-flex items-center gap-2"><ShieldCheck size={16} /> Browse Catalogue</Link>
-          </div>
-
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-[#e2e8f0] flex flex-col hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 bg-[#edf2f7] text-[#4A5568] rounded-xl flex items-center justify-center mb-6"><FileText size={28} /></div>
-            <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold text-[#2B3E50] mb-3">Fusion Welding Guide</h2>
-            <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">Request the applicable heat-fusion guidance for your pipe system, size range, equipment and installation scope.</p>
-            <Link href="/contact?resource=fusion-welding-guide" className="btn-ghost mt-auto self-start inline-flex items-center gap-2"><Download size={16} /> Request Guide</Link>
-          </div>
-
-          <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-[#e2e8f0] flex flex-col hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 bg-[#edf2f7] text-[#4A5568] rounded-xl flex items-center justify-center mb-6"><FileText size={28} /></div>
-            <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold text-[#2B3E50] mb-3">Chemical Compatibility Review</h2>
-            <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">Request an application review for the specific chemical, concentration, temperature and pressure conditions in your process.</p>
-            <Link href="/contact?resource=chemical-compatibility-review" className="btn-ghost mt-auto self-start inline-flex items-center gap-2"><Download size={16} /> Request Review</Link>
-          </div>
-
-          <div className="bg-gradient-to-br from-[#3DAA7A] to-[#2D8B6E] p-8 sm:p-10 rounded-2xl shadow-sm text-white flex flex-col justify-center">
-            <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold mb-3">Need CAD Files?</h2>
-            <p className="font-[family-name:var(--font-body)] text-white/90 mb-8 leading-relaxed">Request drawings or engineering support with the product, nominal size, application and project approval stage.</p>
-            <Link href="/contact?resource=engineering-documents" className="mt-auto self-start bg-white text-[#2D8B6E] hover:bg-[#F5F5F0] transition-colors font-bold font-[family-name:var(--font-body)] px-6 py-3 rounded-lg inline-flex items-center gap-2">Contact Engineering <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return <div className="min-h-screen bg-[#f3f5f2]">
+    <section className="relative overflow-hidden bg-[#090f14] py-[clamp(5rem,10vw,9rem)] text-white"><div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(85,202,146,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(85,202,146,0.1)_1px,transparent_1px)] [background-size:56px_56px]" /><div className="container-xl relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end"><div><p className="section-eyebrow text-[#55ca92]">Technical resource hub</p><h1 className="mt-5 max-w-[10ch] font-[var(--font-display)] text-[clamp(4rem,8vw,8rem)] font-extrabold uppercase leading-[0.79] tracking-[-0.055em]">Documents made useful for project teams.</h1></div><p className="max-w-lg text-[1rem] leading-7 text-white/67">What technical documents can you request from TEC? Use this hub to choose the most relevant product, guide or review path. Attach project context so TEC can route the request meaningfully.</p></div></section>
+    <section className="section-space"><div className="container-xl"><div className="grid gap-px border border-[#c7d1d6] bg-[#c7d1d6] md:grid-cols-2">{RESOURCES.map((resource) => { const Icon = resource.icon; return <article key={resource.number} className="group flex min-h-[20rem] flex-col bg-white p-[clamp(1.6rem,4vw,3.25rem)] transition-colors hover:bg-[#0f171f]"><div className="flex items-start justify-between"><span className="font-[var(--font-mono)] text-[0.62rem] text-[#2fae78]">{resource.number}</span><Icon size={22} className="text-[#607384] transition-colors group-hover:text-[#55ca92]" /></div><div className="mt-auto"><h2 className="font-[var(--font-display)] text-[clamp(2.5rem,4vw,4rem)] font-bold uppercase leading-[0.83] tracking-[-0.035em] text-[#1a2834] transition-colors group-hover:text-white">{resource.title}</h2><p className="mt-4 max-w-md text-sm leading-6 text-[#607384] transition-colors group-hover:text-white/65">{resource.body}</p><Link href={resource.href} className="mt-7 inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.64rem] font-medium uppercase tracking-[0.1em] text-[#1a2834] transition-colors group-hover:text-[#55ca92]">{resource.action}<ArrowUpRight size={15} /></Link></div></article>; })}</div></div></section>
+    <section className="bg-[#173c36] py-8 text-white"><div className="container-xl flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><p className="font-[var(--font-mono)] text-[0.62rem] uppercase tracking-[0.13em] text-[#55ca92]">Document request principle</p><h2 className="mt-2 font-[var(--font-display)] text-[2rem] font-bold uppercase leading-[0.9]">The best document request starts with the operating context.</h2></div><Link href="/contact?resource=documents" className="btn-secondary shrink-0">Start a document request <ArrowUpRight size={16} /></Link></div></section>
+  </div>;
 }

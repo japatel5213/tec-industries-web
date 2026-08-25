@@ -1,184 +1,22 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle2, Target, Eye, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'About TEC INDUSTRIES — PPR & HDPE Pipe Manufacturer in Vapi, Gujarat',
-  description: 'TEC INDUSTRIES is an industrial-grade PPR and HDPE pipe manufacturer based in Vapi, Gujarat, with pan-India shipping. Built on Trust, Empowerment, and Commitment — and a 50-year design-life philosophy for every meter we ship.',
-  alternates: { canonical: '/about' },
-};
+/* TEC ABOUT — Bold Industrial / International-grade. */
+
+export const metadata: Metadata = { title: 'About TEC INDUSTRIES — Industrial Piping Partner in Vapi, Gujarat', description: 'TEC INDUSTRIES is a Vapi-based B2B industrial piping partner supporting manufacturing plants and industrial projects with product systems, technical resources and project-led enquiry support.', alternates: { canonical: '/about' } };
 
 const VALUES = [
-  {
-    letter: 'T',
-    title: 'Trust',
-    desc: 'Specifications you can verify. Batch traceability on every order. Honest answers about what fits your application — and what doesn\'t. Trust is built through consistency, not slogans.',
-  },
-  {
-    letter: 'E',
-    title: 'Empowerment',
-    desc: 'We equip plant teams, contractors, and engineers with the technical depth to specify confidently. Catalogs, datasheets, fusion welding guidance, sizing calculators — open and free, because informed buyers make better partners.',
-  },
-  {
-    letter: 'C',
-    title: 'Commitment',
-    desc: 'A 50-year pipe deserves a 50-year supplier relationship. We commit to long-term inventory availability, technical support past installation, and standing behind every meter we ship.',
-  },
-];
-
-const MILESTONES = [
-  { year: 'Foundation', event: 'TEC INDUSTRIES founded in Vapi, Gujarat with PPR pipe manufacturing.' },
-  { year: 'Expansion', event: 'Expanded to HDPE pipe production and electrofusion fittings.' },
-  { year: 'Innovation', event: 'New state-of-the-art GIDC facility opened. Manufacturing capacity doubled.' },
-  { year: 'Growth', event: 'Industrial Valves and Pipe Support Systems added to product range.' },
-  { year: 'Network', event: 'PPR Fusion Machine range launched. Pan-India delivery network established.' },
-  { year: 'Today', event: 'Pan-India delivery network. Industrial-grade PPR (20–160 mm), HDPE (20–630 mm), and complete piping system bundling.' },
+  { letter: 'T', title: 'Trust', body: 'Clear product-family conversations, transparent documentation routes and direct project communication.' },
+  { letter: 'E', title: 'Empowerment', body: 'Useful technical resources and enquiry inputs that help procurement, maintenance and project teams begin with the right context.' },
+  { letter: 'C', title: 'Commitment', body: 'A long-term industrial-partner mindset—focused on helping projects move from early requirement to useful next action.' },
 ];
 
 export default function AboutPage() {
-  return (
-    <div>
-      {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #141C28, #1E2A3A)', padding: '160px 0 96px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.15) 0%, transparent 65%)' }} />
-        <div className="container-xl relative text-center">
-          <span className="section-eyebrow" style={{ color: '#3DAA7A' }}>Our Story</span>
-          <h1 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.1, marginBottom: '16px' }}>
-            About TEC INDUSTRIES
-          </h1>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', maxWidth: '560px', margin: '0 auto' }}>
-            Industrial piping solutions manufactured in Gujarat, shipped pan-India.
-          </p>
-        </div>
-      </section>
-
-      {/* Who We Are */}
-      <section style={{ background: '#ffffff', padding: '96px 0' }}>
-        <div className="container-xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="section-eyebrow">Who We Are</span>
-              <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 40px)', marginBottom: '20px' }}>
-                Built on Trust. Driven by Quality.
-              </h2>
-              <div className="teal-rule mb-8" />
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '16px' }}>
-                TEC INDUSTRIES is established in the GIDC Industrial Estate, Vapi, Gujarat — one of India's premier industrial hubs. From a single PPR pipe manufacturing line, we have grown into a comprehensive industrial piping solutions provider serving plant managers, contractors, procurement officers, and project engineers across India.
-              </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: '#6B7B8D', lineHeight: 1.8, marginBottom: '32px' }}>
-                Our product portfolio covers PPR Pipes & Fittings (20–160 mm), HDPE Pipes & Fittings (20–630 mm), Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines — all manufactured in-house to IS 15801, ISO 15874, and DIN 8077 specifications.
-              </p>
-            </div>
-            <div className="relative">
-              <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(43,62,80,0.2)' }}>
-                <Image src="/assets/factory-hero.png" alt="TEC INDUSTRIES Manufacturing Facility" width={580} height={400} className="w-full h-auto" />
-              </div>
-              <div style={{ position: 'absolute', bottom: '-20px', left: '-20px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', borderRadius: '12px', padding: '20px 24px', boxShadow: '0 12px 32px rgba(45,139,110,0.4)' }}>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: '24px', fontWeight: 800, color: '#fff', lineHeight: 1 }}>100%</div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.06em', marginTop: '4px' }}>QUALITY COMMITMENT</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section style={{ background: '#F5F5F0', padding: '80px 0' }}>
-        <div className="container-xl">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="card" style={{ position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)' }} />
-              <div style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                <Target size={24} color="#fff" />
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '22px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>Our Mission</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8 }}>
-                To manufacture and deliver industrial-grade piping solutions built to international specifications — empowering India's construction, infrastructure, and industrial sectors with products that perform for 50 years.
-              </p>
-            </div>
-            <div className="card" style={{ position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)' }} />
-              <div style={{ width: '52px', height: '52px', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                <Eye size={24} color="#fff" />
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '22px', fontWeight: 800, color: '#2B3E50', marginBottom: '12px' }}>Our Vision</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#6B7B8D', lineHeight: 1.8 }}>
-                To be India's most trusted industrial PPR and HDPE manufacturer — the first name a plant manager, procurement officer, or project engineer calls when they need to specify a piping system they can rely on for decades.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values — T · E · C */}
-      <section style={{ background: '#1E2A3A', padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', bottom: '-80px', right: '-80px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(45,139,110,0.12) 0%, transparent 65%)' }} />
-        <div className="container-xl relative">
-          <div className="text-center mb-16">
-            <span className="section-eyebrow">What We Stand For</span>
-            <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 800, color: '#ffffff', lineHeight: 1.15 }}>
-              Three Values Guide Every Product, Quote & Project
-            </h2>
-            <div className="teal-rule mx-auto mt-5" />
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {VALUES.map((val) => (
-              <div key={val.letter} style={{ background: 'rgba(255,255,255,0.05)', borderTop: '3px solid #E85D26', borderRadius: '12px', padding: '40px 32px' }}>
-                <div style={{ fontFamily: 'var(--font-head)', fontSize: '64px', fontWeight: 800, color: '#E85D26', lineHeight: 1, marginBottom: '16px' }}>{val.letter}</div>
-                <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '20px', fontWeight: 700, color: '#ffffff', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{val.title}</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8 }}>{val.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section style={{ background: '#ffffff', padding: '96px 0' }}>
-        <div className="container-xl">
-          <div className="text-center mb-16">
-            <span className="section-eyebrow">Our Journey</span>
-            <h2 className="section-heading" style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}>Company Milestones</h2>
-            <div className="teal-rule mx-auto mt-5" />
-          </div>
-          <div className="relative">
-            <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: 0, bottom: 0, width: '2px', background: 'linear-gradient(180deg, #2D8B6E, #3DAA7A)', opacity: 0.3 }} className="hidden md:block" />
-            <div className="flex flex-col gap-8">
-              {MILESTONES.map((m, i) => (
-                <div key={m.year} className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className={`md:w-1/2 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="card" style={{ display: 'inline-block', padding: '20px 28px' }}>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: '#3DAA7A', fontWeight: 700, letterSpacing: '0.08em', marginBottom: '6px' }}>{m.year}</div>
-                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: '#2B3E50', lineHeight: 1.6 }}>{m.event}</p>
-                    </div>
-                  </div>
-                  <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'linear-gradient(135deg, #2D8B6E, #3DAA7A)', flexShrink: 0, boxShadow: '0 0 0 4px rgba(45,139,110,0.2)', zIndex: 1 }} className="hidden md:block" />
-                  <div className="md:w-1/2" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{ background: 'linear-gradient(135deg, #1E2A3A, #2B3E50)', padding: '96px 0' }}>
-        <div className="container-xl text-center">
-          <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 800, color: '#ffffff', marginBottom: '16px' }}>
-            Ready to Partner with Us?
-          </h2>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '16px', color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>
-            Built for industrial procurement — plant managers, contractors, and project engineers across India.
-          </p>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'rgba(255,255,255,0.4)', marginBottom: '32px', fontStyle: 'italic' }}>
-            "Your Partner in Industrial Progress"
-          </p>
-          <Link href="/contact" className="btn-primary" style={{ fontSize: '15px', padding: '16px 32px' }}>
-            Contact Us Today <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
-    </div>
-  );
+  return <div className="bg-[#f3f5f2]"><section className="relative overflow-hidden bg-[#090f14] text-white"><div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(85,202,146,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(85,202,146,0.1)_1px,transparent_1px)] [background-size:56px_56px]" /><div className="container-xl relative z-10 grid gap-12 py-[clamp(5rem,10vw,9rem)] lg:grid-cols-[1fr_0.8fr] lg:items-end"><div><p className="section-eyebrow text-[#55ca92]">About TEC INDUSTRIES</p><h1 className="mt-5 max-w-[10ch] font-[var(--font-display)] text-[clamp(4rem,8vw,8rem)] font-extrabold uppercase leading-[0.79] tracking-[-0.055em]">Your partner in industrial progress.</h1></div><p className="max-w-lg text-[1rem] leading-7 text-white/67">TEC INDUSTRIES is based in Vapi, Gujarat and positioned as an industrial piping partner for manufacturing plants and industrial projects—across product systems, technical resources and project-led enquiry support.</p></div></section>
+    <section className="section-space bg-white"><div className="container-xl grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center"><div><p className="section-eyebrow">The operating idea</p><h2 className="section-heading">A piping conversation should start with the project, not the price.</h2><p className="mt-7 max-w-md text-[0.98rem] leading-7 text-[#607384]">TEC works with manufacturing, chemical and pharma, textile, food and beverage, engineering, contracting and plant-maintenance teams. The focus is practical: identify the application, product family and technical context before moving into documents and quotation.</p><Link href="/contact" className="btn-ghost mt-8">Start a project conversation <ArrowUpRight size={16} /></Link></div><div className="relative overflow-hidden bg-[#0f171f] p-3"><div className="relative aspect-[3/2]"><Image src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663160765145/CPtvApVhaKXyigNp.jpg" alt="Industrial piping installation environment" fill sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(9,15,20,0.58),transparent)]" /></div><div className="absolute bottom-0 left-0 bg-[#173c36] px-5 py-4"><p className="font-[var(--font-mono)] text-[0.57rem] uppercase tracking-[0.12em] text-[#55ca92]">Based in Vapi, Gujarat</p><p className="mt-1 text-sm text-white/75">Industrial piping solutions for projects and plants.</p></div></div></div></section>
+    <section className="bg-[#0f171f] py-[clamp(4.5rem,8vw,8rem)] text-white"><div className="container-xl"><div className="max-w-2xl"><p className="section-eyebrow text-[#55ca92]">Core values</p><h2 className="font-[var(--font-display)] text-[clamp(3rem,5vw,5.5rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.045em]">Built on trust. Driven by commitment.</h2></div><div className="mt-10 grid gap-px border border-white/12 bg-white/12 md:grid-cols-3">{VALUES.map((value) => <div key={value.letter} className="min-h-[21rem] bg-[#0f171f] p-7"><span className="font-[var(--font-display)] text-[5.5rem] font-bold leading-none text-[#55ca92]">{value.letter}</span><h3 className="mt-10 font-[var(--font-display)] text-[2.4rem] font-bold uppercase leading-[0.85]">{value.title}</h3><p className="mt-5 text-sm leading-6 text-white/65">{value.body}</p></div>)}</div></div></section>
+    <section className="bg-[#173c36] py-8 text-white"><div className="container-xl flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><p className="font-[var(--font-mono)] text-[0.62rem] uppercase tracking-[0.13em] text-[#55ca92]">For procurement, project and maintenance teams</p><h2 className="mt-2 font-[var(--font-display)] text-[2rem] font-bold uppercase leading-[0.9]">Tell TEC what your system needs to do.</h2></div><Link href="/resources" className="btn-secondary shrink-0">Explore technical resources <ArrowUpRight size={16} /></Link></div></section>
+  </div>;
 }
