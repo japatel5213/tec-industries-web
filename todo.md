@@ -17,3 +17,12 @@
 - [x] Test the smallest isolated root-layout variant to identify the component or script integration that triggers the prerender fault.
 - [x] Apply and validate the minimal compatible repair with `next build`.
 - [x] Document the root cause, evidence, and required deployment steps.
+
+## Performance and SEO Implementation
+
+- [x] Audit the current analytics, advertising, chat, hero, metadata, and article-route code paths before changing them.
+- [x] Defer non-essential chat and marketing integrations until consent or user intent without removing required lead handling.
+- [x] Reduce the homepage LCP asset and script dependency path while preserving the existing hero presentation.
+- [x] Remove repeated brand suffixes from route-level metadata and make public articles cacheable.
+- [x] Add a lightweight, privacy-conscious RFQ measurement event where the current analytics configuration supports it.
+- [x] Confirm the production build and remeasure representative mobile Lighthouse routes.
