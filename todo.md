@@ -79,8 +79,8 @@
 ## Additional PPR Image Release
 
 - [x] Confirm the generated product visuals are available and render without fatal image or layout errors.
-- [ ] Commit and push the additional PPR product-image update to the linked GitHub main branch.
-- [ ] Confirm the automatic Vercel production deployment for the image update.
+- [x] Commit and push the additional PPR product-image update to the linked GitHub main branch.
+- [x] Confirm the automatic Vercel production deployment for the image update.
 
 ## Product Image Research Notes
 
