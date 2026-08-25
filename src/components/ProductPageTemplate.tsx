@@ -6,6 +6,7 @@ import { ArrowUpRight, FileText } from 'lucide-react';
 
 type Spec = { label: string; value: string };
 type Application = { name: string; desc: string };
+type GalleryImage = { src: string; alt: string; label?: string };
 
 type ProductPageProps = {
   badge?: string;
@@ -17,9 +18,10 @@ type ProductPageProps = {
   features: string[];
   applications: Application[];
   relatedProducts?: { name: string; href: string }[];
+  gallery?: GalleryImage[];
 };
 
-export default function ProductPageTemplate({ badge, name, tagline, description, image, specs, features, applications, relatedProducts }: ProductPageProps) {
+export default function ProductPageTemplate({ badge, name, tagline, description, image, specs, features, applications, relatedProducts, gallery }: ProductPageProps) {
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -46,6 +48,8 @@ export default function ProductPageTemplate({ badge, name, tagline, description,
           <div className="relative border border-white/15 bg-[#14202a] p-3 shadow-[0_30px_70px_rgba(0,0,0,0.34)]"><div className="relative aspect-[4/3] overflow-hidden"><Image src={image} alt={name} fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(9,15,20,0.65),transparent_55%)]" /></div><div className="absolute -bottom-3 left-7 border border-[#55ca92]/35 bg-[#173c36] px-5 py-3"><p className="font-[var(--font-mono)] text-[0.57rem] uppercase tracking-[0.12em] text-[#55ca92]">TEC product system</p><p className="mt-1 text-sm text-white/78">Project-led information request</p></div></div>
         </div>
       </section>
+
+      {gallery?.length ? <section className="border-b border-[#dde4e5] bg-white py-[clamp(3rem,6vw,6rem)]"><div className="container-xl"><div className="flex flex-col gap-3 border-b border-[#c7d1d6] pb-7 md:flex-row md:items-end md:justify-between"><div><p className="section-eyebrow">Product views</p><h2 className="section-heading">Pipe + fitting families</h2></div><p className="max-w-md text-sm leading-6 text-[#607384]">A visual reference for the product conversation. Confirm applicable sizes, configurations and current documentation with TEC before procurement.</p></div><div className="mt-8 grid gap-px border border-[#c7d1d6] bg-[#c7d1d6] md:grid-cols-3">{gallery.map((item) => <figure key={item.src} className="group bg-[#0f171f]"><div className="relative aspect-[4/3] overflow-hidden"><Image src={item.src} alt={item.alt} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(9,15,20,0.72),transparent_62%)]" /></div><figcaption className="px-5 py-4 font-[var(--font-mono)] text-[0.62rem] uppercase tracking-[0.1em] text-[#55ca92]">{item.label ?? item.alt}</figcaption></figure>)}</div></div></section> : null}
 
       <section className="section-space bg-white"><div className="container-xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr]"><div><p className="section-eyebrow">Technical data</p><h2 className="section-heading">Specifications</h2><p className="mt-5 max-w-xl text-[0.97rem] leading-7 text-[#607384]">What information is available for {name}? The verified product details currently listed by TEC are shown below. Request current project-specific documents where your requirement needs a complete size or application review.</p><div className="mt-8 overflow-hidden border border-[#c7d1d6]"><table className="w-full border-collapse text-left"><thead className="bg-[#0f171f]"><tr><th className="px-5 py-4 font-[var(--font-mono)] text-[0.63rem] font-medium uppercase tracking-[0.12em] text-white/60">Parameter</th><th className="px-5 py-4 font-[var(--font-mono)] text-[0.63rem] font-medium uppercase tracking-[0.12em] text-white/60">Listed value</th></tr></thead><tbody>{specs.map((spec, index) => <tr key={spec.label} className={index % 2 === 0 ? 'bg-[#f3f5f2]' : 'bg-white'}><td className="border-t border-[#dde4e5] px-5 py-4 text-sm font-bold text-[#273a49]">{spec.label}</td><td className="border-t border-[#dde4e5] px-5 py-4 font-[var(--font-mono)] text-[0.76rem] text-[#1f9a63]">{spec.value}</td></tr>)}</tbody></table></div></div>
         <aside className="bg-[#f3f5f2] p-[clamp(1.5rem,4vw,3rem)]"><p className="section-eyebrow">System considerations</p><h2 className="font-[var(--font-display)] text-[clamp(2.5rem,4vw,4.25rem)] font-extrabold uppercase leading-[0.83] tracking-[-0.035em] text-[#1a2834]">For the right project discussion.</h2><ul className="mt-7 grid gap-px border border-[#c7d1d6] bg-[#c7d1d6]">{features.map((feature, index) => <li key={feature} className="flex gap-3 bg-white p-5"><span className="font-[var(--font-mono)] text-[0.62rem] text-[#2fae78]">0{index + 1}</span><span className="text-sm leading-6 text-[#273a49]">{feature}</span></li>)}</ul></aside></div></section>

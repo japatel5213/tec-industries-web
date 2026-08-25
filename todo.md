@@ -68,3 +68,21 @@
 - [x] Confirm the Vercel project and team that should host the `japatel5213/tec-industries-web` production branch.
 - [x] Deploy the pushed `main` branch to the authorized Vercel production project.
 - [x] Verify the resulting deployment URL and document any custom-domain assignment step: `tecindustries.in` remains assigned to its prior Vercel project and requires manual reassignment in Vercel before it can serve this new deployment.
+
+## PPR Product Image Expansion
+
+- [x] Validate three-layer PPR visual cues and document which technical construction details must remain unlabelled until TEC approves them.
+- [x] Generate distinct green-and-blue PPR pipe, fitting-family, transition-interface, and fusion-joining photographs.
+- [x] Add the new visuals to the PPR product page and catalogue family cards with responsive Next Image sizing.
+- [x] Verify the new images and layouts, run the production build and targeted lint, then push the update for Vercel deployment.
+
+## Additional PPR Image Release
+
+- [x] Confirm the generated product visuals are available and render without fatal image or layout errors.
+- [ ] Commit and push the additional PPR product-image update to the linked GitHub main branch.
+- [ ] Confirm the automatic Vercel production deployment for the image update.
+
+## Product Image Research Notes
+
+- [x] Record that external three-layer PPR references vary on the reinforcing middle-layer material, so TEC imagery must not label fibre, aluminium, standards, or performance claims without an approved technical sheet.
+- [x] Record the consulted external references in `ppr_visual_research.md`.

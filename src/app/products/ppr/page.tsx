@@ -16,6 +16,11 @@ export default function PPRPage() {
     tagline="Green + blue triple-layer PPR system"
     description="TEC INDUSTRIES supplies green and blue triple-layer PPR pipe systems with coordinated fitting families for industrial project conversations. Begin with your application, line size, operating requirement and quantity; TEC can then route the enquiry toward current documentation and product support."
     image="https://files.manuscdn.com/user_upload_by_module/session_file/310519663160765145/QbOvddWIZIVIuIGv.jpg"
+    gallery={[
+      { src: '/manus-storage/tec-industries-ppr-pipe-green-blue_2aec4472.jpg', alt: 'Green and blue triple-layer PPR pipe lengths in an industrial setting', label: 'Green + blue PPR pipe system' },
+      { src: '/manus-storage/tec-industries-ppr-fittings-elbows-tees_fedf0d44.jpg', alt: 'PPR elbows, tees, reducers, couplings and unions arranged for project review', label: 'Elbows + tees + joining families' },
+      { src: '/manus-storage/tec-industries-ppr-fittings-transition-flange_32fab6a0.jpg', alt: 'PPR transition fittings, flanges, unions and valve components', label: 'Transitions + interfaces' },
+    ]}
     specs={[
       { label: 'Pipe-system colours', value: 'Green and blue' },
       { label: 'Pipe construction', value: 'Triple-layer PPR' },
