@@ -24,9 +24,9 @@ export default function ResourcesPage() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-[#e2e8f0] flex flex-col hover:shadow-md transition-shadow">
             <div className="w-14 h-14 bg-[#e6f4ef] text-[#3DAA7A] rounded-xl flex items-center justify-center mb-6"><FileDown size={28} /></div>
-            <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold text-[#2B3E50] mb-3">Master Product Catalog</h2>
-            <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">Request the latest product catalog for the relevant PPR, HDPE, valve or electrofusion system and project scope.</p>
-            <Link href="/resources/catalog" className="btn-primary mt-auto self-start inline-flex items-center gap-2"><ShieldCheck size={16} /> Request Catalog</Link>
+            <h2 className="font-[family-name:var(--font-head)] text-2xl font-bold text-[#2B3E50] mb-3">PPR Pipes &amp; Fittings Catalogue</h2>
+            <p className="font-[family-name:var(--font-body)] text-[#6B7B8D] mb-8 leading-relaxed">Browse the PPR pipe and fitting families, then request size-specific documents for the applicable project system.</p>
+            <Link href="/resources/ppr-catalog" className="btn-primary mt-auto self-start inline-flex items-center gap-2"><ShieldCheck size={16} /> Browse Catalogue</Link>
           </div>
 
           <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-[#e2e8f0] flex flex-col hover:shadow-md transition-shadow">

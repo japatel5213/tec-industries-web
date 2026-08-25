@@ -26,3 +26,22 @@
 - [x] Remove repeated brand suffixes from route-level metadata and make public articles cacheable.
 - [x] Add a lightweight, privacy-conscious RFQ measurement event where the current analytics configuration supports it.
 - [x] Confirm the production build and remeasure representative mobile Lighthouse routes.
+
+## Weekly Monitoring Automation
+
+- [ ] Confirm available scheduling, Search Console, analytics, and notification integrations.
+- [ ] Define monitored routes, baseline metrics, alert thresholds, and weekly summary fields.
+- [ ] Configure an automated weekly task for live performance and technical SEO checks.
+- [ ] Document Search Console/GA4 connection and GTM conversion setup requirements.
+
+## Review Before Monitoring
+
+- [ ] Show and verify the current public website preview before resuming monitoring configuration.
+
+## PPR Catalog Upgrade
+
+- [x] Review current catalog pages, product data, navigation, and approved PPR product claims.
+- [x] Define the PPR pipe and fitting-family catalog structure without inventing unapproved SKU specifications.
+- [x] Generate catalog-specific hero, system, and fitting-family visuals in the established TEC industrial style.
+- [x] Build the PPR catalog route with filtering, technical-request paths, and relevant internal navigation.
+- [x] Verify responsive catalog behavior, crawl controls, and production build before deployment.

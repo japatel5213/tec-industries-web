@@ -22,7 +22,7 @@ const COMPANY = [
 ];
 
 const RESOURCES: Array<{ label: string; href: string; coming?: boolean }> = [
-  { label: 'PPR Catalog Download', href: '/resources/catalog' },
+  { label: 'PPR Pipes & Fittings Catalogue', href: '/resources/ppr-catalog' },
   { label: 'Blog & Insights', href: '/blog' },
   { label: 'HDPE Catalog Request', href: '/resources' },
   { label: 'Fusion Welding Guide', href: '/resources' },

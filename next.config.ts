@@ -2,7 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'files.manuscdn.com',
+        pathname: '/user_upload_by_module/**',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
   },
   compress: true,
