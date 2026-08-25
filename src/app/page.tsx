@@ -168,10 +168,10 @@ export default function HomePage() {
         style={{ background: 'linear-gradient(135deg, #141C28 0%, #1E2A3A 60%, #1a3040 100%)' }}
       >
         {/* Radial glows */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(45,139,110,0.18) 0%, transparent 65%)' }} />
-          <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.10) 0%, transparent 65%)' }} />
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/assets/factory-hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.12 }} />
+          <div className="absolute inset-0 pointer-events-none">
+            <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(45,139,110,0.18) 0%, transparent 65%)' }} />
+            <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(45,139,110,0.10) 0%, transparent 65%)' }} />
+            <div className="hidden lg:block" style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/assets/factory-hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.12 }} />
         </div>
 
         <div className="container-xl relative z-10 pt-32 pb-24">
@@ -198,7 +198,7 @@ export default function HomePage() {
                   lineHeight: 1.7, marginBottom: '16px', fontStyle: 'italic',
                 }}
               >
-                "Your Partner in Industrial Progress"
+                &ldquo;Your Partner in Industrial Progress&rdquo;
               </p>
               <p
                 style={{
@@ -246,21 +246,17 @@ export default function HomePage() {
                   aspectRatio: '4/3',
                 }}
               >
-                {HERO_SLIDES.map((slide, i) => (
-                  <div
-                    key={slide.img}
-                    style={{
-                      position: 'absolute', inset: 0,
-                      opacity: i === currentSlide ? 1 : 0,
-                      transition: 'opacity 0.8s ease-in-out',
-                    }}
-                  >
+                {(() => {
+                  const slide = HERO_SLIDES[currentSlide];
+                  return (
+                  <div key={slide.img} style={{ position: 'absolute', inset: 0 }}>
                     <Image
                       src={slide.img}
                       alt={slide.title}
                       fill
                       className="object-cover"
-                      priority={i === 0}
+                      priority={currentSlide === 0}
+                      sizes="(min-width: 1024px) 50vw, 1px"
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(20,28,40,0.8) 100%)' }} />
                     {/* Floating badge */}
@@ -279,7 +275,8 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                ))}
+                  );
+                })()}
                 
                 {/* Slider Indicators */}
                 <div style={{ position: 'absolute', top: '16px', right: '16px', display: 'flex', gap: '8px' }}>

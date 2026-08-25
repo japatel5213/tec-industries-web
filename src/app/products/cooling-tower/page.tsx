@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
 
 export const metadata: Metadata = { 
-  title: 'Cooling Towers — Industrial FRP Cooling Towers 10–1000 TR | TEC INDUSTRIES', 
+  title: 'Cooling Towers — Industrial FRP Cooling Towers 10–1000 TR', 
   description: 'TEC INDUSTRIES Industrial Cooling Towers — high-capacity FRP round and square cooling towers, available in 10 TR to 1000 TR range.',
   alternates: { canonical: '/products/cooling-tower' },
 };

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
 
 export const metadata: Metadata = {
-  title: 'PPR Pipe & Fittings — IS 15801 / ISO 15874, 20–160 mm | TEC INDUSTRIES',
+  title: 'PPR Pipe & Fittings — IS 15801 / ISO 15874, 20–160 mm',
   description: 'TEC INDUSTRIES PPR Pipe & Fittings — manufactured to IS 15801, ISO 15874, DIN 8077. Size range 20–160 mm. PN10/PN16/PN20/PN25. Industrial-grade. Vapi, Gujarat.',
   alternates: { canonical: '/products/ppr' },
 };

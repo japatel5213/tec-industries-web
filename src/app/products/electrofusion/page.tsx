@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
-export const metadata: Metadata = { title: 'Electrofusion Fittings — Leak-proof PE Joints | TEC INDUSTRIES', description: 'TEC INDUSTRIES Electrofusion Fittings — precision PE fittings for leak-proof joints in water and gas pipe networks. Couplings, saddles, elbows, and tees. Manufactured in Vapi, Gujarat.', alternates: { canonical: '/products/electrofusion' } };
+export const metadata: Metadata = { title: 'Electrofusion Fittings — Leak-proof PE Joints', description: 'TEC INDUSTRIES Electrofusion Fittings — precision PE fittings for leak-proof joints in water and gas pipe networks. Couplings, saddles, elbows, and tees. Manufactured in Vapi, Gujarat.', alternates: { canonical: '/products/electrofusion' } };
 export default function ElectrofusionPage() {
   return (
     <ProductPageTemplate

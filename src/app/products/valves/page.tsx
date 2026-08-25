@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
-export const metadata: Metadata = { title: 'Industrial Valves — Ball, Gate & Butterfly Valves | TEC INDUSTRIES', description: 'TEC INDUSTRIES Industrial Valves — ball valves, gate valves, and butterfly valves in PP, PVC, and metal. For industrial piping flow control.', alternates: { canonical: '/products/valves' } };
+export const metadata: Metadata = { title: 'Industrial Valves — Ball, Gate & Butterfly Valves', description: 'TEC INDUSTRIES Industrial Valves — ball valves, gate valves, and butterfly valves in PP, PVC, and metal. For industrial piping flow control.', alternates: { canonical: '/products/valves' } };
 export default function ValvesPage() {
   return (
     <ProductPageTemplate

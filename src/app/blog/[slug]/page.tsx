@@ -7,6 +7,13 @@ import { BLOG_POSTS } from '@/data/blog';
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+
+export function generateStaticParams() {
+  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+}
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const post = BLOG_POSTS.find(p => p.slug === params.slug);

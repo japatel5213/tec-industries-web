@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FileText, FileDown, ShieldCheck, Download, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Technical Resources, Catalogs & Project Documents | TEC INDUSTRIES',
+  title: 'Technical Resources, Catalogs & Project Documents',
   description: 'Request technical catalogs, product specifications, installation discussions, and engineering documents for TEC INDUSTRIES piping systems.',
   alternates: { canonical: '/resources' },
 };

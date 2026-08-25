@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/ProductPageTemplate';
-export const metadata: Metadata = { title: 'PPR Pipe Fusion Machine — Heat Fusion Welding Tools | TEC INDUSTRIES', description: 'TEC INDUSTRIES PPR Pipe Fusion Machines — professional-grade heat fusion welding tools for PPR pipe installation. 20mm to 110mm capacity. For contractors and installers.', alternates: { canonical: '/products/fusion-machine' } };
+export const metadata: Metadata = { title: 'PPR Pipe Fusion Machine — Heat Fusion Welding Tools', description: 'TEC INDUSTRIES PPR Pipe Fusion Machines — professional-grade heat fusion welding tools for PPR pipe installation. 20mm to 110mm capacity. For contractors and installers.', alternates: { canonical: '/products/fusion-machine' } };
 export default function FusionMachinePage() {
   return (
     <ProductPageTemplate
