@@ -62,3 +62,9 @@
 - [x] Add answer-first page modules, semantic heading structures, contextual internal links, and visible-content-backed structured data for AEO.
 - [x] Verify 390 px, 768 px, 1024 px, and 1440 px route behavior, reduced-motion support, accessibility, build output, AEO metadata, and performance safeguards.
 - [x] Commit, push, and confirm the production release from the existing repository.
+
+## Vercel Production Deployment
+
+- [x] Confirm the Vercel project and team that should host the `japatel5213/tec-industries-web` production branch.
+- [x] Deploy the pushed `main` branch to the authorized Vercel production project.
+- [x] Verify the resulting deployment URL and document any custom-domain assignment step: `tecindustries.in` remains assigned to its prior Vercel project and requires manual reassignment in Vercel before it can serve this new deployment.
