@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,0.7fr)]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="relative flex h-11 w-11 items-center justify-center border border-white/20"><Image src="/assets/tec-logo.png" alt="" fill sizes="44px" className="object-contain p-1.5 brightness-0 invert" /></span>
+              <span className="relative block h-11 w-11"><Image src="/assets/tec-logo.png" alt="" fill sizes="44px" className="object-contain brightness-0 invert" /></span>
               <span><span className="block font-[var(--font-body)] text-[0.86rem] font-extrabold tracking-[0.18em]">TEC INDUSTRIES</span><span className="mt-0.5 block font-[var(--font-mono)] text-[0.53rem] tracking-[0.15em] text-[#55ca92]">BUILT ON TRUST. DRIVEN BY COMMITMENT.</span></span>
             </Link>
             <p className="mt-7 max-w-md text-[0.9rem] leading-7 text-white/58">Industrial piping solutions for manufacturing plants and industrial projects. Based in Vapi, Gujarat, supporting project conversations across Gujarat and Pan-India.</p>

@@ -56,13 +56,13 @@ export default function Header() {
       <div className="container-xl h-full">
         <div className="flex h-full items-center justify-between gap-6">
           <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="TEC INDUSTRIES home">
-            <span className="relative flex h-10 w-10 shrink-0 items-center justify-center border border-white/25 bg-white/[0.03]">
+            <span className="relative block h-10 w-10 shrink-0">
               <Image
                 src="/assets/tec-logo.png"
                 alt=""
                 fill
                 sizes="40px"
-                className="object-contain p-1.5 brightness-0 invert transition-transform duration-200 group-hover:scale-105"
+                className="object-contain brightness-0 invert transition-transform duration-200 group-hover:scale-105"
               />
             </span>
             <span className="hidden min-w-0 sm:block">
