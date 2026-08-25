@@ -11,6 +11,7 @@ const DASHBOARD_ROUTES = ['/dashboard'];
 export default function PublicShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isDashboard = DASHBOARD_ROUTES.some((r) => pathname?.startsWith(r));
+  const isContactRoute = pathname?.startsWith('/contact');
 
   if (isDashboard) {
     // Dashboard is full-screen fixed; no chrome, no padding
@@ -22,7 +23,7 @@ export default function PublicShell({ children }: { children: React.ReactNode })
       <Header />
       <main className="pt-[80px]">{children}</main>
       <Footer />
-      <WhatsAppFloat />
+      {!isContactRoute && <WhatsAppFloat />}
     </>
   );
 }

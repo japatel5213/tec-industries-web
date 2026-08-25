@@ -45,3 +45,10 @@
 - [x] Generate catalog-specific hero, system, and fitting-family visuals in the established TEC industrial style.
 - [x] Build the PPR catalog route with filtering, technical-request paths, and relevant internal navigation.
 - [x] Verify responsive catalog behavior, crawl controls, and production build before deployment.
+
+## Mobile Responsiveness Validation
+
+- [x] Open the live homepage, PPR catalogue, and contact route at a mobile viewport.
+- [x] Check mobile navigation, hero legibility, card stacking, filter controls, and fixed contact actions.
+- [x] Verify the RFQ form remains readable and usable without horizontal overflow.
+- [x] Record the responsive findings and apply only necessary corrections.
