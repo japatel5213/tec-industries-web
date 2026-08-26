@@ -31,6 +31,12 @@ export default function PPRPage() {
       { label: 'Detailed technical data', value: 'Issued against a project requirement' },
       { label: 'Applicable documents', value: 'Request current technical literature from TEC' },
     ]}
+    materialComparison={[
+      { material: 'PPR', startWith: 'Plant utility water and approved pressure-service context.', selectionGuidance: 'A practical starting point when the confirmed operating envelope suits the selected PPR system.', confirmBeforeSelection: 'Temperature, pressure, outside diameter, PN/SDR, fittings, joining method and current manufacturer rating.' },
+      { material: 'PPH', startWith: 'Chemical, process, wastewater or water-treatment duty.', selectionGuidance: 'Evaluate as an industrial PP option when the actual service needs a compatibility-led review.', confirmBeforeSelection: 'Chemical identity, concentration, temperature, pressure, seals, ancillary components and written manufacturer approval.' },
+      { material: 'PP-RCT', startWith: 'Higher-demand pressure or temperature context where product documents support it.', selectionGuidance: 'Review as a distinct PP material option using the selected manufacturer’s certified pressure-temperature data.', confirmBeforeSelection: 'Current product rating, temperature profile, dimensions, fittings, supports, movement control and joining system.' },
+      { material: 'PPCH', startWith: 'Project conditions where the selected product family and manufacturer documents identify PPCH as an option.', selectionGuidance: 'Discuss as an alternate PP system only after confirming the exact product designation and duty requirements.', confirmBeforeSelection: 'Exact grade, product certificate, applicable documentation, service conditions and manufacturer approval.' },
+    ]}
     features={[
       'Green and blue triple-layer PPR pipe-system options',
       '20 mm–630 mm nominal outside-diameter range with PN06, PN10 and PN16 classes',

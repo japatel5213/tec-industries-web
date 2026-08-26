@@ -93,3 +93,9 @@
 - [x] Add the approved PPR technical summary and pressure-class table without inventing colour-to-class mappings, wall thicknesses, temperature limits, standards, or application guarantees.
 - [x] Add application-led guidance explaining that TEC first reviews the requirement and may discuss PPR, PPH, PP-RCT, or PPCH as appropriate.
 - [x] Validate the updated product page and catalogue, run production build and targeted lint, then deploy the update through GitHub and Vercel.
+
+## PP Material Selection Comparison
+
+- [x] Review the approved PPR, PPH, and PP-RCT selection guidance and use a conservative, manufacturer-document-led treatment for PPCH.
+- [x] Add a responsive PPR, PPH, PP-RCT, and PPCH comparison table to the PPR product route and catalogue without unsupported material, pressure, temperature, chemical, or standards claims.
+- [x] Validate table readability, technical framing, build, and lint; release verification will follow the GitHub push and automatic Vercel deployment.
