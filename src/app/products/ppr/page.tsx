@@ -14,7 +14,7 @@ export default function PPRPage() {
     badge="Primary product system"
     name="PPR Pipe & Fittings"
     tagline="Green + blue triple-layer PPR system"
-    description="TEC INDUSTRIES supplies green and blue triple-layer PPR pipe systems with coordinated fitting families for industrial project conversations. Begin with your application, line size, operating requirement and quantity; TEC can then route the enquiry toward current documentation and product support."
+    description="TEC INDUSTRIES supplies green and blue triple-layer PPR pipe systems with coordinated fitting families for industrial project conversations. Begin with your application, line size, operating requirement and quantity; TEC first reviews whether PPR fits the duty, then can discuss PPH, PP-RCT or PPCH alternatives where the requirement calls for them."
     image="https://files.manuscdn.com/user_upload_by_module/session_file/310519663160765145/QbOvddWIZIVIuIGv.jpg"
     gallery={[
       { src: '/manus-storage/tec-industries-ppr-pipe-green-blue_2aec4472.jpg', alt: 'Green and blue triple-layer PPR pipe lengths in an industrial setting', label: 'Green + blue PPR pipe system' },
@@ -24,13 +24,18 @@ export default function PPRPage() {
     specs={[
       { label: 'Pipe-system colours', value: 'Green and blue' },
       { label: 'Pipe construction', value: 'Triple-layer PPR' },
+      { label: 'Nominal outside diameter range', value: '20 mm–630 mm' },
+      { label: 'Available nominal pressure classes', value: 'PN06, PN10 and PN16' },
+      { label: 'Pressure-class note', value: 'Confirm the final rating against temperature, size, wall thickness and current manufacturer documentation' },
       { label: 'System scope', value: 'Pipes and fitting families' },
       { label: 'Detailed technical data', value: 'Issued against a project requirement' },
       { label: 'Applicable documents', value: 'Request current technical literature from TEC' },
     ]}
     features={[
       'Green and blue triple-layer PPR pipe-system options',
+      '20 mm–630 mm nominal outside-diameter range with PN06, PN10 and PN16 classes',
       'Coordinated fitting-family discussion for project routing',
+      'Requirement-led material review: PPR where appropriate, with PPH, PP-RCT and PPCH alternatives available for discussion',
       'Project-specific request route for current technical documents',
       'Fusion-machinery and installation conversation available where relevant',
       'Procurement, contractor, consultant and plant-team enquiry support',

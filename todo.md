@@ -86,3 +86,10 @@
 
 - [x] Record that external three-layer PPR references vary on the reinforcing middle-layer material, so TEC imagery must not label fibre, aluminium, standards, or performance claims without an approved technical sheet.
 - [x] Record the consulted external references in `ppr_visual_research.md`.
+
+## Approved PPR Technical Specification Update
+
+- [x] Verify the TEC knowledge base and user-approved scope for PN06, PN10, PN16, and the 20 mm–630 mm diameter range.
+- [x] Add the approved PPR technical summary and pressure-class table without inventing colour-to-class mappings, wall thicknesses, temperature limits, standards, or application guarantees.
+- [x] Add application-led guidance explaining that TEC first reviews the requirement and may discuss PPR, PPH, PP-RCT, or PPCH as appropriate.
+- [x] Validate the updated product page and catalogue, run production build and targeted lint, then deploy the update through GitHub and Vercel.
