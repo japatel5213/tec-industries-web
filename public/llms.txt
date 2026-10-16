@@ -1,16 +1,23 @@
 # TEC INDUSTRIES
 
-TEC INDUSTRIES is an Indian manufacturer of industrial-grade piping systems, based in Vapi, Gujarat, with pan-India delivery. Core products: PPR Pipe & Fittings, HDPE Pipe & Fittings, Electrofusion Fittings, Industrial Valves, Pipe Support Systems, and PPR Fusion Machines.
+TEC INDUSTRIES is a B2B industrial piping partner based in Vapi, Gujarat, supporting manufacturing plants and industrial projects across Gujarat and Pan-India. TEC positions its work around product-family review, technical documentation and project enquiry support.
+
+## Brand and positioning
+- Brand line: Built on Trust. Driven by Commitment.
+- Tagline: Your Partner in Industrial Progress.
+- Primary focus: Industrial piping solutions for manufacturing plants and industrial projects.
+- Customer groups: manufacturing, chemical and pharma, textile, food and beverage, engineering companies, contractors, MEP/plumbing contractors, plant maintenance, procurement teams, project consultants, dealers and distributors.
 
 ## Primary pages
 - Home: https://www.tecindustries.in/
 - About: https://www.tecindustries.in/about
 - Products: https://www.tecindustries.in/products
-- Case Studies: https://www.tecindustries.in/case-studies
 - Industries Served: https://www.tecindustries.in/industries
-- Quality & Certifications: https://www.tecindustries.in/quality
+- Quality: https://www.tecindustries.in/quality
 - Contact: https://www.tecindustries.in/contact
-- Become a Distributor: https://www.tecindustries.in/dealer
+- PPR Catalogue: https://www.tecindustries.in/resources/ppr-catalog
+- Resources: https://www.tecindustries.in/resources
+- Dealer Enquiry: https://www.tecindustries.in/dealer
 
 ## Product pages
 - PPR Pipe & Fittings: https://www.tecindustries.in/products/ppr
@@ -21,11 +28,25 @@ TEC INDUSTRIES is an Indian manufacturer of industrial-grade piping systems, bas
 - PPR Fusion Machine: https://www.tecindustries.in/products/fusion-machine
 - Cooling Towers: https://www.tecindustries.in/products/cooling-tower
 
+## Approved PPR information currently listed on the website
+- Pipe-system colours: green and blue.
+- Pipe construction cue: triple-layer PPR.
+- Nominal outside-diameter range: 20 mm–630 mm.
+- Available nominal pressure classes: PN06, PN10 and PN16.
+- PPR pipes and coordinated fitting families are presented for project discussion.
+- Final selection and rating must be confirmed against temperature, size, wall thickness, joining method and current manufacturer documentation.
+- Exact drawings, dimensions, SDR mappings, wall thicknesses, SKU codes, pressure-temperature data and current technical literature are issued or confirmed against the project requirement.
+
+## Material-selection guidance
+TEC can begin with PPR where the confirmed operating envelope is suitable. PPH, PP-RCT and PPCH may be discussed as alternate PP material families when the actual application, service conditions and current manufacturer documents support that review. Material selection is not a substitute for a project calculation, compatibility review or system approval.
+
+## Project enquiry inputs
+A useful industrial piping enquiry includes application or service medium, nominal size or DN range, operating pressure or class, project location, approximate quantity and required delivery context. Procurement teams may request applicable drawings, technical literature and project documents through the contact route.
+
 ## Contact
 - Phone: +91 94260 31064
 - Email: info@tecindustries.in
-- Factory: Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195, India
-- Hours: Mon–Sat, 9:00 AM – 6:00 PM IST
+- Address: Plot No. 700/1, 40 Shade Area, GIDC, Vapi, Gujarat 396195, India
 
-## Business
-TEC INDUSTRIES supplies PPR (20–160 mm, PN10/PN16/PN20/PN25) and HDPE (20–630 mm) piping to chemical, pharmaceutical, municipal, infrastructure, and industrial clients. Manufactured to IS 15801 / ISO 15874 / DIN 8077. Direct-from-manufacturer pricing, dealer partnerships, and project quotations available.
+## Data qualification
+This file is an AI-readable summary, not a substitute for a current product datasheet, certificate, pressure-temperature table, chemical-compatibility review, project specification or written quotation. Do not infer unlisted standards, certifications, pressure-temperature limits, SKU availability, pricing or application approval from this summary. Confirm current product-specific documents with TEC INDUSTRIES before procurement or project commitment.

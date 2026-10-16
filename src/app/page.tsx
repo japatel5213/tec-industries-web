@@ -82,7 +82,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,#090f14_0%,rgba(9,15,20,0.65)_25%,rgba(9,15,20,0.12)_75%,rgba(9,15,20,0.28)_100%)]" />
         </div>
 
-        <div className="container-xl relative z-10 flex min-h-[calc(100svh-var(--header-height))] items-center py-18 lg:py-24">
+        <div className="container-xl relative z-10 flex min-h-[clamp(42rem,calc(100svh-var(--header-height)),51rem)] items-center py-16 lg:py-20">
           <div className="max-w-3xl pb-12 pt-8 lg:w-[57%] lg:pb-0">
             <p className="section-eyebrow text-[#55ca92]">TEC INDUSTRIES · VAPI, GUJARAT</p>
             <h1 className="max-w-[9ch] font-[var(--font-display)] text-[clamp(3.2rem,13.4vw,9.2rem)] font-extrabold uppercase leading-[0.79] tracking-[-0.055em] text-white">
@@ -116,6 +116,16 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="border-b border-[#dde4e5] bg-white py-4" aria-label="Verified PPR information">
+        <div className="container-xl flex flex-wrap items-center gap-x-6 gap-y-2 font-[var(--font-mono)] text-[0.62rem] font-medium uppercase tracking-[0.12em] text-[#566a79]">
+          <span className="text-[#147942]">Verified current PPR information</span>
+          <span>20 mm–630 mm</span>
+          <span>PN06 / PN10 / PN16</span>
+          <span>Green + blue PPR</span>
+          <Link href="/contact?resource=ppr-documents" className="text-[#147942] underline decoration-[#2fae78]/50 underline-offset-4">Documents on request <ArrowUpRight size={13} className="ml-1 inline" /></Link>
+        </div>
+      </section>
+
       <section className="section-space bg-white">
         <div className="container-xl grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <div data-reveal className="reveal">
@@ -126,9 +136,9 @@ export default function HomePage() {
           </div>
           <div className="grid gap-px border border-[#dde4e5] bg-[#dde4e5] sm:grid-cols-3" data-reveal>
             {SYSTEMS.map((system) => (
-              <Link key={system.title} href={system.href} className="group bg-white p-6 transition-colors hover:bg-[#0f171f] sm:min-h-[25rem] sm:p-7">
+              <Link key={system.title} href={system.href} className="group bg-white p-6 transition-colors hover:bg-[#0f171f] sm:min-h-[20rem] sm:p-7">
                 <span className="font-[var(--font-mono)] text-[0.64rem] tracking-[0.12em] text-[#2fae78]">{system.number}</span>
-                <div className="mt-16 sm:mt-24"><p className="font-[var(--font-mono)] text-[0.59rem] uppercase tracking-[0.12em] text-[#607384] transition-colors group-hover:text-[#55ca92]">{system.label}</p><h3 className="mt-3 font-[var(--font-display)] text-[2.15rem] font-bold uppercase leading-[0.88] tracking-[-0.025em] text-[#1a2834] transition-colors group-hover:text-white">{system.title}</h3><p className="mt-4 text-sm leading-6 text-[#607384] transition-colors group-hover:text-white/65">{system.body}</p><span className="mt-7 inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.65rem] font-medium uppercase tracking-[0.11em] text-[#1a2834] transition-colors group-hover:text-[#55ca92]">Explore <MoveRight size={15} /></span></div>
+                <div className="mt-12 sm:mt-16"><p className="font-[var(--font-mono)] text-[0.59rem] uppercase tracking-[0.12em] text-[#607384] transition-colors group-hover:text-[#55ca92]">{system.label}</p><h3 className="mt-3 font-[var(--font-display)] text-[2.15rem] font-bold uppercase leading-[0.88] tracking-[-0.025em] text-[#1a2834] transition-colors group-hover:text-white">{system.title}</h3><p className="mt-4 text-sm leading-6 text-[#607384] transition-colors group-hover:text-white/65">{system.body}</p><span className="mt-7 inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.65rem] font-medium uppercase tracking-[0.11em] text-[#1a2834] transition-colors group-hover:text-[#55ca92]">Explore <MoveRight size={15} /></span></div>
               </Link>
             ))}
           </div>

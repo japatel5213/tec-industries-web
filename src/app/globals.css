@@ -47,8 +47,8 @@
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --page-gutter: clamp(1.25rem, 3.8vw, 4.5rem);
   --header-height: 5.5rem;
-  --section-space: clamp(4.5rem, 9vw, 9rem);
-  --tight-space: clamp(3rem, 6vw, 6rem);
+  --section-space: clamp(4rem, 7vw, 7rem);
+  --tight-space: clamp(2.75rem, 5vw, 5rem);
   --radius: 0.125rem;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
