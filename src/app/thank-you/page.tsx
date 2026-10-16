@@ -24,7 +24,7 @@ export default function ThankYouPage() {
           </h1>
           
           <p className="font-[family-name:var(--font-body)] text-[16px] text-[#6B7B8D] mb-10 leading-relaxed max-w-md">
-            Your inquiry has been successfully captured and registered in our database. Our sales and engineering team will review your requirements and respond within <strong>1 business day</strong>.
+            Your enquiry has been captured and registered. Our team will review the project context and follow up through the contact details you provided.
           </p>
 
           {/* Action Box */}
@@ -34,8 +34,8 @@ export default function ThankYouPage() {
             </h4>
             <ol className="list-decimal pl-5 text-sm text-[#6B7B8D] space-y-2 font-[family-name:var(--font-body)]">
               <li><strong>Database Logged:</strong> Your details are safely stored in our secure database.</li>
-              <li><strong>Lead Assigned:</strong> A dedicated channel manager is assigned based on your role (Dealer/Distributor/Installer).</li>
-              <li><strong>Direct Follow-up:</strong> We will reach out via email or phone with custom pricing or catalogues.</li>
+              <li><strong>Project Review:</strong> Our team reviews the application, product interest and project inputs you shared.</li>
+              <li><strong>Direct Follow-up:</strong> We will contact you by email or phone about the relevant documents and next steps.</li>
             </ol>
           </div>
 

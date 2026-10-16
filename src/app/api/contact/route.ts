@@ -205,7 +205,7 @@ export async function POST(request: NextRequest) {
                 <h1 style="color: #ffffff; font-size: 20px; font-weight: 800; margin: 0;">Thank You, ${name}!</h1>
               </div>
               <div style="background: #f8f9fa; padding: 32px; border: 1px solid #e0e3e8; border-top: none;">
-                <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">We have received your inquiry and our team will get back to you within <strong>1 business day</strong>.</p>
+                <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">We have received your enquiry. Our team will review the project context and follow up through the contact details you provided.</p>
                 <p style="color: #2B3E50; font-size: 15px; line-height: 1.8;">For urgent queries, please WhatsApp us at <a href="https://wa.me/919426031064" style="color: #2D8B6E;">+91 94260 31064</a>.</p>
                 <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
                 <p style="color: #6B7B8D; font-size: 13px; margin: 0;"><em>"Your Partner in Industrial Progress"</em></p>
